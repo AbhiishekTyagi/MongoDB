@@ -1,0 +1,118 @@
+Last login: Fri Jan 17 15:01:21 on ttys001
+RadhaPutraAbhishektyagi@Abhisheks-MacBook-Air ~ % mongosh "mongodb+srv://radhakrishna.kjfn0.mongodb.net/" --apiVersion 1 --username Krishna
+Enter password: ********
+Current Mongosh Log ID:	678a8164f510b39853f57272
+Connecting to:		mongodb+srv://<credentials>@radhakrishna.kjfn0.mongodb.net/?appName=mongosh+2.1.5
+(node:72676) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Using MongoDB:		8.0.4 (API Version 1)
+Using Mongosh:		2.1.5
+mongosh 2.3.8 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+Atlas atlas-i2w2un-shard-0 [primary] test> show dbs;
+School         72.00 KiB
+sample_mflix  111.55 MiB
+shop           40.00 KiB
+admin         332.00 KiB
+local           9.02 GiB
+Atlas atlas-i2w2un-shard-0 [primary] test> use blogs;
+switched to db blogs
+Atlas atlas-i2w2un-shard-0 [primary] blogs> db.users.insertOne({"name":"Abhishek Tyagi"});
+{
+  acknowledged: true,
+  insertedId: ObjectId('678a81cef510b39853f57273')
+}
+Atlas atlas-i2w2un-shard-0 [primary] blogs> show collections;
+users
+Atlas atlas-i2w2un-shard-0 [primary] blogs> db.users.find();
+[
+  { _id: ObjectId('678a81cef510b39853f57273'), name: 'Abhishek Tyagi' }
+]
+Atlas atlas-i2w2un-shard-0 [primary] blogs> db.posts.insertMany([
+... {
+... "title":"First Post",
+... users_id:ObjectId('678a81cef510b39853f57273')
+... },
+... {
+... "title":"Second Post",
+... users_id:ObjectId('678a81cef510b39853f57273')
+... }]);
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('678a825df510b39853f57274'),
+    '1': ObjectId('678a825df510b39853f57275')
+  }
+}
+Atlas atlas-i2w2un-shard-0 [primary] blogs> show collections;
+posts
+users
+Atlas atlas-i2w2un-shard-0 [primary] blogs> db.posts.find();
+[
+  {
+    _id: ObjectId('678a825df510b39853f57274'),
+    title: 'First Post',
+    users_id: ObjectId('678a81cef510b39853f57273')
+  },
+  {
+    _id: ObjectId('678a825df510b39853f57275'),
+    title: 'Second Post',
+    users_id: ObjectId('678a81cef510b39853f57273')
+  }
+]
+Atlas atlas-i2w2un-shard-0 [primary] blogs> db.users.find();
+[
+  { _id: ObjectId('678a81cef510b39853f57273'), name: 'Abhishek Tyagi' }
+]
+Atlas atlas-i2w2un-shard-0 [primary] blogs> const session=db.getMongo().startSession()
+
+Atlas atlas-i2w2un-shard-0 [primary] blogs> const postcoll=session.getDatabase("blogs").posts
+
+Atlas atlas-i2w2un-shard-0 [primary] blogs> const userscoll=session.getDatabase("blogs").users
+
+Atlas atlas-i2w2un-shard-0 [primary] blogs> session.startTransaction()
+
+Atlas atlas-i2w2un-shard-0 [primary] blogs> userscoll.deleteOne({_id: ObjectId('678a81cef510b39853f57273')})
+{ acknowledged: true, deletedCount: 1 }
+Atlas atlas-i2w2un-shard-0 [primary] blogs> show collections;
+posts
+users
+Atlas atlas-i2w2un-shard-0 [primary] blogs> db.users.find();
+[
+  { _id: ObjectId('678a81cef510b39853f57273'), name: 'Abhishek Tyagi' }
+]
+Atlas atlas-i2w2un-shard-0 [primary] blogs> postcoll.deleteMany({users_id: ObjectId('678a81cef510b39853f57273')})
+MongoServerError[NoSuchTransaction]: Transaction with { txnNumber: 3 } has been aborted.
+Atlas atlas-i2w2un-shard-0 [primary] blogs> db.posts.find();
+[
+  {
+    _id: ObjectId('678a825df510b39853f57274'),
+    title: 'First Post',
+    users_id: ObjectId('678a81cef510b39853f57273')
+  },
+  {
+    _id: ObjectId('678a825df510b39853f57275'),
+    title: 'Second Post',
+    users_id: ObjectId('678a81cef510b39853f57273')
+  }
+]
+Atlas atlas-i2w2un-shard-0 [primary] blogs> db.pshow collections;
+Uncaught:
+SyntaxError: Missing semicolon. (1:8)
+
+> 1 | db.pshow collections;
+    |         ^
+  2 |
+
+Atlas atlas-i2w2un-shard-0 [primary] blogs> show collections;
+posts
+users
+Atlas atlas-i2w2un-shard-0 [primary] blogs> postcoll.deleteMany({users_id: ObjectId('678a81cef510b39853f57273')})
+MongoServerError[NoSuchTransaction]: Transaction with { txnNumber: 3 } has been aborted.
+Atlas atlas-i2w2un-shard-0 [primary] blogs> session.commitTransaction();
+MongoServerError[NoSuchTransaction]: Transaction with { txnNumber: 3 } has been aborted.
+Atlas atlas-i2w2un-shard-0 [primary] blogs> session.abortTransaction();
+MongoTransactionError: Cannot call abortTransaction after calling commitTransaction
+Atlas atlas-i2w2un-shard-0 [primary] blogs> 

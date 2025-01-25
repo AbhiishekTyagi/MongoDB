@@ -1,0 +1,3395 @@
+Last login: Thu Jan  9 13:45:42 on ttys001
+RadhaPutraAbhishektyagi@Abhisheks-MacBook-Air ~ % mongosh;
+Current Mongosh Log ID:	67829dbcc4c4abea20959783
+Connecting to:		mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.5
+(node:45833) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Using MongoDB:		7.0.2
+Using Mongosh:		2.1.5
+mongosh 2.3.8 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-12-12T15:24:31.128+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> show dbs;
+Abhishek        72.00 KiB
+Bike           116.00 KiB
+Book           112.00 KiB
+Car             80.00 KiB
+CityData       112.00 KiB
+College         56.00 KiB
+ContactData      3.71 MiB
+Credit          16.00 KiB
+Flights        116.00 KiB
+School         104.00 KiB
+Store           40.00 KiB
+Support         88.00 KiB
+admin           40.00 KiB
+analytics        2.85 MiB
+blog           112.00 KiB
+bookRegistry    80.00 KiB
+boxOffice       80.00 KiB
+companyData     96.00 KiB
+config          96.00 KiB
+financialData   40.00 KiB
+hospital        40.00 KiB
+local          256.00 KiB
+moviesData     192.00 KiB
+shop            96.00 KiB
+user            72.00 KiB
+test> use analytics;
+switched to db analytics
+analytics> show collections;
+friends
+persons
+analytics>  db.friends.aggregate([ 
+...  {$unwind:"$examScores"},
+...  {$project:{_id:1,name:1,age:1,score:"$examScores.score"}},
+...  {$sort:{score:-1}},
+...  {$group:{_id:"$_id",name:{$first:"$name"},maxScore:{$max:'$score'}}},
+...  {$sort:{maxScore:-1}}
+...  ])
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    maxScore: 88.5
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    maxScore: 75.1
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    maxScore: 74.3
+  }
+]
+analytics> show collections;
+friends
+persons
+analytics> db.persons.aggreagte([
+... {$project:{_id:0,gender:1,name:{$concat:["$name.first"," ","$name.last"]},birthdate:{$toDate:"$dob.date"}}},
+... {$sort:-1},
+... {
+... $skip:
+analytics> db.persons.aggreagte([
+... {$project:{_id:0,gender:1,name:{$concat:["$name.first"," ","$name.last"]},birthdate:{$toDate:"$dob.date"}}},
+... {$sort:-1},
+... {$skip:10},
+... {$limit:10}
+... ])
+TypeError: db.persons.aggreagte is not a function
+analytics> db.persons.aggregate([
+... {$project:{_id:0,gender:1,name:{$concat:["$name.first"," ","$name.last"]},birthdate:{$toDate:"$dob.date"}}},
+... {$sort:-1},
+... {$skip:10},
+... {$limit:10}
+... ])
+MongoServerError[Location15973]: the $sort key specification must be an object
+analytics> db.persons.aggregate([
+... {$project:{_id:0,gender:1,name:{$concat:["$name.first"," ","$name.last"]},birthdate:{$toDate:"$dob.date"}}},
+... {$sort:{birthdate:-1},
+... {$skip:10},
+Uncaught:
+SyntaxError: Unexpected token (4:0)
+
+  2 | {$project:{_id:0,gender:1,name:{$concat:["$name.first"," ","$name.last"]},birthdate:{$toDate:"$dob.date"}}},
+  3 | {$sort:{birthdate:-1},
+> 4 | {$skip:10},
+    | ^
+  5 |
+
+analytics> {$limit:10}
+10
+analytics> ])
+Uncaught:
+SyntaxError: Unexpected token (1:0)
+
+> 1 | ])
+    | ^
+  2 |
+
+analytics> db.persons.aggregate([
+... {$project:{_id:0,gender:1,name:{$concat:["$name.first"," ","$name.last"]},birthdate:{$toDate:"$dob.date"}}},
+... {$sort:{birthdate:-1}},
+... {$skip:10},
+... {$limit:10}])
+[
+  {
+    gender: 'female',
+    name: 'brooke king',
+    birthdate: ISODate('1997-05-15T15:33:40.000Z')
+  },
+  {
+    gender: 'male',
+    name: 'jonas christensen',
+    birthdate: ISODate('1997-05-14T00:26:56.000Z')
+  },
+  {
+    gender: 'female',
+    name: 'shelly campbell',
+    birthdate: ISODate('1997-05-11T20:16:07.000Z')
+  },
+  {
+    gender: 'female',
+    name: 'margaux garnier',
+    birthdate: ISODate('1997-05-05T02:54:08.000Z')
+  },
+  {
+    gender: 'female',
+    name: 'marlyse fontai',
+    birthdate: ISODate('1997-05-04T09:05:35.000Z')
+  },
+  {
+    gender: 'male',
+    name: 'رهام كامياران',
+    birthdate: ISODate('1997-05-03T08:09:26.000Z')
+  },
+  {
+    gender: 'female',
+    name: 'alyssia charles',
+    birthdate: ISODate('1997-04-28T12:35:43.000Z')
+  },
+  {
+    gender: 'female',
+    name: 'ljudmila bürger',
+    birthdate: ISODate('1997-04-27T04:09:03.000Z')
+  },
+  {
+    gender: 'male',
+    name: 'eliseu souza',
+    birthdate: ISODate('1997-04-24T04:12:31.000Z')
+  },
+  {
+    gender: 'female',
+    name: 'viola hellebust',
+    birthdate: ISODate('1997-04-22T10:52:11.000Z')
+  }
+]
+analytics> 
+
+analytics> db.persons.aggregate([ { $project: { _id: 0, gender: 1, name: { $concat: ["$name.first", " ", "$name.last"] }, birthdate: { $toDate: "$dob.date" } } }, { $sort: { birthdate: -1 } }, { $skip: 10 }, { $limit: 10 }])
+[
+  {
+    gender: 'female',
+    name: 'brooke king',
+    birthdate: ISODate('1997-05-15T15:33:40.000Z')
+  },
+  {
+    gender: 'male',
+    name: 'jonas christensen',
+    birthdate: ISODate('1997-05-14T00:26:56.000Z')
+  },
+  {
+    gender: 'female',
+    name: 'shelly campbell',
+    birthdate: ISODate('1997-05-11T20:16:07.000Z')
+  },
+  {
+    gender: 'female',
+    name: 'margaux garnier',
+    birthdate: ISODate('1997-05-05T02:54:08.000Z')
+  },
+  {
+    gender: 'female',
+    name: 'marlyse fontai',
+    birthdate: ISODate('1997-05-04T09:05:35.000Z')
+  },
+  {
+    gender: 'male',
+    name: 'رهام كامياران',
+    birthdate: ISODate('1997-05-03T08:09:26.000Z')
+  },
+  {
+    gender: 'female',
+    name: 'alyssia charles',
+    birthdate: ISODate('1997-04-28T12:35:43.000Z')
+  },
+  {
+    gender: 'female',
+    name: 'ljudmila bürger',
+    birthdate: ISODate('1997-04-27T04:09:03.000Z')
+  },
+  {
+    gender: 'male',
+    name: 'eliseu souza',
+    birthdate: ISODate('1997-04-24T04:12:31.000Z')
+  },
+  {
+    gender: 'female',
+    name: 'viola hellebust',
+    birthdate: ISODate('1997-04-22T10:52:11.000Z')
+  }
+]
+analytics> show collections;
+friends
+persons
+analytics> db.persons.findOne();
+{
+  _id: ObjectId('677772e0ae898e105a49fe57'),
+  gender: 'male',
+  name: { title: 'mr', first: 'victor', last: 'pedersen' },
+  location: {
+    street: '2156 stenbjergvej',
+    city: 'billum',
+    state: 'nordjylland',
+    postcode: 56649,
+    coordinates: { latitude: '-29.8113', longitude: '-31.0208' },
+    timezone: {
+      offset: '+5:30',
+      description: 'Bombay, Calcutta, Madras, New Delhi'
+    }
+  },
+  email: 'victor.pedersen@example.com',
+  login: {
+    uuid: 'fbb3c298-2cea-4415-84d1-74233525c325',
+    username: 'smallbutterfly536',
+    password: 'down',
+    salt: 'iW5QrgwW',
+    md5: '3cc8b8a4d69321a408cd46174e163594',
+    sha1: '681c0353b34fae08422686eea190e1c09472fc1f',
+    sha256: 'eb5251e929c56dfd19fc597123ed6ec2d0130a2c3c1bf8fc9c2ff8f29830a3b7'
+  },
+  dob: { date: '1959-02-19T23:56:23Z', age: 59 },
+  registered: { date: '2004-07-07T22:37:39Z', age: 14 },
+  phone: '23138213',
+  cell: '30393606',
+  id: { name: 'CPR', value: '506102-2208' },
+  picture: {
+    large: 'https://randomuser.me/api/portraits/men/23.jpg',
+    medium: 'https://randomuser.me/api/portraits/med/men/23.jpg',
+    thumbnail: 'https://randomuser.me/api/portraits/thumb/men/23.jpg'
+  },
+  nat: 'DK'
+}
+analytics> db.persons.aggregate([
+... {$match:{gender:"male"}},
+... {$project:{_id:0,gender:1,name:{$concat:["$name.first"," ","$name.last"]},birthdate:{$toDate:"$dob.date"}}},
+... {$sort:{birthdate:-1}},
+... {$skip:10},
+... {$limit:10}])
+[
+  {
+    gender: 'male',
+    name: 'payam dooper',
+    birthdate: ISODate('1997-03-18T14:04:44.000Z')
+  },
+  {
+    gender: 'male',
+    name: 'محمدمهدی گلشن',
+    birthdate: ISODate('1997-03-14T01:22:58.000Z')
+  },
+  {
+    gender: 'male',
+    name: 'jimmy thompson',
+    birthdate: ISODate('1997-03-01T21:35:27.000Z')
+  },
+  {
+    gender: 'male',
+    name: 'jorge martinez',
+    birthdate: ISODate('1997-02-14T22:42:15.000Z')
+  },
+  {
+    gender: 'male',
+    name: 'asher king',
+    birthdate: ISODate('1997-02-07T19:09:23.000Z')
+  },
+  {
+    gender: 'male',
+    name: 'arnoldo silveira',
+    birthdate: ISODate('1997-01-26T08:57:13.000Z')
+  },
+  {
+    gender: 'male',
+    name: 'léandro henry',
+    birthdate: ISODate('1997-01-24T16:09:31.000Z')
+  },
+  {
+    gender: 'male',
+    name: 'eliézer da mota',
+    birthdate: ISODate('1997-01-24T14:42:32.000Z')
+  },
+  {
+    gender: 'male',
+    name: 'nolan clement',
+    birthdate: ISODate('1997-01-23T01:12:54.000Z')
+  },
+  {
+    gender: 'male',
+    name: 'ahmet hamzaoğlu',
+    birthdate: ISODate('1997-01-11T07:43:13.000Z')
+  }
+]
+analytics> db.persons.aggregate([
+... {$project:{_id:0,gender:0,name:{$concat:["$name.first"," ","$name.last"]},birthdate:{$toDate:"$dob.date"}}},
+... {$match:{gender:"male"}},
+... {$sort:{birthdate:-1}},
+... {$skip:10},
+... {$limit:10}])
+MongoServerError[Location31252]: Invalid $project :: caused by :: Cannot use expression other than $meta in exclusion projection
+analytics> 
+
+analytics> db.persons.aggregate([
+... {$project:{_id:0,gender:0,name:{$concat:["$name.first"," ","$name.last"]},birthdate:{$toDate:"$dob.date"}}},
+... {$match:{gender:"male"}},
+... {$sort:{birthdate:-1}},
+... {$skip:10},
+... {$limit:10}])
+MongoServerError[Location31252]: Invalid $project :: caused by :: Cannot use expression other than $meta in exclusion projection
+analytics> show collections;
+friends
+persons
+analytics> db.persons.aggregate([
+... {$match:{gender:"male"}},
+... 
+... {$project:{_id:0,gender:0,name:{$concat:["$name.first"," ","$name.last"]},birthdate:{$toDate:"$dob.date"}}},
+... 
+... {$sort:{birthdate:-1}},
+... 
+... {$skip:10},
+... 
+... {$limit:10},
+... 
+... {$out:"transformedPersons"}
+... 
+... ])
+MongoServerError[Location31252]: Invalid $project :: caused by :: Cannot use expression other than $meta in exclusion projection
+analytics> db.persons.aggregate([
+... {$match:{gender:"male"}},
+... 
+... {$project:{_id:0,gender:1,name:{$concat:["$name.first"," ","$name.last"]},birthdate:{$toDate:"$dob.date"}}},
+... 
+... {$sort:{birthdate:-1}},
+... 
+... {$skip:10},
+... 
+... {$limit:10},
+... 
+... {$out:"transformedPersons"}
+... 
+... ])
+
+analytics> 
+
+analytics> db.persons.aggregate([
+... {$match:{gender:"male"}},
+... 
+... {$project:{_id:0,gender:1,name:{$concat:["$name.first"," ","$name.last"]},birthdate:{$toDate:"$dob.date"}}},
+... 
+... {$sort:{birthdate:-1}},
+... 
+... {$skip:10},
+... 
+... {$limit:10},
+... 
+... {$out:"transformedPersons"}
+... 
+... ])
+
+analytics> show collections;
+friends
+persons
+transformedPersons
+analytics> db.transformedPersons.find();
+[
+  {
+    _id: ObjectId('6782a66c84d2c631b5f6183e'),
+    gender: 'male',
+    name: 'payam dooper',
+    birthdate: ISODate('1997-03-18T14:04:44.000Z')
+  },
+  {
+    _id: ObjectId('6782a66c84d2c631b5f6183f'),
+    gender: 'male',
+    name: 'محمدمهدی گلشن',
+    birthdate: ISODate('1997-03-14T01:22:58.000Z')
+  },
+  {
+    _id: ObjectId('6782a66c84d2c631b5f61840'),
+    gender: 'male',
+    name: 'jimmy thompson',
+    birthdate: ISODate('1997-03-01T21:35:27.000Z')
+  },
+  {
+    _id: ObjectId('6782a66c84d2c631b5f61841'),
+    gender: 'male',
+    name: 'jorge martinez',
+    birthdate: ISODate('1997-02-14T22:42:15.000Z')
+  },
+  {
+    _id: ObjectId('6782a66c84d2c631b5f61842'),
+    gender: 'male',
+    name: 'asher king',
+    birthdate: ISODate('1997-02-07T19:09:23.000Z')
+  },
+  {
+    _id: ObjectId('6782a66c84d2c631b5f61843'),
+    gender: 'male',
+    name: 'arnoldo silveira',
+    birthdate: ISODate('1997-01-26T08:57:13.000Z')
+  },
+  {
+    _id: ObjectId('6782a66c84d2c631b5f61844'),
+    gender: 'male',
+    name: 'léandro henry',
+    birthdate: ISODate('1997-01-24T16:09:31.000Z')
+  },
+  {
+    _id: ObjectId('6782a66c84d2c631b5f61845'),
+    gender: 'male',
+    name: 'eliézer da mota',
+    birthdate: ISODate('1997-01-24T14:42:32.000Z')
+  },
+  {
+    _id: ObjectId('6782a66c84d2c631b5f61846'),
+    gender: 'male',
+    name: 'nolan clement',
+    birthdate: ISODate('1997-01-23T01:12:54.000Z')
+  },
+  {
+    _id: ObjectId('6782a66c84d2c631b5f61847'),
+    gender: 'male',
+    name: 'ahmet hamzaoğlu',
+    birthdate: ISODate('1997-01-11T07:43:13.000Z')
+  }
+]
+analytics> db.transformedPersons.findOne();
+{
+  _id: ObjectId('6782a66c84d2c631b5f6183e'),
+  gender: 'male',
+  name: 'payam dooper',
+  birthdate: ISODate('1997-03-18T14:04:44.000Z')
+}
+analytics> db.persons.aggregate([
+... {$match:{gender:"male"}},
+... 
+... {$project:{_id:0,gender:1,name:{$concat:["$name.first"," ","$name.last"]},birthdate:{$toDate:"$dob.date"}}},
+... 
+... {$sort:{birthdate:1}},
+... 
+... {$skip:10},
+... 
+... {$limit:10},
+... 
+... {$out:"transformedPersons"}
+... 
+... ])
+
+analytics> show collections;
+friends
+persons
+transformedPersons
+analytics> db.transformedPersons.findOne();
+{
+  _id: ObjectId('6782a6b684d2c631b5f6187c'),
+  gender: 'male',
+  name: 'pierre boyer',
+  birthdate: ISODate('1945-01-01T22:35:55.000Z')
+}
+analytics> show collections;
+friends
+persons
+transformedPersons
+analytics> db.persons.findOne();
+{
+  _id: ObjectId('677772e0ae898e105a49fe57'),
+  gender: 'male',
+  name: { title: 'mr', first: 'victor', last: 'pedersen' },
+  location: {
+    street: '2156 stenbjergvej',
+    city: 'billum',
+    state: 'nordjylland',
+    postcode: 56649,
+    coordinates: { latitude: '-29.8113', longitude: '-31.0208' },
+    timezone: {
+      offset: '+5:30',
+      description: 'Bombay, Calcutta, Madras, New Delhi'
+    }
+  },
+  email: 'victor.pedersen@example.com',
+  login: {
+    uuid: 'fbb3c298-2cea-4415-84d1-74233525c325',
+    username: 'smallbutterfly536',
+    password: 'down',
+    salt: 'iW5QrgwW',
+    md5: '3cc8b8a4d69321a408cd46174e163594',
+    sha1: '681c0353b34fae08422686eea190e1c09472fc1f',
+    sha256: 'eb5251e929c56dfd19fc597123ed6ec2d0130a2c3c1bf8fc9c2ff8f29830a3b7'
+  },
+  dob: { date: '1959-02-19T23:56:23Z', age: 59 },
+  registered: { date: '2004-07-07T22:37:39Z', age: 14 },
+  phone: '23138213',
+  cell: '30393606',
+  id: { name: 'CPR', value: '506102-2208' },
+  picture: {
+    large: 'https://randomuser.me/api/portraits/men/23.jpg',
+    medium: 'https://randomuser.me/api/portraits/med/men/23.jpg',
+    thumbnail: 'https://randomuser.me/api/portraits/thumb/men/23.jpg'
+  },
+  nat: 'DK'
+}
+analytics> show collections;
+friends
+persons
+transformedPersons
+analytics> db.transformedPersons.findOne();
+{
+  _id: ObjectId('6782a6b684d2c631b5f6187c'),
+  gender: 'male',
+  name: 'pierre boyer',
+  birthdate: ISODate('1945-01-01T22:35:55.000Z')
+}
+analytics> show collections;
+friends
+persons
+transformedPersons
+analytics> db.transformedPersons;
+analytics.transformedPersons
+analytics> db.transformedPersons.find();
+[
+  {
+    _id: ObjectId('6782a6b684d2c631b5f6187c'),
+    gender: 'male',
+    name: 'pierre boyer',
+    birthdate: ISODate('1945-01-01T22:35:55.000Z')
+  },
+  {
+    _id: ObjectId('6782a6b684d2c631b5f6187d'),
+    gender: 'male',
+    name: 'emile noel',
+    birthdate: ISODate('1945-01-10T03:05:21.000Z')
+  },
+  {
+    _id: ObjectId('6782a6b684d2c631b5f6187e'),
+    gender: 'male',
+    name: 'torgeir apeland',
+    birthdate: ISODate('1945-01-13T17:04:33.000Z')
+  },
+  {
+    _id: ObjectId('6782a6b684d2c631b5f6187f'),
+    gender: 'male',
+    name: 'igor kvistad',
+    birthdate: ISODate('1945-01-17T22:13:14.000Z')
+  },
+  {
+    _id: ObjectId('6782a6b684d2c631b5f61880'),
+    gender: 'male',
+    name: 'mariusz gabler',
+    birthdate: ISODate('1945-01-22T06:16:30.000Z')
+  },
+  {
+    _id: ObjectId('6782a6b684d2c631b5f61881'),
+    gender: 'male',
+    name: 'lewis freeman',
+    birthdate: ISODate('1945-01-28T20:15:28.000Z')
+  },
+  {
+    _id: ObjectId('6782a6b684d2c631b5f61882'),
+    gender: 'male',
+    name: 'theodore moore',
+    birthdate: ISODate('1945-02-10T03:34:29.000Z')
+  },
+  {
+    _id: ObjectId('6782a6b684d2c631b5f61883'),
+    gender: 'male',
+    name: 'florian mercier',
+    birthdate: ISODate('1945-02-22T04:18:31.000Z')
+  },
+  {
+    _id: ObjectId('6782a6b684d2c631b5f61884'),
+    gender: 'male',
+    name: 'dursun schellekens',
+    birthdate: ISODate('1945-02-22T07:28:00.000Z')
+  },
+  {
+    _id: ObjectId('6782a6b684d2c631b5f61885'),
+    gender: 'male',
+    name: 'marcel rey',
+    birthdate: ISODate('1945-02-28T02:18:01.000Z')
+  }
+]
+analytics> show collections;
+friends
+persons
+transformedPersons
+analytics> show dbs;
+Abhishek        72.00 KiB
+Bike           116.00 KiB
+Book           112.00 KiB
+Car             80.00 KiB
+CityData       112.00 KiB
+College         56.00 KiB
+ContactData      3.71 MiB
+Credit          16.00 KiB
+Flights        116.00 KiB
+School         104.00 KiB
+Store           40.00 KiB
+Support         88.00 KiB
+admin           40.00 KiB
+analytics        2.89 MiB
+blog           112.00 KiB
+bookRegistry    80.00 KiB
+boxOffice       80.00 KiB
+companyData     96.00 KiB
+config          60.00 KiB
+financialData   40.00 KiB
+hospital        40.00 KiB
+local          256.00 KiB
+moviesData     192.00 KiB
+shop            96.00 KiB
+user            72.00 KiB
+analytics> show collections;
+friends
+persons
+transformedPersons
+analytics> db.persons.findOne();
+{
+  _id: ObjectId('677772e0ae898e105a49fe57'),
+  gender: 'male',
+  name: { title: 'mr', first: 'victor', last: 'pedersen' },
+  location: {
+    street: '2156 stenbjergvej',
+    city: 'billum',
+    state: 'nordjylland',
+    postcode: 56649,
+    coordinates: { latitude: '-29.8113', longitude: '-31.0208' },
+    timezone: {
+      offset: '+5:30',
+      description: 'Bombay, Calcutta, Madras, New Delhi'
+    }
+  },
+  email: 'victor.pedersen@example.com',
+  login: {
+    uuid: 'fbb3c298-2cea-4415-84d1-74233525c325',
+    username: 'smallbutterfly536',
+    password: 'down',
+    salt: 'iW5QrgwW',
+    md5: '3cc8b8a4d69321a408cd46174e163594',
+    sha1: '681c0353b34fae08422686eea190e1c09472fc1f',
+    sha256: 'eb5251e929c56dfd19fc597123ed6ec2d0130a2c3c1bf8fc9c2ff8f29830a3b7'
+  },
+  dob: { date: '1959-02-19T23:56:23Z', age: 59 },
+  registered: { date: '2004-07-07T22:37:39Z', age: 14 },
+  phone: '23138213',
+  cell: '30393606',
+  id: { name: 'CPR', value: '506102-2208' },
+  picture: {
+    large: 'https://randomuser.me/api/portraits/men/23.jpg',
+    medium: 'https://randomuser.me/api/portraits/med/men/23.jpg',
+    thumbnail: 'https://randomuser.me/api/portraits/thumb/men/23.jpg'
+  },
+  nat: 'DK'
+}
+analytics> db.persons.findOne().count();
+TypeError: db.persons.findOne().count is not a function
+analytics> db.persons.find().count();
+(node:45833) [MONGODB DRIVER] Warning: cursor.count is deprecated and will be removed in the next major version, please use `collection.estimatedDocumentCount` or `collection.countDocuments` instead 
+5000
+analytics> db.persons.find().estimatedDocumentCount;
+
+analytics> db.persons.find().countDocuments;
+
+analytics> db.persons.countDocuments;
+[Function: countDocuments] AsyncFunction {
+  apiVersions: [ 1, Infinity ],
+  serverVersions: [ '4.0.3', '999.999.999' ],
+  returnsPromise: true,
+  topologies: [ 'ReplSet', 'Sharded', 'LoadBalanced', 'Standalone' ],
+  returnType: { type: 'unknown', attributes: {} },
+  deprecated: false,
+  platforms: [ 'Compass', 'Browser', 'CLI' ],
+  isDirectShellCommand: false,
+  acceptsRawInput: false,
+  shellCommandCompleter: undefined,
+  help: [Function (anonymous)] Help
+}
+analytics> db.persons.estimatedDocumentCount;
+[Function: estimatedDocumentCount] AsyncFunction {
+  apiVersions: [ 1, Infinity ],
+  serverVersions: [ '4.0.3', '999.999.999' ],
+  returnsPromise: true,
+  topologies: [ 'ReplSet', 'Sharded', 'LoadBalanced', 'Standalone' ],
+  returnType: { type: 'unknown', attributes: {} },
+  deprecated: false,
+  platforms: [ 'Compass', 'Browser', 'CLI' ],
+  isDirectShellCommand: false,
+  acceptsRawInput: false,
+  shellCommandCompleter: undefined,
+  help: [Function (anonymous)] Help
+}
+analytics> show collections;
+friends
+persons
+transformedPersons
+analytics> show collectins;
+MongoshInvalidInputError: [COMMON-10001] 'collectins' is not a valid argument for "show".
+analytics> show collections;
+friends
+persons
+transformedPersons
+analytics> show dbs;
+Abhishek        72.00 KiB
+Bike           116.00 KiB
+Book           112.00 KiB
+Car             80.00 KiB
+CityData       112.00 KiB
+College         56.00 KiB
+ContactData      3.71 MiB
+Credit          16.00 KiB
+Flights        116.00 KiB
+School         104.00 KiB
+Store           40.00 KiB
+Support         88.00 KiB
+admin           40.00 KiB
+analytics        2.89 MiB
+blog           112.00 KiB
+bookRegistry    80.00 KiB
+boxOffice       80.00 KiB
+companyData     96.00 KiB
+config          72.00 KiB
+financialData   40.00 KiB
+hospital        40.00 KiB
+local          256.00 KiB
+moviesData     192.00 KiB
+shop            96.00 KiB
+user            72.00 KiB
+analytics> show collections;
+friends
+persons
+transformedPersons
+analytics> db.persons.findOne();
+{
+  _id: ObjectId('677772e0ae898e105a49fe57'),
+  gender: 'male',
+  name: { title: 'mr', first: 'victor', last: 'pedersen' },
+  location: {
+    street: '2156 stenbjergvej',
+    city: 'billum',
+    state: 'nordjylland',
+    postcode: 56649,
+    coordinates: { latitude: '-29.8113', longitude: '-31.0208' },
+    timezone: {
+      offset: '+5:30',
+      description: 'Bombay, Calcutta, Madras, New Delhi'
+    }
+  },
+  email: 'victor.pedersen@example.com',
+  login: {
+    uuid: 'fbb3c298-2cea-4415-84d1-74233525c325',
+    username: 'smallbutterfly536',
+    password: 'down',
+    salt: 'iW5QrgwW',
+    md5: '3cc8b8a4d69321a408cd46174e163594',
+    sha1: '681c0353b34fae08422686eea190e1c09472fc1f',
+    sha256: 'eb5251e929c56dfd19fc597123ed6ec2d0130a2c3c1bf8fc9c2ff8f29830a3b7'
+  },
+  dob: { date: '1959-02-19T23:56:23Z', age: 59 },
+  registered: { date: '2004-07-07T22:37:39Z', age: 14 },
+  phone: '23138213',
+  cell: '30393606',
+  id: { name: 'CPR', value: '506102-2208' },
+  picture: {
+    large: 'https://randomuser.me/api/portraits/men/23.jpg',
+    medium: 'https://randomuser.me/api/portraits/med/men/23.jpg',
+    thumbnail: 'https://randomuser.me/api/portraits/thumb/men/23.jpg'
+  },
+  nat: 'DK'
+}
+analytics> show collections;
+friends
+persons
+transformedPersons
+analytics> db.Numbers.insertOne(
+... {
+... "name":"Abhishek Tyagi",
+... Age:24
+... });
+{
+  acknowledged: true,
+  insertedId: ObjectId('6784ce7bc4c4abea20959784')
+}
+analytics> show collections;
+friends
+Numbers
+persons
+transformedPersons
+analytics> db.Numbers.finbd();
+TypeError: db.Numbers.finbd is not a function
+analytics> db.Numbers.find();
+[
+  {
+    _id: ObjectId('6784ce7bc4c4abea20959784'),
+    name: 'Abhishek Tyagi',
+    Age: 24
+  }
+]
+analytics> db.persons.stats();
+{
+  ok: 1,
+  capped: false,
+  wiredTiger: {
+    metadata: { formatVersion: 1 },
+    creationString: 'access_pattern_hint=none,allocation_size=4KB,app_metadata=(formatVersion=1),assert=(commit_timestamp=none,durable_timestamp=none,read_timestamp=none,write_timestamp=on),block_allocation=best,block_compressor=snappy,cache_resident=false,checksum=on,colgroups=,collator=,columns=,dictionary=0,encryption=(keyid=,name=),exclusive=false,extractor=,format=btree,huffman_key=,huffman_value=,ignore_in_memory_cache_size=false,immutable=false,import=(compare_timestamp=oldest_timestamp,enabled=false,file_metadata=,metadata_file=,repair=false),internal_item_max=0,internal_key_max=0,internal_key_truncate=true,internal_page_max=4KB,key_format=q,key_gap=10,leaf_item_max=0,leaf_key_max=0,leaf_page_max=32KB,leaf_value_max=64MB,log=(enabled=true),lsm=(auto_throttle=true,bloom=true,bloom_bit_count=16,bloom_config=,bloom_hash_count=8,bloom_oldest=false,chunk_count_limit=0,chunk_max=5GB,chunk_size=10MB,merge_custom=(prefix=,start_generation=0,suffix=),merge_max=15,merge_min=0),memory_page_image_max=0,memory_page_max=10m,os_cache_dirty_max=0,os_cache_max=0,prefix_compression=false,prefix_compression_min=4,source=,split_deepen_min_child=0,split_deepen_per_child=0,split_pct=90,tiered_storage=(auth_token=,bucket=,bucket_prefix=,cache_directory=,local_retention=300,name=,object_target_size=0),type=file,value_format=u,verbose=[write_timestamp],write_timestamp_usage=none',
+    type: 'file',
+    uri: 'statistics:table:collection-164--5778697064867389116',
+    LSM: {
+      'bloom filter false positives': 0,
+      'bloom filter hits': 0,
+      'bloom filter misses': 0,
+      'bloom filter pages evicted from cache': 0,
+      'bloom filter pages read into cache': 0,
+      'bloom filters in the LSM tree': 0,
+      'chunks in the LSM tree': 0,
+      'highest merge generation in the LSM tree': 0,
+      'queries that could have benefited from a Bloom filter that did not exist': 0,
+      'sleep for LSM checkpoint throttle': 0,
+      'sleep for LSM merge throttle': 0,
+      'total size of bloom filters': 0
+    },
+    autocommit: {
+      'retries for readonly operations': 0,
+      'retries for update operations': 0
+    },
+    'block-manager': {
+      'allocations requiring file extension': 50,
+      'blocks allocated': 50,
+      'blocks freed': 0,
+      'checkpoint size': 2863104,
+      'file allocation unit size': 4096,
+      'file bytes available for reuse': 0,
+      'file magic number': 120897,
+      'file major version number': 1,
+      'file size in bytes': 2879488,
+      'minor version number': 0
+    },
+    btree: {
+      'btree checkpoint generation': 12759,
+      'btree clean tree checkpoint expiration time': Long('9223372036854775807'),
+      'btree compact pages reviewed': 0,
+      'btree compact pages rewritten': 0,
+      'btree compact pages skipped': 0,
+      'btree skipped by compaction as process would not reduce size': 0,
+      'column-store fixed-size leaf pages': 0,
+      'column-store fixed-size time windows': 0,
+      'column-store internal pages': 0,
+      'column-store variable-size RLE encoded values': 0,
+      'column-store variable-size deleted values': 0,
+      'column-store variable-size leaf pages': 0,
+      'fixed-record size': 0,
+      'maximum internal page size': 4096,
+      'maximum leaf page key size': 2867,
+      'maximum leaf page size': 32768,
+      'maximum leaf page value size': 67108864,
+      'maximum tree depth': 3,
+      'number of key/value pairs': 0,
+      'overflow pages': 0,
+      'row-store empty values': 0,
+      'row-store internal pages': 0,
+      'row-store leaf pages': 0
+    },
+    cache: {
+      'bytes currently in the cache': 6414960,
+      'bytes dirty in the cache cumulative': 2438,
+      'bytes read into cache': 0,
+      'bytes written from cache': 5513753,
+      'checkpoint blocked page eviction': 0,
+      'checkpoint of history store file blocked non-history store page eviction': 0,
+      'data source pages selected for eviction unable to be evicted': 0,
+      'eviction gave up due to detecting a disk value without a timestamp behind the last update on the chain': 0,
+      'eviction gave up due to detecting a tombstone without a timestamp ahead of the selected on disk update': 0,
+      'eviction gave up due to detecting a tombstone without a timestamp ahead of the selected on disk update after validating the update chain': 0,
+      'eviction gave up due to detecting update chain entries without timestamps after the selected on disk update': 0,
+      'eviction gave up due to needing to remove a record from the history store but checkpoint is running': 0,
+      'eviction walk passes of a file': 0,
+      'eviction walk target pages histogram - 0-9': 0,
+      'eviction walk target pages histogram - 10-31': 0,
+      'eviction walk target pages histogram - 128 and higher': 0,
+      'eviction walk target pages histogram - 32-63': 0,
+      'eviction walk target pages histogram - 64-128': 0,
+      'eviction walk target pages reduced due to history store cache pressure': 0,
+      'eviction walks abandoned': 0,
+      'eviction walks gave up because they restarted their walk twice': 0,
+      'eviction walks gave up because they saw too many pages and found no candidates': 0,
+      'eviction walks gave up because they saw too many pages and found too few candidates': 0,
+      'eviction walks reached end of tree': 0,
+      'eviction walks restarted': 0,
+      'eviction walks started from root of tree': 0,
+      'eviction walks started from saved location in tree': 0,
+      'hazard pointer blocked page eviction': 0,
+      'history store table insert calls': 0,
+      'history store table insert calls that returned restart': 0,
+      'history store table reads': 0,
+      'history store table reads missed': 0,
+      'history store table reads requiring squashed modifies': 0,
+      'history store table resolved updates without timestamps that lose their durable timestamp': 0,
+      'history store table truncation by rollback to stable to remove an unstable update': 0,
+      'history store table truncation by rollback to stable to remove an update': 0,
+      'history store table truncation to remove all the keys of a btree': 0,
+      'history store table truncation to remove an update': 0,
+      'history store table truncation to remove range of updates due to an update without a timestamp on data page': 0,
+      'history store table truncation to remove range of updates due to key being removed from the data page during reconciliation': 0,
+      'history store table truncations that would have happened in non-dryrun mode': 0,
+      'history store table truncations to remove an unstable update that would have happened in non-dryrun mode': 0,
+      'history store table truncations to remove an update that would have happened in non-dryrun mode': 0,
+      'history store table updates without timestamps fixed up by reinserting with the fixed timestamp': 0,
+      'history store table writes requiring squashed modifies': 0,
+      'in-memory page passed criteria to be split': 0,
+      'in-memory page splits': 0,
+      'internal page split blocked its eviction': 0,
+      'internal pages evicted': 0,
+      'internal pages split during eviction': 0,
+      'leaf pages split during eviction': 0,
+      'modified pages evicted': 0,
+      'overflow keys on a multiblock row-store page blocked its eviction': 0,
+      'overflow pages read into cache': 0,
+      'page split during eviction deepened the tree': 0,
+      'page written requiring history store records': 0,
+      'pages read into cache': 0,
+      'pages read into cache after truncate': 0,
+      'pages read into cache after truncate in prepare state': 0,
+      'pages requested from the cache': 5667,
+      'pages seen by eviction walk': 0,
+      'pages written from cache': 48,
+      'pages written requiring in-memory restoration': 0,
+      'recent modification of a page blocked its eviction': 0,
+      'reverse splits performed': 0,
+      'reverse splits skipped because of VLCS namespace gap restrictions': 0,
+      'the number of times full update inserted to history store': 0,
+      'the number of times reverse modify inserted to history store': 0,
+      'tracked dirty bytes in the cache': 0,
+      'uncommitted truncate blocked page eviction': 0,
+      'unmodified pages evicted': 0
+    },
+    cache_walk: {
+      'Average difference between current eviction generation when the page was last considered': 0,
+      'Average on-disk page image size seen': 0,
+      'Average time in cache for pages that have been visited by the eviction server': 0,
+      'Average time in cache for pages that have not been visited by the eviction server': 0,
+      'Clean pages currently in cache': 0,
+      'Current eviction generation': 0,
+      'Dirty pages currently in cache': 0,
+      'Entries in the root page': 0,
+      'Internal pages currently in cache': 0,
+      'Leaf pages currently in cache': 0,
+      'Maximum difference between current eviction generation when the page was last considered': 0,
+      'Maximum page size seen': 0,
+      'Minimum on-disk page image size seen': 0,
+      'Number of pages never visited by eviction server': 0,
+      'On-disk page image sizes smaller than a single allocation unit': 0,
+      'Pages created in memory and never written': 0,
+      'Pages currently queued for eviction': 0,
+      'Pages that could not be queued for eviction': 0,
+      'Refs skipped during cache traversal': 0,
+      'Size of the root page': 0,
+      'Total number of pages currently in cache': 0
+    },
+    'checkpoint-cleanup': {
+      'pages added for eviction': 0,
+      'pages removed': 0,
+      'pages skipped during tree walk': 0,
+      'pages visited': 1
+    },
+    compression: {
+      'compressed page maximum internal page size prior to compression': 4096,
+      'compressed page maximum leaf page size prior to compression ': 32768,
+      'compressed pages read': 0,
+      'compressed pages written': 47,
+      'number of blocks with compress ratio greater than 64': 0,
+      'number of blocks with compress ratio smaller than 16': 0,
+      'number of blocks with compress ratio smaller than 2': 0,
+      'number of blocks with compress ratio smaller than 32': 0,
+      'number of blocks with compress ratio smaller than 4': 0,
+      'number of blocks with compress ratio smaller than 64': 0,
+      'number of blocks with compress ratio smaller than 8': 0,
+      'page written failed to compress': 0,
+      'page written was too small to compress': 1
+    },
+    cursor: {
+      'Total number of entries skipped by cursor next calls': 0,
+      'Total number of entries skipped by cursor prev calls': 0,
+      'Total number of entries skipped to position the history store cursor': 0,
+      'Total number of times a search near has exited due to prefix config': 0,
+      'Total number of times cursor fails to temporarily release pinned page to encourage eviction of hot or large page': 0,
+      'Total number of times cursor temporarily releases pinned page to encourage eviction of hot or large page': 0,
+      'bulk loaded cursor insert calls': 0,
+      'cache cursors reuse count': 208,
+      'close calls that result in cache': 209,
+      'create calls': 32,
+      'cursor bound calls that return an error': 0,
+      'cursor bounds cleared from reset': 0,
+      'cursor bounds comparisons performed': 0,
+      'cursor bounds next called on an unpositioned cursor': 0,
+      'cursor bounds next early exit': 0,
+      'cursor bounds prev called on an unpositioned cursor': 0,
+      'cursor bounds prev early exit': 0,
+      'cursor bounds search early exit': 0,
+      'cursor bounds search near call repositioned cursor': 0,
+      'cursor cache calls that return an error': 0,
+      'cursor close calls that return an error': 0,
+      'cursor compare calls that return an error': 0,
+      'cursor equals calls that return an error': 0,
+      'cursor get key calls that return an error': 0,
+      'cursor get value calls that return an error': 0,
+      'cursor insert calls that return an error': 0,
+      'cursor insert check calls that return an error': 0,
+      'cursor largest key calls that return an error': 0,
+      'cursor modify calls that return an error': 0,
+      'cursor next calls that return an error': 0,
+      'cursor next calls that skip due to a globally visible history store tombstone': 0,
+      'cursor next calls that skip greater than 1 and fewer than 100 entries': 0,
+      'cursor next calls that skip greater than or equal to 100 entries': 0,
+      'cursor next random calls that return an error': 0,
+      'cursor prev calls that return an error': 0,
+      'cursor prev calls that skip due to a globally visible history store tombstone': 0,
+      'cursor prev calls that skip greater than or equal to 100 entries': 0,
+      'cursor prev calls that skip less than 100 entries': 0,
+      'cursor reconfigure calls that return an error': 0,
+      'cursor remove calls that return an error': 0,
+      'cursor reopen calls that return an error': 0,
+      'cursor reserve calls that return an error': 0,
+      'cursor reset calls that return an error': 0,
+      'cursor search calls that return an error': 0,
+      'cursor search near calls that return an error': 0,
+      'cursor update calls that return an error': 0,
+      'insert calls': 5000,
+      'insert key and value bytes': 5491181,
+      modify: 0,
+      'modify key and value bytes affected': 0,
+      'modify value bytes modified': 0,
+      'next calls': 482005,
+      'open cursor count': 0,
+      'operation restarted': 0,
+      'prev calls': 1,
+      'remove calls': 0,
+      'remove key bytes removed': 0,
+      'reserve calls': 0,
+      'reset calls': 957,
+      'search calls': 0,
+      'search history store calls': 0,
+      'search near calls': 490,
+      'truncate calls': 0,
+      'update calls': 0,
+      'update key and value bytes': 0,
+      'update value size change': 0
+    },
+    reconciliation: {
+      'VLCS pages explicitly reconciled as empty': 0,
+      'approximate byte size of timestamps in pages written': 0,
+      'approximate byte size of transaction IDs in pages written': 0,
+      'dictionary matches': 0,
+      'fast-path pages deleted': 0,
+      'internal page key bytes discarded using suffix compression': 93,
+      'internal page multi-block writes': 0,
+      'leaf page key bytes discarded using prefix compression': 0,
+      'leaf page multi-block writes': 1,
+      'leaf-page overflow keys': 0,
+      'maximum blocks required for a page': 1,
+      'overflow values written': 0,
+      'page reconciliation calls': 2,
+      'page reconciliation calls for eviction': 0,
+      'pages deleted': 0,
+      'pages written including an aggregated newest start durable timestamp ': 0,
+      'pages written including an aggregated newest stop durable timestamp ': 0,
+      'pages written including an aggregated newest stop timestamp ': 0,
+      'pages written including an aggregated newest stop transaction ID': 0,
+      'pages written including an aggregated newest transaction ID ': 0,
+      'pages written including an aggregated oldest start timestamp ': 0,
+      'pages written including an aggregated prepare': 0,
+      'pages written including at least one prepare': 0,
+      'pages written including at least one start durable timestamp': 0,
+      'pages written including at least one start timestamp': 0,
+      'pages written including at least one start transaction ID': 0,
+      'pages written including at least one stop durable timestamp': 0,
+      'pages written including at least one stop timestamp': 0,
+      'pages written including at least one stop transaction ID': 0,
+      'records written including a prepare': 0,
+      'records written including a start durable timestamp': 0,
+      'records written including a start timestamp': 0,
+      'records written including a start transaction ID': 0,
+      'records written including a stop durable timestamp': 0,
+      'records written including a stop timestamp': 0,
+      'records written including a stop transaction ID': 0
+    },
+    session: { 'object compaction': 0 },
+    transaction: {
+      'a reader raced with a prepared transaction commit and skipped an update or updates': 0,
+      'checkpoint has acquired a snapshot for its transaction': 0,
+      'number of times overflow removed value is read': 0,
+      'race to read prepared update retry': 0,
+      'rollback to stable history store keys that would have been swept in non-dryrun mode': 0,
+      'rollback to stable history store records with stop timestamps older than newer records': 0,
+      'rollback to stable inconsistent checkpoint': 0,
+      'rollback to stable keys removed': 0,
+      'rollback to stable keys restored': 0,
+      'rollback to stable keys that would have been removed in non-dryrun mode': 0,
+      'rollback to stable keys that would have been restored in non-dryrun mode': 0,
+      'rollback to stable restored tombstones from history store': 0,
+      'rollback to stable restored updates from history store': 0,
+      'rollback to stable skipping delete rle': 0,
+      'rollback to stable skipping stable rle': 0,
+      'rollback to stable sweeping history store keys': 0,
+      'rollback to stable tombstones from history store that would have been restored in non-dryrun mode': 0,
+      'rollback to stable updates from history store that would have been restored in non-dryrun mode': 0,
+      'rollback to stable updates removed from history store': 0,
+      'rollback to stable updates that would have been removed from history store in non-dryrun mode': 0,
+      'transaction checkpoints due to obsolete pages': 0,
+      'update conflicts': 0
+    }
+  },
+  sharded: false,
+  size: 5481244,
+  count: 5000,
+  numOrphanDocs: 0,
+  storageSize: 2879488,
+  totalIndexSize: 65536,
+  totalSize: 2945024,
+  indexSizes: { _id_: 65536 },
+  avgObjSize: 1096,
+  ns: 'analytics.persons',
+  nindexes: 1,
+  scaleFactor: 1
+}
+analytics> show collections;
+friends
+Numbers
+persons
+transformedPersons
+analytics> db.persons.stats();
+{
+  ok: 1,
+  capped: false,
+  wiredTiger: {
+    metadata: { formatVersion: 1 },
+    creationString: 'access_pattern_hint=none,allocation_size=4KB,app_metadata=(formatVersion=1),assert=(commit_timestamp=none,durable_timestamp=none,read_timestamp=none,write_timestamp=on),block_allocation=best,block_compressor=snappy,cache_resident=false,checksum=on,colgroups=,collator=,columns=,dictionary=0,encryption=(keyid=,name=),exclusive=false,extractor=,format=btree,huffman_key=,huffman_value=,ignore_in_memory_cache_size=false,immutable=false,import=(compare_timestamp=oldest_timestamp,enabled=false,file_metadata=,metadata_file=,repair=false),internal_item_max=0,internal_key_max=0,internal_key_truncate=true,internal_page_max=4KB,key_format=q,key_gap=10,leaf_item_max=0,leaf_key_max=0,leaf_page_max=32KB,leaf_value_max=64MB,log=(enabled=true),lsm=(auto_throttle=true,bloom=true,bloom_bit_count=16,bloom_config=,bloom_hash_count=8,bloom_oldest=false,chunk_count_limit=0,chunk_max=5GB,chunk_size=10MB,merge_custom=(prefix=,start_generation=0,suffix=),merge_max=15,merge_min=0),memory_page_image_max=0,memory_page_max=10m,os_cache_dirty_max=0,os_cache_max=0,prefix_compression=false,prefix_compression_min=4,source=,split_deepen_min_child=0,split_deepen_per_child=0,split_pct=90,tiered_storage=(auth_token=,bucket=,bucket_prefix=,cache_directory=,local_retention=300,name=,object_target_size=0),type=file,value_format=u,verbose=[write_timestamp],write_timestamp_usage=none',
+    type: 'file',
+    uri: 'statistics:table:collection-164--5778697064867389116',
+    LSM: {
+      'bloom filter false positives': 0,
+      'bloom filter hits': 0,
+      'bloom filter misses': 0,
+      'bloom filter pages evicted from cache': 0,
+      'bloom filter pages read into cache': 0,
+      'bloom filters in the LSM tree': 0,
+      'chunks in the LSM tree': 0,
+      'highest merge generation in the LSM tree': 0,
+      'queries that could have benefited from a Bloom filter that did not exist': 0,
+      'sleep for LSM checkpoint throttle': 0,
+      'sleep for LSM merge throttle': 0,
+      'total size of bloom filters': 0
+    },
+    autocommit: {
+      'retries for readonly operations': 0,
+      'retries for update operations': 0
+    },
+    'block-manager': {
+      'allocations requiring file extension': 50,
+      'blocks allocated': 50,
+      'blocks freed': 0,
+      'checkpoint size': 2863104,
+      'file allocation unit size': 4096,
+      'file bytes available for reuse': 0,
+      'file magic number': 120897,
+      'file major version number': 1,
+      'file size in bytes': 2879488,
+      'minor version number': 0
+    },
+    btree: {
+      'btree checkpoint generation': 12760,
+      'btree clean tree checkpoint expiration time': Long('9223372036854775807'),
+      'btree compact pages reviewed': 0,
+      'btree compact pages rewritten': 0,
+      'btree compact pages skipped': 0,
+      'btree skipped by compaction as process would not reduce size': 0,
+      'column-store fixed-size leaf pages': 0,
+      'column-store fixed-size time windows': 0,
+      'column-store internal pages': 0,
+      'column-store variable-size RLE encoded values': 0,
+      'column-store variable-size deleted values': 0,
+      'column-store variable-size leaf pages': 0,
+      'fixed-record size': 0,
+      'maximum internal page size': 4096,
+      'maximum leaf page key size': 2867,
+      'maximum leaf page size': 32768,
+      'maximum leaf page value size': 67108864,
+      'maximum tree depth': 3,
+      'number of key/value pairs': 0,
+      'overflow pages': 0,
+      'row-store empty values': 0,
+      'row-store internal pages': 0,
+      'row-store leaf pages': 0
+    },
+    cache: {
+      'bytes currently in the cache': 6414960,
+      'bytes dirty in the cache cumulative': 2438,
+      'bytes read into cache': 0,
+      'bytes written from cache': 5513753,
+      'checkpoint blocked page eviction': 0,
+      'checkpoint of history store file blocked non-history store page eviction': 0,
+      'data source pages selected for eviction unable to be evicted': 0,
+      'eviction gave up due to detecting a disk value without a timestamp behind the last update on the chain': 0,
+      'eviction gave up due to detecting a tombstone without a timestamp ahead of the selected on disk update': 0,
+      'eviction gave up due to detecting a tombstone without a timestamp ahead of the selected on disk update after validating the update chain': 0,
+      'eviction gave up due to detecting update chain entries without timestamps after the selected on disk update': 0,
+      'eviction gave up due to needing to remove a record from the history store but checkpoint is running': 0,
+      'eviction walk passes of a file': 0,
+      'eviction walk target pages histogram - 0-9': 0,
+      'eviction walk target pages histogram - 10-31': 0,
+      'eviction walk target pages histogram - 128 and higher': 0,
+      'eviction walk target pages histogram - 32-63': 0,
+      'eviction walk target pages histogram - 64-128': 0,
+      'eviction walk target pages reduced due to history store cache pressure': 0,
+      'eviction walks abandoned': 0,
+      'eviction walks gave up because they restarted their walk twice': 0,
+      'eviction walks gave up because they saw too many pages and found no candidates': 0,
+      'eviction walks gave up because they saw too many pages and found too few candidates': 0,
+      'eviction walks reached end of tree': 0,
+      'eviction walks restarted': 0,
+      'eviction walks started from root of tree': 0,
+      'eviction walks started from saved location in tree': 0,
+      'hazard pointer blocked page eviction': 0,
+      'history store table insert calls': 0,
+      'history store table insert calls that returned restart': 0,
+      'history store table reads': 0,
+      'history store table reads missed': 0,
+      'history store table reads requiring squashed modifies': 0,
+      'history store table resolved updates without timestamps that lose their durable timestamp': 0,
+      'history store table truncation by rollback to stable to remove an unstable update': 0,
+      'history store table truncation by rollback to stable to remove an update': 0,
+      'history store table truncation to remove all the keys of a btree': 0,
+      'history store table truncation to remove an update': 0,
+      'history store table truncation to remove range of updates due to an update without a timestamp on data page': 0,
+      'history store table truncation to remove range of updates due to key being removed from the data page during reconciliation': 0,
+      'history store table truncations that would have happened in non-dryrun mode': 0,
+      'history store table truncations to remove an unstable update that would have happened in non-dryrun mode': 0,
+      'history store table truncations to remove an update that would have happened in non-dryrun mode': 0,
+      'history store table updates without timestamps fixed up by reinserting with the fixed timestamp': 0,
+      'history store table writes requiring squashed modifies': 0,
+      'in-memory page passed criteria to be split': 0,
+      'in-memory page splits': 0,
+      'internal page split blocked its eviction': 0,
+      'internal pages evicted': 0,
+      'internal pages split during eviction': 0,
+      'leaf pages split during eviction': 0,
+      'modified pages evicted': 0,
+      'overflow keys on a multiblock row-store page blocked its eviction': 0,
+      'overflow pages read into cache': 0,
+      'page split during eviction deepened the tree': 0,
+      'page written requiring history store records': 0,
+      'pages read into cache': 0,
+      'pages read into cache after truncate': 0,
+      'pages read into cache after truncate in prepare state': 0,
+      'pages requested from the cache': 5667,
+      'pages seen by eviction walk': 0,
+      'pages written from cache': 48,
+      'pages written requiring in-memory restoration': 0,
+      'recent modification of a page blocked its eviction': 0,
+      'reverse splits performed': 0,
+      'reverse splits skipped because of VLCS namespace gap restrictions': 0,
+      'the number of times full update inserted to history store': 0,
+      'the number of times reverse modify inserted to history store': 0,
+      'tracked dirty bytes in the cache': 0,
+      'uncommitted truncate blocked page eviction': 0,
+      'unmodified pages evicted': 0
+    },
+    cache_walk: {
+      'Average difference between current eviction generation when the page was last considered': 0,
+      'Average on-disk page image size seen': 0,
+      'Average time in cache for pages that have been visited by the eviction server': 0,
+      'Average time in cache for pages that have not been visited by the eviction server': 0,
+      'Clean pages currently in cache': 0,
+      'Current eviction generation': 0,
+      'Dirty pages currently in cache': 0,
+      'Entries in the root page': 0,
+      'Internal pages currently in cache': 0,
+      'Leaf pages currently in cache': 0,
+      'Maximum difference between current eviction generation when the page was last considered': 0,
+      'Maximum page size seen': 0,
+      'Minimum on-disk page image size seen': 0,
+      'Number of pages never visited by eviction server': 0,
+      'On-disk page image sizes smaller than a single allocation unit': 0,
+      'Pages created in memory and never written': 0,
+      'Pages currently queued for eviction': 0,
+      'Pages that could not be queued for eviction': 0,
+      'Refs skipped during cache traversal': 0,
+      'Size of the root page': 0,
+      'Total number of pages currently in cache': 0
+    },
+    'checkpoint-cleanup': {
+      'pages added for eviction': 0,
+      'pages removed': 0,
+      'pages skipped during tree walk': 0,
+      'pages visited': 1
+    },
+    compression: {
+      'compressed page maximum internal page size prior to compression': 4096,
+      'compressed page maximum leaf page size prior to compression ': 32768,
+      'compressed pages read': 0,
+      'compressed pages written': 47,
+      'number of blocks with compress ratio greater than 64': 0,
+      'number of blocks with compress ratio smaller than 16': 0,
+      'number of blocks with compress ratio smaller than 2': 0,
+      'number of blocks with compress ratio smaller than 32': 0,
+      'number of blocks with compress ratio smaller than 4': 0,
+      'number of blocks with compress ratio smaller than 64': 0,
+      'number of blocks with compress ratio smaller than 8': 0,
+      'page written failed to compress': 0,
+      'page written was too small to compress': 1
+    },
+    cursor: {
+      'Total number of entries skipped by cursor next calls': 0,
+      'Total number of entries skipped by cursor prev calls': 0,
+      'Total number of entries skipped to position the history store cursor': 0,
+      'Total number of times a search near has exited due to prefix config': 0,
+      'Total number of times cursor fails to temporarily release pinned page to encourage eviction of hot or large page': 0,
+      'Total number of times cursor temporarily releases pinned page to encourage eviction of hot or large page': 0,
+      'bulk loaded cursor insert calls': 0,
+      'cache cursors reuse count': 208,
+      'close calls that result in cache': 209,
+      'create calls': 32,
+      'cursor bound calls that return an error': 0,
+      'cursor bounds cleared from reset': 0,
+      'cursor bounds comparisons performed': 0,
+      'cursor bounds next called on an unpositioned cursor': 0,
+      'cursor bounds next early exit': 0,
+      'cursor bounds prev called on an unpositioned cursor': 0,
+      'cursor bounds prev early exit': 0,
+      'cursor bounds search early exit': 0,
+      'cursor bounds search near call repositioned cursor': 0,
+      'cursor cache calls that return an error': 0,
+      'cursor close calls that return an error': 0,
+      'cursor compare calls that return an error': 0,
+      'cursor equals calls that return an error': 0,
+      'cursor get key calls that return an error': 0,
+      'cursor get value calls that return an error': 0,
+      'cursor insert calls that return an error': 0,
+      'cursor insert check calls that return an error': 0,
+      'cursor largest key calls that return an error': 0,
+      'cursor modify calls that return an error': 0,
+      'cursor next calls that return an error': 0,
+      'cursor next calls that skip due to a globally visible history store tombstone': 0,
+      'cursor next calls that skip greater than 1 and fewer than 100 entries': 0,
+      'cursor next calls that skip greater than or equal to 100 entries': 0,
+      'cursor next random calls that return an error': 0,
+      'cursor prev calls that return an error': 0,
+      'cursor prev calls that skip due to a globally visible history store tombstone': 0,
+      'cursor prev calls that skip greater than or equal to 100 entries': 0,
+      'cursor prev calls that skip less than 100 entries': 0,
+      'cursor reconfigure calls that return an error': 0,
+      'cursor remove calls that return an error': 0,
+      'cursor reopen calls that return an error': 0,
+      'cursor reserve calls that return an error': 0,
+      'cursor reset calls that return an error': 0,
+      'cursor search calls that return an error': 0,
+      'cursor search near calls that return an error': 0,
+      'cursor update calls that return an error': 0,
+      'insert calls': 5000,
+      'insert key and value bytes': 5491181,
+      modify: 0,
+      'modify key and value bytes affected': 0,
+      'modify value bytes modified': 0,
+      'next calls': 482005,
+      'open cursor count': 0,
+      'operation restarted': 0,
+      'prev calls': 1,
+      'remove calls': 0,
+      'remove key bytes removed': 0,
+      'reserve calls': 0,
+      'reset calls': 957,
+      'search calls': 0,
+      'search history store calls': 0,
+      'search near calls': 490,
+      'truncate calls': 0,
+      'update calls': 0,
+      'update key and value bytes': 0,
+      'update value size change': 0
+    },
+    reconciliation: {
+      'VLCS pages explicitly reconciled as empty': 0,
+      'approximate byte size of timestamps in pages written': 0,
+      'approximate byte size of transaction IDs in pages written': 0,
+      'dictionary matches': 0,
+      'fast-path pages deleted': 0,
+      'internal page key bytes discarded using suffix compression': 93,
+      'internal page multi-block writes': 0,
+      'leaf page key bytes discarded using prefix compression': 0,
+      'leaf page multi-block writes': 1,
+      'leaf-page overflow keys': 0,
+      'maximum blocks required for a page': 1,
+      'overflow values written': 0,
+      'page reconciliation calls': 2,
+      'page reconciliation calls for eviction': 0,
+      'pages deleted': 0,
+      'pages written including an aggregated newest start durable timestamp ': 0,
+      'pages written including an aggregated newest stop durable timestamp ': 0,
+      'pages written including an aggregated newest stop timestamp ': 0,
+      'pages written including an aggregated newest stop transaction ID': 0,
+      'pages written including an aggregated newest transaction ID ': 0,
+      'pages written including an aggregated oldest start timestamp ': 0,
+      'pages written including an aggregated prepare': 0,
+      'pages written including at least one prepare': 0,
+      'pages written including at least one start durable timestamp': 0,
+      'pages written including at least one start timestamp': 0,
+      'pages written including at least one start transaction ID': 0,
+      'pages written including at least one stop durable timestamp': 0,
+      'pages written including at least one stop timestamp': 0,
+      'pages written including at least one stop transaction ID': 0,
+      'records written including a prepare': 0,
+      'records written including a start durable timestamp': 0,
+      'records written including a start timestamp': 0,
+      'records written including a start transaction ID': 0,
+      'records written including a stop durable timestamp': 0,
+      'records written including a stop timestamp': 0,
+      'records written including a stop transaction ID': 0
+    },
+    session: { 'object compaction': 0 },
+    transaction: {
+      'a reader raced with a prepared transaction commit and skipped an update or updates': 0,
+      'checkpoint has acquired a snapshot for its transaction': 0,
+      'number of times overflow removed value is read': 0,
+      'race to read prepared update retry': 0,
+      'rollback to stable history store keys that would have been swept in non-dryrun mode': 0,
+      'rollback to stable history store records with stop timestamps older than newer records': 0,
+      'rollback to stable inconsistent checkpoint': 0,
+      'rollback to stable keys removed': 0,
+      'rollback to stable keys restored': 0,
+      'rollback to stable keys that would have been removed in non-dryrun mode': 0,
+      'rollback to stable keys that would have been restored in non-dryrun mode': 0,
+      'rollback to stable restored tombstones from history store': 0,
+      'rollback to stable restored updates from history store': 0,
+      'rollback to stable skipping delete rle': 0,
+      'rollback to stable skipping stable rle': 0,
+      'rollback to stable sweeping history store keys': 0,
+      'rollback to stable tombstones from history store that would have been restored in non-dryrun mode': 0,
+      'rollback to stable updates from history store that would have been restored in non-dryrun mode': 0,
+      'rollback to stable updates removed from history store': 0,
+      'rollback to stable updates that would have been removed from history store in non-dryrun mode': 0,
+      'transaction checkpoints due to obsolete pages': 0,
+      'update conflicts': 0
+    }
+  },
+  sharded: false,
+  size: 5481244,
+  count: 5000,
+  numOrphanDocs: 0,
+  storageSize: 2879488,
+  totalIndexSize: 65536,
+  totalSize: 2945024,
+  indexSizes: { _id_: 65536 },
+  avgObjSize: 1096,
+  ns: 'analytics.persons',
+  nindexes: 1,
+  scaleFactor: 1
+}
+analytics> show collections;
+friends
+Numbers
+persons
+transformedPersons
+analytics> db.Numbers.deleteMany({});
+{ acknowledged: true, deletedCount: 1 }
+analytics> show collections;
+friends
+Numbers
+persons
+transformedPersons
+analytics> db.Numbers.find();
+
+analytics> db.Numbers.drop();
+true
+analytics> show collections;
+friends
+persons
+transformedPersons
+analytics> db.Numbers.insertOne({age:24});
+{
+  acknowledged: true,
+  insertedId: ObjectId('6784cf4ac4c4abea20959785')
+}
+analytics> show collections;
+friends
+Numbers
+persons
+transformedPersons
+analytics> db.Numbers.find();
+[ { _id: ObjectId('6784cf4ac4c4abea20959785'), age: 24 } ]
+analytics> db.Numbers.stats();
+{
+  ok: 1,
+  capped: false,
+  wiredTiger: {
+    metadata: { formatVersion: 1 },
+    creationString: 'access_pattern_hint=none,allocation_size=4KB,app_metadata=(formatVersion=1),assert=(commit_timestamp=none,durable_timestamp=none,read_timestamp=none,write_timestamp=on),block_allocation=best,block_compressor=snappy,cache_resident=false,checksum=on,colgroups=,collator=,columns=,dictionary=0,encryption=(keyid=,name=),exclusive=false,extractor=,format=btree,huffman_key=,huffman_value=,ignore_in_memory_cache_size=false,immutable=false,import=(compare_timestamp=oldest_timestamp,enabled=false,file_metadata=,metadata_file=,repair=false),internal_item_max=0,internal_key_max=0,internal_key_truncate=true,internal_page_max=4KB,key_format=q,key_gap=10,leaf_item_max=0,leaf_key_max=0,leaf_page_max=32KB,leaf_value_max=64MB,log=(enabled=true),lsm=(auto_throttle=true,bloom=true,bloom_bit_count=16,bloom_config=,bloom_hash_count=8,bloom_oldest=false,chunk_count_limit=0,chunk_max=5GB,chunk_size=10MB,merge_custom=(prefix=,start_generation=0,suffix=),merge_max=15,merge_min=0),memory_page_image_max=0,memory_page_max=10m,os_cache_dirty_max=0,os_cache_max=0,prefix_compression=false,prefix_compression_min=4,source=,split_deepen_min_child=0,split_deepen_per_child=0,split_pct=90,tiered_storage=(auth_token=,bucket=,bucket_prefix=,cache_directory=,local_retention=300,name=,object_target_size=0),type=file,value_format=u,verbose=[write_timestamp],write_timestamp_usage=none',
+    type: 'file',
+    uri: 'statistics:table:collection-176--5778697064867389116',
+    LSM: {
+      'bloom filter false positives': 0,
+      'bloom filter hits': 0,
+      'bloom filter misses': 0,
+      'bloom filter pages evicted from cache': 0,
+      'bloom filter pages read into cache': 0,
+      'bloom filters in the LSM tree': 0,
+      'chunks in the LSM tree': 0,
+      'highest merge generation in the LSM tree': 0,
+      'queries that could have benefited from a Bloom filter that did not exist': 0,
+      'sleep for LSM checkpoint throttle': 0,
+      'sleep for LSM merge throttle': 0,
+      'total size of bloom filters': 0
+    },
+    autocommit: {
+      'retries for readonly operations': 0,
+      'retries for update operations': 0
+    },
+    'block-manager': {
+      'allocations requiring file extension': 0,
+      'blocks allocated': 0,
+      'blocks freed': 0,
+      'checkpoint size': 0,
+      'file allocation unit size': 4096,
+      'file bytes available for reuse': 0,
+      'file magic number': 120897,
+      'file major version number': 1,
+      'file size in bytes': 4096,
+      'minor version number': 0
+    },
+    btree: {
+      'btree checkpoint generation': 0,
+      'btree clean tree checkpoint expiration time': 0,
+      'btree compact pages reviewed': 0,
+      'btree compact pages rewritten': 0,
+      'btree compact pages skipped': 0,
+      'btree skipped by compaction as process would not reduce size': 0,
+      'column-store fixed-size leaf pages': 0,
+      'column-store fixed-size time windows': 0,
+      'column-store internal pages': 0,
+      'column-store variable-size RLE encoded values': 0,
+      'column-store variable-size deleted values': 0,
+      'column-store variable-size leaf pages': 0,
+      'fixed-record size': 0,
+      'maximum internal page size': 4096,
+      'maximum leaf page key size': 2867,
+      'maximum leaf page size': 32768,
+      'maximum leaf page value size': 67108864,
+      'maximum tree depth': 3,
+      'number of key/value pairs': 0,
+      'overflow pages': 0,
+      'row-store empty values': 0,
+      'row-store internal pages': 0,
+      'row-store leaf pages': 0
+    },
+    cache: {
+      'bytes currently in the cache': 943,
+      'bytes dirty in the cache cumulative': 752,
+      'bytes read into cache': 0,
+      'bytes written from cache': 0,
+      'checkpoint blocked page eviction': 0,
+      'checkpoint of history store file blocked non-history store page eviction': 0,
+      'data source pages selected for eviction unable to be evicted': 0,
+      'eviction gave up due to detecting a disk value without a timestamp behind the last update on the chain': 0,
+      'eviction gave up due to detecting a tombstone without a timestamp ahead of the selected on disk update': 0,
+      'eviction gave up due to detecting a tombstone without a timestamp ahead of the selected on disk update after validating the update chain': 0,
+      'eviction gave up due to detecting update chain entries without timestamps after the selected on disk update': 0,
+      'eviction gave up due to needing to remove a record from the history store but checkpoint is running': 0,
+      'eviction walk passes of a file': 0,
+      'eviction walk target pages histogram - 0-9': 0,
+      'eviction walk target pages histogram - 10-31': 0,
+      'eviction walk target pages histogram - 128 and higher': 0,
+      'eviction walk target pages histogram - 32-63': 0,
+      'eviction walk target pages histogram - 64-128': 0,
+      'eviction walk target pages reduced due to history store cache pressure': 0,
+      'eviction walks abandoned': 0,
+      'eviction walks gave up because they restarted their walk twice': 0,
+      'eviction walks gave up because they saw too many pages and found no candidates': 0,
+      'eviction walks gave up because they saw too many pages and found too few candidates': 0,
+      'eviction walks reached end of tree': 0,
+      'eviction walks restarted': 0,
+      'eviction walks started from root of tree': 0,
+      'eviction walks started from saved location in tree': 0,
+      'hazard pointer blocked page eviction': 0,
+      'history store table insert calls': 0,
+      'history store table insert calls that returned restart': 0,
+      'history store table reads': 0,
+      'history store table reads missed': 0,
+      'history store table reads requiring squashed modifies': 0,
+      'history store table resolved updates without timestamps that lose their durable timestamp': 0,
+      'history store table truncation by rollback to stable to remove an unstable update': 0,
+      'history store table truncation by rollback to stable to remove an update': 0,
+      'history store table truncation to remove all the keys of a btree': 0,
+      'history store table truncation to remove an update': 0,
+      'history store table truncation to remove range of updates due to an update without a timestamp on data page': 0,
+      'history store table truncation to remove range of updates due to key being removed from the data page during reconciliation': 0,
+      'history store table truncations that would have happened in non-dryrun mode': 0,
+      'history store table truncations to remove an unstable update that would have happened in non-dryrun mode': 0,
+      'history store table truncations to remove an update that would have happened in non-dryrun mode': 0,
+      'history store table updates without timestamps fixed up by reinserting with the fixed timestamp': 0,
+      'history store table writes requiring squashed modifies': 0,
+      'in-memory page passed criteria to be split': 0,
+      'in-memory page splits': 0,
+      'internal page split blocked its eviction': 0,
+      'internal pages evicted': 0,
+      'internal pages split during eviction': 0,
+      'leaf pages split during eviction': 0,
+      'modified pages evicted': 0,
+      'overflow keys on a multiblock row-store page blocked its eviction': 0,
+      'overflow pages read into cache': 0,
+      'page split during eviction deepened the tree': 0,
+      'page written requiring history store records': 0,
+      'pages read into cache': 0,
+      'pages read into cache after truncate': 0,
+      'pages read into cache after truncate in prepare state': 0,
+      'pages requested from the cache': 2,
+      'pages seen by eviction walk': 0,
+      'pages written from cache': 0,
+      'pages written requiring in-memory restoration': 0,
+      'recent modification of a page blocked its eviction': 0,
+      'reverse splits performed': 0,
+      'reverse splits skipped because of VLCS namespace gap restrictions': 0,
+      'the number of times full update inserted to history store': 0,
+      'the number of times reverse modify inserted to history store': 0,
+      'tracked dirty bytes in the cache': 752,
+      'uncommitted truncate blocked page eviction': 0,
+      'unmodified pages evicted': 0
+    },
+    cache_walk: {
+      'Average difference between current eviction generation when the page was last considered': 0,
+      'Average on-disk page image size seen': 0,
+      'Average time in cache for pages that have been visited by the eviction server': 0,
+      'Average time in cache for pages that have not been visited by the eviction server': 0,
+      'Clean pages currently in cache': 0,
+      'Current eviction generation': 0,
+      'Dirty pages currently in cache': 0,
+      'Entries in the root page': 0,
+      'Internal pages currently in cache': 0,
+      'Leaf pages currently in cache': 0,
+      'Maximum difference between current eviction generation when the page was last considered': 0,
+      'Maximum page size seen': 0,
+      'Minimum on-disk page image size seen': 0,
+      'Number of pages never visited by eviction server': 0,
+      'On-disk page image sizes smaller than a single allocation unit': 0,
+      'Pages created in memory and never written': 0,
+      'Pages currently queued for eviction': 0,
+      'Pages that could not be queued for eviction': 0,
+      'Refs skipped during cache traversal': 0,
+      'Size of the root page': 0,
+      'Total number of pages currently in cache': 0
+    },
+    'checkpoint-cleanup': {
+      'pages added for eviction': 0,
+      'pages removed': 0,
+      'pages skipped during tree walk': 0,
+      'pages visited': 0
+    },
+    compression: {
+      'compressed page maximum internal page size prior to compression': 4096,
+      'compressed page maximum leaf page size prior to compression ': 131072,
+      'compressed pages read': 0,
+      'compressed pages written': 0,
+      'number of blocks with compress ratio greater than 64': 0,
+      'number of blocks with compress ratio smaller than 16': 0,
+      'number of blocks with compress ratio smaller than 2': 0,
+      'number of blocks with compress ratio smaller than 32': 0,
+      'number of blocks with compress ratio smaller than 4': 0,
+      'number of blocks with compress ratio smaller than 64': 0,
+      'number of blocks with compress ratio smaller than 8': 0,
+      'page written failed to compress': 0,
+      'page written was too small to compress': 0
+    },
+    cursor: {
+      'Total number of entries skipped by cursor next calls': 0,
+      'Total number of entries skipped by cursor prev calls': 0,
+      'Total number of entries skipped to position the history store cursor': 0,
+      'Total number of times a search near has exited due to prefix config': 0,
+      'Total number of times cursor fails to temporarily release pinned page to encourage eviction of hot or large page': 0,
+      'Total number of times cursor temporarily releases pinned page to encourage eviction of hot or large page': 0,
+      'bulk loaded cursor insert calls': 0,
+      'cache cursors reuse count': 1,
+      'close calls that result in cache': 2,
+      'create calls': 2,
+      'cursor bound calls that return an error': 0,
+      'cursor bounds cleared from reset': 0,
+      'cursor bounds comparisons performed': 0,
+      'cursor bounds next called on an unpositioned cursor': 0,
+      'cursor bounds next early exit': 0,
+      'cursor bounds prev called on an unpositioned cursor': 0,
+      'cursor bounds prev early exit': 0,
+      'cursor bounds search early exit': 0,
+      'cursor bounds search near call repositioned cursor': 0,
+      'cursor cache calls that return an error': 0,
+      'cursor close calls that return an error': 0,
+      'cursor compare calls that return an error': 0,
+      'cursor equals calls that return an error': 0,
+      'cursor get key calls that return an error': 0,
+      'cursor get value calls that return an error': 0,
+      'cursor insert calls that return an error': 0,
+      'cursor insert check calls that return an error': 0,
+      'cursor largest key calls that return an error': 0,
+      'cursor modify calls that return an error': 0,
+      'cursor next calls that return an error': 0,
+      'cursor next calls that skip due to a globally visible history store tombstone': 0,
+      'cursor next calls that skip greater than 1 and fewer than 100 entries': 0,
+      'cursor next calls that skip greater than or equal to 100 entries': 0,
+      'cursor next random calls that return an error': 0,
+      'cursor prev calls that return an error': 0,
+      'cursor prev calls that skip due to a globally visible history store tombstone': 0,
+      'cursor prev calls that skip greater than or equal to 100 entries': 0,
+      'cursor prev calls that skip less than 100 entries': 0,
+      'cursor reconfigure calls that return an error': 0,
+      'cursor remove calls that return an error': 0,
+      'cursor reopen calls that return an error': 0,
+      'cursor reserve calls that return an error': 0,
+      'cursor reset calls that return an error': 0,
+      'cursor search calls that return an error': 0,
+      'cursor search near calls that return an error': 0,
+      'cursor update calls that return an error': 0,
+      'insert calls': 1,
+      'insert key and value bytes': 32,
+      modify: 0,
+      'modify key and value bytes affected': 0,
+      'modify value bytes modified': 0,
+      'next calls': 3,
+      'open cursor count': 0,
+      'operation restarted': 0,
+      'prev calls': 1,
+      'remove calls': 0,
+      'remove key bytes removed': 0,
+      'reserve calls': 0,
+      'reset calls': 7,
+      'search calls': 0,
+      'search history store calls': 0,
+      'search near calls': 0,
+      'truncate calls': 0,
+      'update calls': 0,
+      'update key and value bytes': 0,
+      'update value size change': 0
+    },
+    reconciliation: {
+      'VLCS pages explicitly reconciled as empty': 0,
+      'approximate byte size of timestamps in pages written': 0,
+      'approximate byte size of transaction IDs in pages written': 0,
+      'dictionary matches': 0,
+      'fast-path pages deleted': 0,
+      'internal page key bytes discarded using suffix compression': 0,
+      'internal page multi-block writes': 0,
+      'leaf page key bytes discarded using prefix compression': 0,
+      'leaf page multi-block writes': 0,
+      'leaf-page overflow keys': 0,
+      'maximum blocks required for a page': 0,
+      'overflow values written': 0,
+      'page reconciliation calls': 0,
+      'page reconciliation calls for eviction': 0,
+      'pages deleted': 0,
+      'pages written including an aggregated newest start durable timestamp ': 0,
+      'pages written including an aggregated newest stop durable timestamp ': 0,
+      'pages written including an aggregated newest stop timestamp ': 0,
+      'pages written including an aggregated newest stop transaction ID': 0,
+      'pages written including an aggregated newest transaction ID ': 0,
+      'pages written including an aggregated oldest start timestamp ': 0,
+      'pages written including an aggregated prepare': 0,
+      'pages written including at least one prepare': 0,
+      'pages written including at least one start durable timestamp': 0,
+      'pages written including at least one start timestamp': 0,
+      'pages written including at least one start transaction ID': 0,
+      'pages written including at least one stop durable timestamp': 0,
+      'pages written including at least one stop timestamp': 0,
+      'pages written including at least one stop transaction ID': 0,
+      'records written including a prepare': 0,
+      'records written including a start durable timestamp': 0,
+      'records written including a start timestamp': 0,
+      'records written including a start transaction ID': 0,
+      'records written including a stop durable timestamp': 0,
+      'records written including a stop timestamp': 0,
+      'records written including a stop transaction ID': 0
+    },
+    session: { 'object compaction': 0 },
+    transaction: {
+      'a reader raced with a prepared transaction commit and skipped an update or updates': 0,
+      'checkpoint has acquired a snapshot for its transaction': 0,
+      'number of times overflow removed value is read': 0,
+      'race to read prepared update retry': 0,
+      'rollback to stable history store keys that would have been swept in non-dryrun mode': 0,
+      'rollback to stable history store records with stop timestamps older than newer records': 0,
+      'rollback to stable inconsistent checkpoint': 0,
+      'rollback to stable keys removed': 0,
+      'rollback to stable keys restored': 0,
+      'rollback to stable keys that would have been removed in non-dryrun mode': 0,
+      'rollback to stable keys that would have been restored in non-dryrun mode': 0,
+      'rollback to stable restored tombstones from history store': 0,
+      'rollback to stable restored updates from history store': 0,
+      'rollback to stable skipping delete rle': 0,
+      'rollback to stable skipping stable rle': 0,
+      'rollback to stable sweeping history store keys': 0,
+      'rollback to stable tombstones from history store that would have been restored in non-dryrun mode': 0,
+      'rollback to stable updates from history store that would have been restored in non-dryrun mode': 0,
+      'rollback to stable updates removed from history store': 0,
+      'rollback to stable updates that would have been removed from history store in non-dryrun mode': 0,
+      'transaction checkpoints due to obsolete pages': 0,
+      'update conflicts': 0
+    }
+  },
+  sharded: false,
+  size: 31,
+  count: 1,
+  numOrphanDocs: 0,
+  storageSize: 4096,
+  totalIndexSize: 4096,
+  totalSize: 8192,
+  indexSizes: { _id_: 4096 },
+  avgObjSize: 31,
+  ns: 'analytics.Numbers',
+  nindexes: 1,
+  scaleFactor: 1
+}
+analytics> show collections;
+friends
+Numbers
+persons
+transformedPersons
+analytics> db.number.insertOne({age:NumberInt(24)});
+{
+  acknowledged: true,
+  insertedId: ObjectId('6784cf8fc4c4abea20959786')
+}
+analytics> show collections;
+friends
+number
+Numbers
+persons
+transformedPersons
+analytics> db.number.stats();
+{
+  ok: 1,
+  capped: false,
+  wiredTiger: {
+    metadata: { formatVersion: 1 },
+    creationString: 'access_pattern_hint=none,allocation_size=4KB,app_metadata=(formatVersion=1),assert=(commit_timestamp=none,durable_timestamp=none,read_timestamp=none,write_timestamp=on),block_allocation=best,block_compressor=snappy,cache_resident=false,checksum=on,colgroups=,collator=,columns=,dictionary=0,encryption=(keyid=,name=),exclusive=false,extractor=,format=btree,huffman_key=,huffman_value=,ignore_in_memory_cache_size=false,immutable=false,import=(compare_timestamp=oldest_timestamp,enabled=false,file_metadata=,metadata_file=,repair=false),internal_item_max=0,internal_key_max=0,internal_key_truncate=true,internal_page_max=4KB,key_format=q,key_gap=10,leaf_item_max=0,leaf_key_max=0,leaf_page_max=32KB,leaf_value_max=64MB,log=(enabled=true),lsm=(auto_throttle=true,bloom=true,bloom_bit_count=16,bloom_config=,bloom_hash_count=8,bloom_oldest=false,chunk_count_limit=0,chunk_max=5GB,chunk_size=10MB,merge_custom=(prefix=,start_generation=0,suffix=),merge_max=15,merge_min=0),memory_page_image_max=0,memory_page_max=10m,os_cache_dirty_max=0,os_cache_max=0,prefix_compression=false,prefix_compression_min=4,source=,split_deepen_min_child=0,split_deepen_per_child=0,split_pct=90,tiered_storage=(auth_token=,bucket=,bucket_prefix=,cache_directory=,local_retention=300,name=,object_target_size=0),type=file,value_format=u,verbose=[write_timestamp],write_timestamp_usage=none',
+    type: 'file',
+    uri: 'statistics:table:collection-178--5778697064867389116',
+    LSM: {
+      'bloom filter false positives': 0,
+      'bloom filter hits': 0,
+      'bloom filter misses': 0,
+      'bloom filter pages evicted from cache': 0,
+      'bloom filter pages read into cache': 0,
+      'bloom filters in the LSM tree': 0,
+      'chunks in the LSM tree': 0,
+      'highest merge generation in the LSM tree': 0,
+      'queries that could have benefited from a Bloom filter that did not exist': 0,
+      'sleep for LSM checkpoint throttle': 0,
+      'sleep for LSM merge throttle': 0,
+      'total size of bloom filters': 0
+    },
+    autocommit: {
+      'retries for readonly operations': 0,
+      'retries for update operations': 0
+    },
+    'block-manager': {
+      'allocations requiring file extension': 0,
+      'blocks allocated': 0,
+      'blocks freed': 0,
+      'checkpoint size': 0,
+      'file allocation unit size': 4096,
+      'file bytes available for reuse': 0,
+      'file magic number': 120897,
+      'file major version number': 1,
+      'file size in bytes': 4096,
+      'minor version number': 0
+    },
+    btree: {
+      'btree checkpoint generation': 0,
+      'btree clean tree checkpoint expiration time': 0,
+      'btree compact pages reviewed': 0,
+      'btree compact pages rewritten': 0,
+      'btree compact pages skipped': 0,
+      'btree skipped by compaction as process would not reduce size': 0,
+      'column-store fixed-size leaf pages': 0,
+      'column-store fixed-size time windows': 0,
+      'column-store internal pages': 0,
+      'column-store variable-size RLE encoded values': 0,
+      'column-store variable-size deleted values': 0,
+      'column-store variable-size leaf pages': 0,
+      'fixed-record size': 0,
+      'maximum internal page size': 4096,
+      'maximum leaf page key size': 2867,
+      'maximum leaf page size': 32768,
+      'maximum leaf page value size': 67108864,
+      'maximum tree depth': 3,
+      'number of key/value pairs': 0,
+      'overflow pages': 0,
+      'row-store empty values': 0,
+      'row-store internal pages': 0,
+      'row-store leaf pages': 0
+    },
+    cache: {
+      'bytes currently in the cache': 961,
+      'bytes dirty in the cache cumulative': 770,
+      'bytes read into cache': 0,
+      'bytes written from cache': 0,
+      'checkpoint blocked page eviction': 0,
+      'checkpoint of history store file blocked non-history store page eviction': 0,
+      'data source pages selected for eviction unable to be evicted': 0,
+      'eviction gave up due to detecting a disk value without a timestamp behind the last update on the chain': 0,
+      'eviction gave up due to detecting a tombstone without a timestamp ahead of the selected on disk update': 0,
+      'eviction gave up due to detecting a tombstone without a timestamp ahead of the selected on disk update after validating the update chain': 0,
+      'eviction gave up due to detecting update chain entries without timestamps after the selected on disk update': 0,
+      'eviction gave up due to needing to remove a record from the history store but checkpoint is running': 0,
+      'eviction walk passes of a file': 0,
+      'eviction walk target pages histogram - 0-9': 0,
+      'eviction walk target pages histogram - 10-31': 0,
+      'eviction walk target pages histogram - 128 and higher': 0,
+      'eviction walk target pages histogram - 32-63': 0,
+      'eviction walk target pages histogram - 64-128': 0,
+      'eviction walk target pages reduced due to history store cache pressure': 0,
+      'eviction walks abandoned': 0,
+      'eviction walks gave up because they restarted their walk twice': 0,
+      'eviction walks gave up because they saw too many pages and found no candidates': 0,
+      'eviction walks gave up because they saw too many pages and found too few candidates': 0,
+      'eviction walks reached end of tree': 0,
+      'eviction walks restarted': 0,
+      'eviction walks started from root of tree': 0,
+      'eviction walks started from saved location in tree': 0,
+      'hazard pointer blocked page eviction': 0,
+      'history store table insert calls': 0,
+      'history store table insert calls that returned restart': 0,
+      'history store table reads': 0,
+      'history store table reads missed': 0,
+      'history store table reads requiring squashed modifies': 0,
+      'history store table resolved updates without timestamps that lose their durable timestamp': 0,
+      'history store table truncation by rollback to stable to remove an unstable update': 0,
+      'history store table truncation by rollback to stable to remove an update': 0,
+      'history store table truncation to remove all the keys of a btree': 0,
+      'history store table truncation to remove an update': 0,
+      'history store table truncation to remove range of updates due to an update without a timestamp on data page': 0,
+      'history store table truncation to remove range of updates due to key being removed from the data page during reconciliation': 0,
+      'history store table truncations that would have happened in non-dryrun mode': 0,
+      'history store table truncations to remove an unstable update that would have happened in non-dryrun mode': 0,
+      'history store table truncations to remove an update that would have happened in non-dryrun mode': 0,
+      'history store table updates without timestamps fixed up by reinserting with the fixed timestamp': 0,
+      'history store table writes requiring squashed modifies': 0,
+      'in-memory page passed criteria to be split': 0,
+      'in-memory page splits': 0,
+      'internal page split blocked its eviction': 0,
+      'internal pages evicted': 0,
+      'internal pages split during eviction': 0,
+      'leaf pages split during eviction': 0,
+      'modified pages evicted': 0,
+      'overflow keys on a multiblock row-store page blocked its eviction': 0,
+      'overflow pages read into cache': 0,
+      'page split during eviction deepened the tree': 0,
+      'page written requiring history store records': 0,
+      'pages read into cache': 0,
+      'pages read into cache after truncate': 0,
+      'pages read into cache after truncate in prepare state': 0,
+      'pages requested from the cache': 1,
+      'pages seen by eviction walk': 0,
+      'pages written from cache': 0,
+      'pages written requiring in-memory restoration': 0,
+      'recent modification of a page blocked its eviction': 0,
+      'reverse splits performed': 0,
+      'reverse splits skipped because of VLCS namespace gap restrictions': 0,
+      'the number of times full update inserted to history store': 0,
+      'the number of times reverse modify inserted to history store': 0,
+      'tracked dirty bytes in the cache': 770,
+      'uncommitted truncate blocked page eviction': 0,
+      'unmodified pages evicted': 0
+    },
+    cache_walk: {
+      'Average difference between current eviction generation when the page was last considered': 0,
+      'Average on-disk page image size seen': 0,
+      'Average time in cache for pages that have been visited by the eviction server': 0,
+      'Average time in cache for pages that have not been visited by the eviction server': 0,
+      'Clean pages currently in cache': 0,
+      'Current eviction generation': 0,
+      'Dirty pages currently in cache': 0,
+      'Entries in the root page': 0,
+      'Internal pages currently in cache': 0,
+      'Leaf pages currently in cache': 0,
+      'Maximum difference between current eviction generation when the page was last considered': 0,
+      'Maximum page size seen': 0,
+      'Minimum on-disk page image size seen': 0,
+      'Number of pages never visited by eviction server': 0,
+      'On-disk page image sizes smaller than a single allocation unit': 0,
+      'Pages created in memory and never written': 0,
+      'Pages currently queued for eviction': 0,
+      'Pages that could not be queued for eviction': 0,
+      'Refs skipped during cache traversal': 0,
+      'Size of the root page': 0,
+      'Total number of pages currently in cache': 0
+    },
+    'checkpoint-cleanup': {
+      'pages added for eviction': 0,
+      'pages removed': 0,
+      'pages skipped during tree walk': 0,
+      'pages visited': 0
+    },
+    compression: {
+      'compressed page maximum internal page size prior to compression': 4096,
+      'compressed page maximum leaf page size prior to compression ': 131072,
+      'compressed pages read': 0,
+      'compressed pages written': 0,
+      'number of blocks with compress ratio greater than 64': 0,
+      'number of blocks with compress ratio smaller than 16': 0,
+      'number of blocks with compress ratio smaller than 2': 0,
+      'number of blocks with compress ratio smaller than 32': 0,
+      'number of blocks with compress ratio smaller than 4': 0,
+      'number of blocks with compress ratio smaller than 64': 0,
+      'number of blocks with compress ratio smaller than 8': 0,
+      'page written failed to compress': 0,
+      'page written was too small to compress': 0
+    },
+    cursor: {
+      'Total number of entries skipped by cursor next calls': 0,
+      'Total number of entries skipped by cursor prev calls': 0,
+      'Total number of entries skipped to position the history store cursor': 0,
+      'Total number of times a search near has exited due to prefix config': 0,
+      'Total number of times cursor fails to temporarily release pinned page to encourage eviction of hot or large page': 0,
+      'Total number of times cursor temporarily releases pinned page to encourage eviction of hot or large page': 0,
+      'bulk loaded cursor insert calls': 0,
+      'cache cursors reuse count': 0,
+      'close calls that result in cache': 1,
+      'create calls': 2,
+      'cursor bound calls that return an error': 0,
+      'cursor bounds cleared from reset': 0,
+      'cursor bounds comparisons performed': 0,
+      'cursor bounds next called on an unpositioned cursor': 0,
+      'cursor bounds next early exit': 0,
+      'cursor bounds prev called on an unpositioned cursor': 0,
+      'cursor bounds prev early exit': 0,
+      'cursor bounds search early exit': 0,
+      'cursor bounds search near call repositioned cursor': 0,
+      'cursor cache calls that return an error': 0,
+      'cursor close calls that return an error': 0,
+      'cursor compare calls that return an error': 0,
+      'cursor equals calls that return an error': 0,
+      'cursor get key calls that return an error': 0,
+      'cursor get value calls that return an error': 0,
+      'cursor insert calls that return an error': 0,
+      'cursor insert check calls that return an error': 0,
+      'cursor largest key calls that return an error': 0,
+      'cursor modify calls that return an error': 0,
+      'cursor next calls that return an error': 0,
+      'cursor next calls that skip due to a globally visible history store tombstone': 0,
+      'cursor next calls that skip greater than 1 and fewer than 100 entries': 0,
+      'cursor next calls that skip greater than or equal to 100 entries': 0,
+      'cursor next random calls that return an error': 0,
+      'cursor prev calls that return an error': 0,
+      'cursor prev calls that skip due to a globally visible history store tombstone': 0,
+      'cursor prev calls that skip greater than or equal to 100 entries': 0,
+      'cursor prev calls that skip less than 100 entries': 0,
+      'cursor reconfigure calls that return an error': 0,
+      'cursor remove calls that return an error': 0,
+      'cursor reopen calls that return an error': 0,
+      'cursor reserve calls that return an error': 0,
+      'cursor reset calls that return an error': 0,
+      'cursor search calls that return an error': 0,
+      'cursor search near calls that return an error': 0,
+      'cursor update calls that return an error': 0,
+      'insert calls': 1,
+      'insert key and value bytes': 32,
+      modify: 0,
+      'modify key and value bytes affected': 0,
+      'modify value bytes modified': 0,
+      'next calls': 1,
+      'open cursor count': 0,
+      'operation restarted': 0,
+      'prev calls': 1,
+      'remove calls': 0,
+      'remove key bytes removed': 0,
+      'reserve calls': 0,
+      'reset calls': 5,
+      'search calls': 0,
+      'search history store calls': 0,
+      'search near calls': 0,
+      'truncate calls': 0,
+      'update calls': 0,
+      'update key and value bytes': 0,
+      'update value size change': 0
+    },
+    reconciliation: {
+      'VLCS pages explicitly reconciled as empty': 0,
+      'approximate byte size of timestamps in pages written': 0,
+      'approximate byte size of transaction IDs in pages written': 0,
+      'dictionary matches': 0,
+      'fast-path pages deleted': 0,
+      'internal page key bytes discarded using suffix compression': 0,
+      'internal page multi-block writes': 0,
+      'leaf page key bytes discarded using prefix compression': 0,
+      'leaf page multi-block writes': 0,
+      'leaf-page overflow keys': 0,
+      'maximum blocks required for a page': 0,
+      'overflow values written': 0,
+      'page reconciliation calls': 0,
+      'page reconciliation calls for eviction': 0,
+      'pages deleted': 0,
+      'pages written including an aggregated newest start durable timestamp ': 0,
+      'pages written including an aggregated newest stop durable timestamp ': 0,
+      'pages written including an aggregated newest stop timestamp ': 0,
+      'pages written including an aggregated newest stop transaction ID': 0,
+      'pages written including an aggregated newest transaction ID ': 0,
+      'pages written including an aggregated oldest start timestamp ': 0,
+      'pages written including an aggregated prepare': 0,
+      'pages written including at least one prepare': 0,
+      'pages written including at least one start durable timestamp': 0,
+      'pages written including at least one start timestamp': 0,
+      'pages written including at least one start transaction ID': 0,
+      'pages written including at least one stop durable timestamp': 0,
+      'pages written including at least one stop timestamp': 0,
+      'pages written including at least one stop transaction ID': 0,
+      'records written including a prepare': 0,
+      'records written including a start durable timestamp': 0,
+      'records written including a start timestamp': 0,
+      'records written including a start transaction ID': 0,
+      'records written including a stop durable timestamp': 0,
+      'records written including a stop timestamp': 0,
+      'records written including a stop transaction ID': 0
+    },
+    session: { 'object compaction': 0 },
+    transaction: {
+      'a reader raced with a prepared transaction commit and skipped an update or updates': 0,
+      'checkpoint has acquired a snapshot for its transaction': 0,
+      'number of times overflow removed value is read': 0,
+      'race to read prepared update retry': 0,
+      'rollback to stable history store keys that would have been swept in non-dryrun mode': 0,
+      'rollback to stable history store records with stop timestamps older than newer records': 0,
+      'rollback to stable inconsistent checkpoint': 0,
+      'rollback to stable keys removed': 0,
+      'rollback to stable keys restored': 0,
+      'rollback to stable keys that would have been removed in non-dryrun mode': 0,
+      'rollback to stable keys that would have been restored in non-dryrun mode': 0,
+      'rollback to stable restored tombstones from history store': 0,
+      'rollback to stable restored updates from history store': 0,
+      'rollback to stable skipping delete rle': 0,
+      'rollback to stable skipping stable rle': 0,
+      'rollback to stable sweeping history store keys': 0,
+      'rollback to stable tombstones from history store that would have been restored in non-dryrun mode': 0,
+      'rollback to stable updates from history store that would have been restored in non-dryrun mode': 0,
+      'rollback to stable updates removed from history store': 0,
+      'rollback to stable updates that would have been removed from history store in non-dryrun mode': 0,
+      'transaction checkpoints due to obsolete pages': 0,
+      'update conflicts': 0
+    }
+  },
+  sharded: false,
+  size: 31,
+  count: 1,
+  numOrphanDocs: 0,
+  storageSize: 4096,
+  totalIndexSize: 4096,
+  totalSize: 8192,
+  indexSizes: { _id_: 4096 },
+  avgObjSize: 31,
+  ns: 'analytics.number',
+  nindexes: 1,
+  scaleFactor: 1
+}
+analytics> show collections;
+friends
+number
+Numbers
+persons
+transformedPersons
+analytics> db.Numbers.drop();
+true
+analytics> show collections;
+friends
+number
+persons
+transformedPersons
+analytics> db.number.drop();
+true
+analytics> show collections;
+friends
+persons
+transformedPersons
+analytics> show collections;
+friends
+persons
+transformedPersons
+analytics> show dbs;
+Abhishek        72.00 KiB
+Bike           116.00 KiB
+Book           112.00 KiB
+Car             80.00 KiB
+CityData       112.00 KiB
+College         56.00 KiB
+ContactData      3.71 MiB
+Credit          16.00 KiB
+Flights        116.00 KiB
+School         104.00 KiB
+Store           40.00 KiB
+Support         88.00 KiB
+admin           40.00 KiB
+analytics        2.89 MiB
+blog           112.00 KiB
+bookRegistry    80.00 KiB
+boxOffice       80.00 KiB
+companyData     96.00 KiB
+config          96.00 KiB
+financialData   40.00 KiB
+hospital        40.00 KiB
+local          256.00 KiB
+moviesData     192.00 KiB
+shop            96.00 KiB
+user            72.00 KiB
+analytics> show collections;
+friends
+persons
+transformedPersons
+analytics> show collections;
+friends
+persons
+transformedPersons
+analytics> db.companies.insertOne({valuations:NumberInt("3000000000");
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:58)
+
+> 1 | db.companies.insertOne({valuations:NumberInt("3000000000");
+    |                                                           ^
+  2 |
+
+analytics> db.companies.insertOne({valuations:NumberInt("3000000000")});
+{
+  acknowledged: true,
+  insertedId: ObjectId('6784d700c4c4abea20959787')
+}
+analytics> show collections;
+companies
+friends
+persons
+transformedPersons
+analytics> db.companies.find();
+[
+  {
+    _id: ObjectId('6784d700c4c4abea20959787'),
+    valuations: -1294967296
+  }
+]
+analytics> db.companies.insertOne({valuations:NumberInt("1000000000")});
+{
+  acknowledged: true,
+  insertedId: ObjectId('6784d71dc4c4abea20959788')
+}
+analytics> db.companies.find();
+[
+  {
+    _id: ObjectId('6784d700c4c4abea20959787'),
+    valuations: -1294967296
+  },
+  { _id: ObjectId('6784d71dc4c4abea20959788'), valuations: 1000000000 }
+]
+analytics> db.companies.insertOne({valuations:NumberInt(3000000000)});
+{
+  acknowledged: true,
+  insertedId: ObjectId('6784d72ec4c4abea20959789')
+}
+analytics> db.companies.find();
+[
+  {
+    _id: ObjectId('6784d700c4c4abea20959787'),
+    valuations: -1294967296
+  },
+  { _id: ObjectId('6784d71dc4c4abea20959788'), valuations: 1000000000 },
+  {
+    _id: ObjectId('6784d72ec4c4abea20959789'),
+    valuations: -1294967296
+  }
+]
+analytics> db.companies.insertOne({valuations:NumberInt(2000000000)});
+{
+  acknowledged: true,
+  insertedId: ObjectId('6784d742c4c4abea2095978a')
+}
+analytics> db.companies.find();
+[
+  {
+    _id: ObjectId('6784d700c4c4abea20959787'),
+    valuations: -1294967296
+  },
+  { _id: ObjectId('6784d71dc4c4abea20959788'), valuations: 1000000000 },
+  {
+    _id: ObjectId('6784d72ec4c4abea20959789'),
+    valuations: -1294967296
+  },
+  { _id: ObjectId('6784d742c4c4abea2095978a'), valuations: 2000000000 }
+]
+analytics> db.companies.insertOne({valuations:5000000000});
+{
+  acknowledged: true,
+  insertedId: ObjectId('6784d760c4c4abea2095978b')
+}
+analytics> db.companies.find();
+[
+  {
+    _id: ObjectId('6784d700c4c4abea20959787'),
+    valuations: -1294967296
+  },
+  { _id: ObjectId('6784d71dc4c4abea20959788'), valuations: 1000000000 },
+  {
+    _id: ObjectId('6784d72ec4c4abea20959789'),
+    valuations: -1294967296
+  },
+  { _id: ObjectId('6784d742c4c4abea2095978a'), valuations: 2000000000 },
+  { _id: ObjectId('6784d760c4c4abea2095978b'), valuations: 5000000000 }
+]
+analytics> db.companies.insertOne({valuations:NumberLong(9223372036854775807)});
+Warning: NumberLong: specifying a number as argument is deprecated and may lead to loss of precision, pass a string instead
+{
+  acknowledged: true,
+  insertedId: ObjectId('6784d7b2c4c4abea2095978c')
+}
+analytics> db.companies.find();
+[
+  {
+    _id: ObjectId('6784d700c4c4abea20959787'),
+    valuations: -1294967296
+  },
+  { _id: ObjectId('6784d71dc4c4abea20959788'), valuations: 1000000000 },
+  {
+    _id: ObjectId('6784d72ec4c4abea20959789'),
+    valuations: -1294967296
+  },
+  { _id: ObjectId('6784d742c4c4abea2095978a'), valuations: 2000000000 },
+  { _id: ObjectId('6784d760c4c4abea2095978b'), valuations: 5000000000 },
+  {
+    _id: ObjectId('6784d7b2c4c4abea2095978c'),
+    valuations: Long('9223372036854775807')
+  }
+]
+analytics> db.companies.insertOne({valuations:NumberLong("10223372036854775807")});
+{
+  acknowledged: true,
+  insertedId: ObjectId('6784d7d4c4c4abea2095978d')
+}
+analytics> db.companies.find();
+[
+  {
+    _id: ObjectId('6784d700c4c4abea20959787'),
+    valuations: -1294967296
+  },
+  { _id: ObjectId('6784d71dc4c4abea20959788'), valuations: 1000000000 },
+  {
+    _id: ObjectId('6784d72ec4c4abea20959789'),
+    valuations: -1294967296
+  },
+  { _id: ObjectId('6784d742c4c4abea2095978a'), valuations: 2000000000 },
+  { _id: ObjectId('6784d760c4c4abea2095978b'), valuations: 5000000000 },
+  {
+    _id: ObjectId('6784d7b2c4c4abea2095978c'),
+    valuations: Long('9223372036854775807')
+  },
+  {
+    _id: ObjectId('6784d7d4c4c4abea2095978d'),
+    valuations: Long('-8223372036854775809')
+  }
+]
+analytics> db.companies.insertOne({valuations:NumberLong("7223372036854775807")});
+{
+  acknowledged: true,
+  insertedId: ObjectId('6784d7e4c4c4abea2095978e')
+}
+analytics> db.companies.find();
+[
+  {
+    _id: ObjectId('6784d700c4c4abea20959787'),
+    valuations: -1294967296
+  },
+  { _id: ObjectId('6784d71dc4c4abea20959788'), valuations: 1000000000 },
+  {
+    _id: ObjectId('6784d72ec4c4abea20959789'),
+    valuations: -1294967296
+  },
+  { _id: ObjectId('6784d742c4c4abea2095978a'), valuations: 2000000000 },
+  { _id: ObjectId('6784d760c4c4abea2095978b'), valuations: 5000000000 },
+  {
+    _id: ObjectId('6784d7b2c4c4abea2095978c'),
+    valuations: Long('9223372036854775807')
+  },
+  {
+    _id: ObjectId('6784d7d4c4c4abea2095978d'),
+    valuations: Long('-8223372036854775809')
+  },
+  {
+    _id: ObjectId('6784d7e4c4c4abea2095978e'),
+    valuations: Long('7223372036854775807')
+  }
+]
+analytics> show collections;
+companies
+friends
+persons
+transformedPersons
+analytics> db.companies.find();'
+Uncaught:
+SyntaxError: Unterminated string constant. (1:20)
+
+> 1 | db.companies.find();'
+    |                     ^
+  2 |
+
+analytics> db.companies.find();
+[
+  {
+    _id: ObjectId('6784d700c4c4abea20959787'),
+    valuations: -1294967296
+  },
+  { _id: ObjectId('6784d71dc4c4abea20959788'), valuations: 1000000000 },
+  {
+    _id: ObjectId('6784d72ec4c4abea20959789'),
+    valuations: -1294967296
+  },
+  { _id: ObjectId('6784d742c4c4abea2095978a'), valuations: 2000000000 },
+  { _id: ObjectId('6784d760c4c4abea2095978b'), valuations: 5000000000 },
+  {
+    _id: ObjectId('6784d7b2c4c4abea2095978c'),
+    valuations: Long('9223372036854775807')
+  },
+  {
+    _id: ObjectId('6784d7d4c4c4abea2095978d'),
+    valuations: Long('-8223372036854775809')
+  },
+  {
+    _id: ObjectId('6784d7e4c4c4abea2095978e'),
+    valuations: Long('7223372036854775807')
+  }
+]
+analytics> db.companies.delete({});
+TypeError: db.companies.delete is not a function
+analytics> db.companies.deleteMany({});
+{ acknowledged: true, deletedCount: 8 }
+analytics> db.companies.find();
+
+analytics> show collections;
+companies
+friends
+persons
+transformedPersons
+analytics> db.accounts.insertOne({"name":"Abhishek Tyagi",amount:"123456789876551234"});
+{
+  acknowledged: true,
+  insertedId: ObjectId('6784db89c4c4abea2095978f')
+}
+analytics> show collections;
+accounts
+companies
+friends
+persons
+transformedPersons
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784db89c4c4abea2095978f'),
+    name: 'Abhishek Tyagi',
+    amount: '123456789876551234'
+  }
+]
+analytics> db.accounts.updateOne({},{$inc:{amount:10}});
+MongoServerError: Cannot apply $inc to a value of non-numeric type. {_id: ObjectId('6784db89c4c4abea2095978f')} has the field 'amount' of non-numeric type string
+analytics> show collections;
+accounts
+companies
+friends
+persons
+transformedPersons
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784db89c4c4abea2095978f'),
+    name: 'Abhishek Tyagi',
+    amount: '123456789876551234'
+  }
+]
+analytics> db.accounts.delete({});
+TypeError: db.accounts.delete is not a function
+analytics> db.accounts.deleteOne({});
+{ acknowledged: true, deletedCount: 1 }
+analytics> db.accounts.find();
+
+analytics> show collections;
+accounts
+companies
+friends
+persons
+transformedPersons
+analytics> show collections;
+accounts
+companies
+friends
+persons
+transformedPersons
+analytics> db.accounts.find();
+
+analytics> db.accounts.insertOne({"name":"Radha",age:NumberInt(24)});
+{
+  acknowledged: true,
+  insertedId: ObjectId('6784de15c4c4abea20959790')
+}
+analytics> sjow collections;
+Uncaught:
+SyntaxError: Missing semicolon. (1:4)
+
+> 1 | sjow collections;
+    |     ^
+  2 |
+
+analytics> show collections;
+accounts
+companies
+friends
+persons
+transformedPersons
+analytics> db.accounts.find();
+[
+  { _id: ObjectId('6784de15c4c4abea20959790'), name: 'Radha', age: 24 }
+]
+analytics> "Now update the amount "
+Now update the amount 
+analytics> db.accounts.updateOne({},{$inc:{age:10}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+analytics> db.accounts.find();
+[
+  { _id: ObjectId('6784de15c4c4abea20959790'), name: 'Radha', age: 34 }
+]
+analytics> show collections;
+accounts
+companies
+friends
+persons
+transformedPersons
+analytics> db.accounts.find();
+[
+  { _id: ObjectId('6784de15c4c4abea20959790'), name: 'Radha', age: 34 }
+]
+analytics> db.accounts.updateOne({},{$rename:{age:amount}});
+ReferenceError: amount is not defined
+analytics> db.accounts.updateOne({},{$rename:{age:"amounts"}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+analytics> show collections;
+accounts
+companies
+friends
+persons
+transformedPersons
+analytics> show dbs;
+Abhishek        72.00 KiB
+Bike           116.00 KiB
+Book           112.00 KiB
+Car             80.00 KiB
+CityData       112.00 KiB
+College         56.00 KiB
+ContactData      3.71 MiB
+Credit          16.00 KiB
+Flights        116.00 KiB
+School         104.00 KiB
+Store           40.00 KiB
+Support         88.00 KiB
+admin           40.00 KiB
+analytics        3.02 MiB
+blog           112.00 KiB
+bookRegistry    80.00 KiB
+boxOffice       80.00 KiB
+companyData     96.00 KiB
+config          96.00 KiB
+financialData   40.00 KiB
+hospital        40.00 KiB
+local          256.00 KiB
+moviesData     192.00 KiB
+shop            96.00 KiB
+user            72.00 KiB
+analytics> show collections;
+accounts
+companies
+friends
+persons
+transformedPersons
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784de15c4c4abea20959790'),
+    name: 'Radha',
+    amounts: 34
+  }
+]
+analytics> db.accounts.updateOne({},{$set:{name:"RadhaMayaa"}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+analytics> show collections;
+accounts
+companies
+friends
+persons
+transformedPersons
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784de15c4c4abea20959790'),
+    name: 'RadhaMayaa',
+    amounts: 34
+  }
+]
+analytics> show dbs;
+Abhishek        72.00 KiB
+Bike           116.00 KiB
+Book           112.00 KiB
+Car             80.00 KiB
+CityData       112.00 KiB
+College         56.00 KiB
+ContactData      3.71 MiB
+Credit          16.00 KiB
+Flights        116.00 KiB
+School         104.00 KiB
+Store           40.00 KiB
+Support         88.00 KiB
+admin           40.00 KiB
+analytics        3.02 MiB
+blog           112.00 KiB
+bookRegistry    80.00 KiB
+boxOffice       80.00 KiB
+companyData     96.00 KiB
+config          96.00 KiB
+financialData   40.00 KiB
+hospital        40.00 KiB
+local          256.00 KiB
+moviesData     192.00 KiB
+shop            96.00 KiB
+user            72.00 KiB
+analytics> show collections;
+accounts
+companies
+friends
+persons
+transformedPersons
+analytics> db.accoun ts.find();
+Uncaught:
+SyntaxError: Missing semicolon. (1:9)
+
+> 1 | db.accoun ts.find();
+    |          ^
+  2 |
+
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784de15c4c4abea20959790'),
+    name: 'RadhaMayaa',
+    amounts: 34
+  }
+]
+analytics> db.accounts.insertOne({})
+{
+  acknowledged: true,
+  insertedId: ObjectId('6784e8dac4c4abea20959791')
+}
+analytics> sb.accounts.find();
+ReferenceError: sb is not defined
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784de15c4c4abea20959790'),
+    name: 'RadhaMayaa',
+    amounts: 34
+  },
+  { _id: ObjectId('6784e8dac4c4abea20959791') }
+]
+analytics> db.accounts.deleteOne({ _id: ObjectId('6784e8dac4c4abea20959791')});
+{ acknowledged: true, deletedCount: 1 }
+analytics> show collections;
+accounts
+companies
+friends
+persons
+transformedPersons
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784de15c4c4abea20959790'),
+    name: 'RadhaMayaa',
+    amounts: 34
+  }
+]
+analytics> db.accounts.insertOne();
+MongoshInvalidInputError: [COMMON-10001] Missing required argument at position 0 (Collection.insertOne)
+analytics> db.accounts.insertOne({});
+{
+  acknowledged: true,
+  insertedId: ObjectId('6784e9d8c4c4abea20959792')
+}
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784de15c4c4abea20959790'),
+    name: 'RadhaMayaa',
+    amounts: 34
+  },
+  { _id: ObjectId('6784e9d8c4c4abea20959792') }
+]
+analytics> db.accounts.deleteOne({ _id: ObjectId('6784e8dac4c4abea20959792')});
+{ acknowledged: true, deletedCount: 0 }
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784de15c4c4abea20959790'),
+    name: 'RadhaMayaa',
+    amounts: 34
+  },
+  { _id: ObjectId('6784e9d8c4c4abea20959792') }
+]
+analytics> db.accounts.deleteOne({ _id: ObjectId('6784e9dac4c4abea20959792')});
+{ acknowledged: true, deletedCount: 0 }
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784de15c4c4abea20959790'),
+    name: 'RadhaMayaa',
+    amounts: 34
+  },
+  { _id: ObjectId('6784e9d8c4c4abea20959792') }
+]
+analytics> db.accounts.deleteOne({ _id: ObjectId('6784e9d8c4c4abea20959792')});
+{ acknowledged: true, deletedCount: 1 }
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784de15c4c4abea20959790'),
+    name: 'RadhaMayaa',
+    amounts: 34
+  }
+]
+analytics> db.accounts.insertOne({
+... "name":"KrishnaPitasiri",
+... age:33
+... });
+{
+  acknowledged: true,
+  insertedId: ObjectId('6784ea5cc4c4abea20959793')
+}
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784de15c4c4abea20959790'),
+    name: 'RadhaMayaa',
+    amounts: 34
+  },
+  {
+    _id: ObjectId('6784ea5cc4c4abea20959793'),
+    name: 'KrishnaPitasiri',
+    age: 33
+  }
+]
+analytics> db.accounts.updateOne({name:"KrishnaPitasiri"},{$set:{age:NumberInt(33)}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784de15c4c4abea20959790'),
+    name: 'RadhaMayaa',
+    amounts: 34
+  },
+  {
+    _id: ObjectId('6784ea5cc4c4abea20959793'),
+    name: 'KrishnaPitasiri',
+    age: 33
+  }
+]
+analytics> db.accounts.updateOne({name:"KrishnaPitasiri"},{$unset:{age:""}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784de15c4c4abea20959790'),
+    name: 'RadhaMayaa',
+    amounts: 34
+  },
+  {
+    _id: ObjectId('6784ea5cc4c4abea20959793'),
+    name: 'KrishnaPitasiri'
+  }
+]
+analytics> db.accounts.updateOne({name:"KrishnaPitasiri"},{$set:{age:NumberInt(33)}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784de15c4c4abea20959790'),
+    name: 'RadhaMayaa',
+    amounts: 34
+  },
+  {
+    _id: ObjectId('6784ea5cc4c4abea20959793'),
+    name: 'KrishnaPitasiri',
+    age: 33
+  }
+]
+analytics> show collections;
+accounts
+companies
+friends
+persons
+transformedPersons
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784de15c4c4abea20959790'),
+    name: 'RadhaMayaa',
+    amounts: 34
+  },
+  {
+    _id: ObjectId('6784ea5cc4c4abea20959793'),
+    name: 'KrishnaPitasiri',
+    age: 33
+  }
+]
+analytics> db.accounts.updateOne({name:"KrishnaPitasiri"},{$rename:{age:"amount"}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784de15c4c4abea20959790'),
+    name: 'RadhaMayaa',
+    amounts: 34
+  },
+  {
+    _id: ObjectId('6784ea5cc4c4abea20959793'),
+    name: 'KrishnaPitasiri',
+    amount: 33
+  }
+]
+analytics> db.accounts.updateOne({name:"KrishnaPitasiri"},{$rename:{age:"amounts"}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 0,
+  upsertedCount: 0
+}
+analytics> db.accounts.updateOne({name:"KrishnaPitasiri"},{$rename:{amount:"amounts"}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784de15c4c4abea20959790'),
+    name: 'RadhaMayaa',
+    amounts: 34
+  },
+  {
+    _id: ObjectId('6784ea5cc4c4abea20959793'),
+    name: 'KrishnaPitasiri',
+    amounts: 33
+  }
+]
+analytics> show collections;
+accounts
+companies
+friends
+persons
+transformedPersons
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784de15c4c4abea20959790'),
+    name: 'RadhaMayaa',
+    amounts: 34
+  },
+  {
+    _id: ObjectId('6784ea5cc4c4abea20959793'),
+    name: 'KrishnaPitasiri',
+    amounts: 33
+  }
+]
+analytics> db.accounts.updateOne({name:"RadhaMayaa"},{$set:{amounts:NumberInt(340000000)}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784de15c4c4abea20959790'),
+    name: 'RadhaMayaa',
+    amounts: 340000000
+  },
+  {
+    _id: ObjectId('6784ea5cc4c4abea20959793'),
+    name: 'KrishnaPitasiri',
+    amounts: 33
+  }
+]
+analytics> db.accounts.updateOne({name:"KrishnaPitasiri"},{$set:{amounts:NumberInt(330000000)}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784de15c4c4abea20959790'),
+    name: 'RadhaMayaa',
+    amounts: 340000000
+  },
+  {
+    _id: ObjectId('6784ea5cc4c4abea20959793'),
+    name: 'KrishnaPitasiri',
+    amounts: 330000000
+  }
+]
+analytics> "Adding one Crore in Both the documents"
+Adding one Crore in Both the documents
+analytics> db.accounts.updateMany({},{$inc:{amounts:NumberInt(10000000)}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784de15c4c4abea20959790'),
+    name: 'RadhaMayaa',
+    amounts: 350000000
+  },
+  {
+    _id: ObjectId('6784ea5cc4c4abea20959793'),
+    name: 'KrishnaPitasiri',
+    amounts: 340000000
+  }
+]
+analytics> show collections;
+accounts
+companies
+friends
+persons
+transformedPersons
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784de15c4c4abea20959790'),
+    name: 'RadhaMayaa',
+    amounts: 350000000
+  },
+  {
+    _id: ObjectId('6784ea5cc4c4abea20959793'),
+    name: 'KrishnaPitasiri',
+    amounts: 340000000
+  }
+]
+analytics> db.accounts.updateMany({},{$inc:{amounts:(10000000)}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784de15c4c4abea20959790'),
+    name: 'RadhaMayaa',
+    amounts: 360000000
+  },
+  {
+    _id: ObjectId('6784ea5cc4c4abea20959793'),
+    name: 'KrishnaPitasiri',
+    amounts: 350000000
+  }
+]
+analytics> db.accounts.updateMany({},{$inc:{amounts:(10000000)}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 2,
+  modifiedCount: 2,
+  upsertedCount: 0
+}
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784de15c4c4abea20959790'),
+    name: 'RadhaMayaa',
+    amounts: 370000000
+  },
+  {
+    _id: ObjectId('6784ea5cc4c4abea20959793'),
+    name: 'KrishnaPitasiri',
+    amounts: 360000000
+  }
+]
+analytics> show collections;
+accounts
+companies
+friends
+persons
+transformedPersons
+analytics> dsb.accounts.find();
+ReferenceError: dsb is not defined
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784de15c4c4abea20959790'),
+    name: 'RadhaMayaa',
+    amounts: 370000000
+  },
+  {
+    _id: ObjectId('6784ea5cc4c4abea20959793'),
+    name: 'KrishnaPitasiri',
+    amounts: 360000000
+  }
+]
+analytics> db.companies.find();
+
+analytics> db.companies.insertOne({
+... "name":"Google",
+... valuation:NumberLong("3434567898753")
+... });
+{
+  acknowledged: true,
+  insertedId: ObjectId('6784f448c4c4abea20959794')
+}
+analytics> db.companies.find();
+[
+  {
+    _id: ObjectId('6784f448c4c4abea20959794'),
+    name: 'Google',
+    valuation: Long('3434567898753')
+  }
+]
+analytics> db.companies.updateOne({},{$inc:{valuation:1}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+analytics> db.companies.find();
+[
+  {
+    _id: ObjectId('6784f448c4c4abea20959794'),
+    name: 'Google',
+    valuation: Long('3434567898754')
+  }
+]
+analytics> db.companies.updateOne({},{$inc:{valuation:1}});
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+analytics> 
+
+analytics> 
+
+analytics> db.companies.find();
+[
+  {
+    _id: ObjectId('6784f448c4c4abea20959794'),
+    name: 'Google',
+    valuation: Long('3434567898755')
+  }
+]
+analytics> show collections;
+accounts
+companies
+friends
+persons
+transformedPersons
+analytics> db.companies.find();
+[
+  {
+    _id: ObjectId('6784f448c4c4abea20959794'),
+    name: 'Google',
+    valuation: Long('3434567898755')
+  }
+]
+analytics> show dbs;
+Abhishek        72.00 KiB
+Bike           116.00 KiB
+Book           112.00 KiB
+Car             80.00 KiB
+CityData       112.00 KiB
+College         56.00 KiB
+ContactData      3.71 MiB
+Credit          16.00 KiB
+Flights        116.00 KiB
+School         104.00 KiB
+Store           40.00 KiB
+Support         88.00 KiB
+admin           40.00 KiB
+analytics        3.02 MiB
+blog           112.00 KiB
+bookRegistry    80.00 KiB
+boxOffice       80.00 KiB
+companyData     96.00 KiB
+config          96.00 KiB
+financialData   40.00 KiB
+hospital        40.00 KiB
+local          256.00 KiB
+moviesData     192.00 KiB
+shop            96.00 KiB
+user            72.00 KiB
+analytics> show collections;
+accounts
+companies
+friends
+persons
+transformedPersons
+analytics> db.accounts.find();
+[
+  {
+    _id: ObjectId('6784de15c4c4abea20959790'),
+    name: 'RadhaMayaa',
+    amounts: 370000000
+  },
+  {
+    _id: ObjectId('6784ea5cc4c4abea20959793'),
+    name: 'KrishnaPitasiri',
+    amounts: 360000000
+  }
+]
+analytics> db.companies.find()';
+Uncaught:
+SyntaxError: Unterminated string constant. (1:19)
+
+> 1 | db.companies.find()';
+    |                    ^
+  2 |
+
+analytics> db.companies.find();
+[
+  {
+    _id: ObjectId('6784f448c4c4abea20959794'),
+    name: 'Google',
+    valuation: Long('3434567898755')
+  }
+]
+analytics> show collections;
+accounts
+companies
+friends
+persons
+transformedPersons
+analytics> db.science.insertOne({a:0.3,b:0.1});
+{
+  acknowledged: true,
+  insertedId: ObjectId('6784f8b6c4c4abea20959795')
+}
+analytics> show collections;
+accounts
+companies
+friends
+persons
+science
+transformedPersons
+analytics> db.science.find();
+[ { _id: ObjectId('6784f8b6c4c4abea20959795'), a: 0.3, b: 0.1 } ]
+analytics> db.science.aggregate([
+... {$project:{result:{$subtract:["$a","$b"]}}}]);
+[
+  {
+    _id: ObjectId('6784f8b6c4c4abea20959795'),
+    result: 0.19999999999999998
+  }
+]
+analytics> show collections;
+accounts
+companies
+friends
+persons
+science
+transformedPersons
+analytics> db.science.find();
+[ { _id: ObjectId('6784f8b6c4c4abea20959795'), a: 0.3, b: 0.1 } ]
+analytics> db.science.drop();
+true
+analytics> show collections;
+accounts
+companies
+friends
+persons
+transformedPersons
+analytics> show collections;
+accounts
+companies
+friends
+persons
+transformedPersons
+analytics> db.science.insertOne({
+... "a":NumberDecimal("0.3"),
+... "b":NumberDecimal("0.1")
+... });
+{
+  acknowledged: true,
+  insertedId: ObjectId('6784fd44c4c4abea20959796')
+}
+analytics> show collections;
+accounts
+companies
+friends
+persons
+science
+transformedPersons
+analytics> db.science.find();
+[
+  {
+    _id: ObjectId('6784fd44c4c4abea20959796'),
+    a: Decimal128('0.3'),
+    b: Decimal128('0.1')
+  }
+]
+analytics> db.version();
+7.0.2
+analytics> db.science.aggregate([
+... {$project:{result:{$subtract:["$a","$b"]}}}]);
+[
+  {
+    _id: ObjectId('6784fd44c4c4abea20959796'),
+    result: Decimal128('0.2')
+  }
+]
+analytics> db.science.insertOne({
+... "c":0.3,
+... "d":0.1
+... });
+{
+  acknowledged: true,
+  insertedId: ObjectId('6784fdd5c4c4abea20959797')
+}
+analytics> show collections;
+accounts
+companies
+friends
+persons
+science
+transformedPersons
+analytics> db.science.find();
+[
+  {
+    _id: ObjectId('6784fd44c4c4abea20959796'),
+    a: Decimal128('0.3'),
+    b: Decimal128('0.1')
+  },
+  { _id: ObjectId('6784fdd5c4c4abea20959797'), c: 0.3, d: 0.1 }
+]
+analytics> db.science.aggregate([
+... {$project:{result:{$subtract:["$c","$d"]}}}]);
+[
+  { _id: ObjectId('6784fd44c4c4abea20959796'), result: null },
+  {
+    _id: ObjectId('6784fdd5c4c4abea20959797'),
+    result: 0.19999999999999998
+  }
+]
+analytics> show collections;
+accounts
+companies
+friends
+persons
+science
+transformedPersons
+analytics> db.science.find();
+[
+  {
+    _id: ObjectId('6784fd44c4c4abea20959796'),
+    a: Decimal128('0.3'),
+    b: Decimal128('0.1')
+  },
+  { _id: ObjectId('6784fdd5c4c4abea20959797'), c: 0.3, d: 0.1 }
+]
+analytics> db.science.deleteone({_id: ObjectId('6784fdd5c4c4abea20959797')});
+TypeError: db.science.deleteone is not a function
+analytics> db.science.deleteOne({_id: ObjectId('6784fdd5c4c4abea20959797')});
+{ acknowledged: true, deletedCount: 1 }
+analytics> db.science.find();
+[
+  {
+    _id: ObjectId('6784fd44c4c4abea20959796'),
+    a: Decimal128('0.3'),
+    b: Decimal128('0.1')
+  }
+]
+analytics> db.science.updateOne({},{$inc:{a:NumberDecimal("0.1")}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+analytics> db.science.find();
+[
+  {
+    _id: ObjectId('6784fd44c4c4abea20959796'),
+    a: Decimal128('0.4'),
+    b: Decimal128('0.1')
+  }
+]
+analytics> db.science.aggregate([ { $project: { result: { $subtract: ["$c", "$d"] } } }]);
+[ { _id: ObjectId('6784fd44c4c4abea20959796'), result: null } ]
+analytics> db.science.aggregate([ { $project: { result: { $subtract: ["$a", "$b"] } } }]);
+[
+  {
+    _id: ObjectId('6784fd44c4c4abea20959796'),
+    result: Decimal128('0.3')
+  }
+]
+analytics> 

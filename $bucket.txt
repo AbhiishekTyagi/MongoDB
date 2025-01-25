@@ -1,0 +1,6122 @@
+Last login: Sat Dec 28 16:25:27 on ttys001
+RadhaPutraAbhishektyagi@Abhisheks-MacBook-Air ~ % pwd
+/Users/abhishektyagi_1
+RadhaPutraAbhishektyagi@Abhisheks-MacBook-Air ~ % mongosh;
+Current Mongosh Log ID:	677e0a014bfabc997d6f424a
+Connecting to:		mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.5
+(node:26665) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Using MongoDB:		7.0.2
+Using Mongosh:		2.1.5
+mongosh 2.3.7 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-12-12T15:24:31.128+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> show dbs;
+Abhishek        72.00 KiB
+Bike           116.00 KiB
+Book           112.00 KiB
+Car             80.00 KiB
+CityData       112.00 KiB
+College         56.00 KiB
+ContactData      3.71 MiB
+Credit          16.00 KiB
+Flights        116.00 KiB
+School         112.00 KiB
+Store           40.00 KiB
+Support         88.00 KiB
+admin           40.00 KiB
+analytics        2.81 MiB
+blog           112.00 KiB
+bookRegistry    80.00 KiB
+boxOffice       80.00 KiB
+companyData     96.00 KiB
+config          72.00 KiB
+financialData   40.00 KiB
+hospital        40.00 KiB
+local          256.00 KiB
+moviesData     192.00 KiB
+shop            96.00 KiB
+user            72.00 KiB
+test> use analytics;
+switched to db analytics
+analytics> show collections;
+persons
+analytics> db.persons.findOne();
+{
+  _id: ObjectId('677772e0ae898e105a49fe57'),
+  gender: 'male',
+  name: { title: 'mr', first: 'victor', last: 'pedersen' },
+  location: {
+    street: '2156 stenbjergvej',
+    city: 'billum',
+    state: 'nordjylland',
+    postcode: 56649,
+    coordinates: { latitude: '-29.8113', longitude: '-31.0208' },
+    timezone: {
+      offset: '+5:30',
+      description: 'Bombay, Calcutta, Madras, New Delhi'
+    }
+  },
+  email: 'victor.pedersen@example.com',
+  login: {
+    uuid: 'fbb3c298-2cea-4415-84d1-74233525c325',
+    username: 'smallbutterfly536',
+    password: 'down',
+    salt: 'iW5QrgwW',
+    md5: '3cc8b8a4d69321a408cd46174e163594',
+    sha1: '681c0353b34fae08422686eea190e1c09472fc1f',
+    sha256: 'eb5251e929c56dfd19fc597123ed6ec2d0130a2c3c1bf8fc9c2ff8f29830a3b7'
+  },
+  dob: { date: '1959-02-19T23:56:23Z', age: 59 },
+  registered: { date: '2004-07-07T22:37:39Z', age: 14 },
+  phone: '23138213',
+  cell: '30393606',
+  id: { name: 'CPR', value: '506102-2208' },
+  picture: {
+    large: 'https://randomuser.me/api/portraits/men/23.jpg',
+    medium: 'https://randomuser.me/api/portraits/med/men/23.jpg',
+    thumbnail: 'https://randomuser.me/api/portraits/thumb/men/23.jpg'
+  },
+  nat: 'DK'
+}
+analytics> show databases;
+Abhishek        72.00 KiB
+Bike           116.00 KiB
+Book           112.00 KiB
+Car             80.00 KiB
+CityData       112.00 KiB
+College         56.00 KiB
+ContactData      3.71 MiB
+Credit          16.00 KiB
+Flights        116.00 KiB
+School         112.00 KiB
+Store           40.00 KiB
+Support         88.00 KiB
+admin           40.00 KiB
+analytics        2.81 MiB
+blog           112.00 KiB
+bookRegistry    80.00 KiB
+boxOffice       80.00 KiB
+companyData     96.00 KiB
+config          60.00 KiB
+financialData   40.00 KiB
+hospital        40.00 KiB
+local          256.00 KiB
+moviesData     192.00 KiB
+shop            96.00 KiB
+user            72.00 KiB
+analytics> show collections;
+persons
+analytics> db.persons.findOne()
+{
+  _id: ObjectId('677772e0ae898e105a49fe57'),
+  gender: 'male',
+  name: { title: 'mr', first: 'victor', last: 'pedersen' },
+  location: {
+    street: '2156 stenbjergvej',
+    city: 'billum',
+    state: 'nordjylland',
+    postcode: 56649,
+    coordinates: { latitude: '-29.8113', longitude: '-31.0208' },
+    timezone: {
+      offset: '+5:30',
+      description: 'Bombay, Calcutta, Madras, New Delhi'
+    }
+  },
+  email: 'victor.pedersen@example.com',
+  login: {
+    uuid: 'fbb3c298-2cea-4415-84d1-74233525c325',
+    username: 'smallbutterfly536',
+    password: 'down',
+    salt: 'iW5QrgwW',
+    md5: '3cc8b8a4d69321a408cd46174e163594',
+    sha1: '681c0353b34fae08422686eea190e1c09472fc1f',
+    sha256: 'eb5251e929c56dfd19fc597123ed6ec2d0130a2c3c1bf8fc9c2ff8f29830a3b7'
+  },
+  dob: { date: '1959-02-19T23:56:23Z', age: 59 },
+  registered: { date: '2004-07-07T22:37:39Z', age: 14 },
+  phone: '23138213',
+  cell: '30393606',
+  id: { name: 'CPR', value: '506102-2208' },
+  picture: {
+    large: 'https://randomuser.me/api/portraits/men/23.jpg',
+    medium: 'https://randomuser.me/api/portraits/med/men/23.jpg',
+    thumbnail: 'https://randomuser.me/api/portraits/thumb/men/23.jpg'
+  },
+  nat: 'DK'
+}
+analytics> show databases;
+Abhishek        72.00 KiB
+Bike           116.00 KiB
+Book           112.00 KiB
+Car             80.00 KiB
+CityData       112.00 KiB
+College         56.00 KiB
+ContactData      3.71 MiB
+Credit          16.00 KiB
+Flights        116.00 KiB
+School         112.00 KiB
+Store           40.00 KiB
+Support         88.00 KiB
+admin           40.00 KiB
+analytics        2.81 MiB
+blog           112.00 KiB
+bookRegistry    80.00 KiB
+boxOffice       80.00 KiB
+companyData     96.00 KiB
+config          60.00 KiB
+financialData   40.00 KiB
+hospital        40.00 KiB
+local          256.00 KiB
+moviesData     192.00 KiB
+shop            96.00 KiB
+user            72.00 KiB
+analytics> show collections;
+persons
+analytics> show collections;
+persons
+analytics> db.persons.findOne()
+{
+  _id: ObjectId('677772e0ae898e105a49fe57'),
+  gender: 'male',
+  name: { title: 'mr', first: 'victor', last: 'pedersen' },
+  location: {
+    street: '2156 stenbjergvej',
+    city: 'billum',
+    state: 'nordjylland',
+    postcode: 56649,
+    coordinates: { latitude: '-29.8113', longitude: '-31.0208' },
+    timezone: {
+      offset: '+5:30',
+      description: 'Bombay, Calcutta, Madras, New Delhi'
+    }
+  },
+  email: 'victor.pedersen@example.com',
+  login: {
+    uuid: 'fbb3c298-2cea-4415-84d1-74233525c325',
+    username: 'smallbutterfly536',
+    password: 'down',
+    salt: 'iW5QrgwW',
+    md5: '3cc8b8a4d69321a408cd46174e163594',
+    sha1: '681c0353b34fae08422686eea190e1c09472fc1f',
+    sha256: 'eb5251e929c56dfd19fc597123ed6ec2d0130a2c3c1bf8fc9c2ff8f29830a3b7'
+  },
+  dob: { date: '1959-02-19T23:56:23Z', age: 59 },
+  registered: { date: '2004-07-07T22:37:39Z', age: 14 },
+  phone: '23138213',
+  cell: '30393606',
+  id: { name: 'CPR', value: '506102-2208' },
+  picture: {
+    large: 'https://randomuser.me/api/portraits/men/23.jpg',
+    medium: 'https://randomuser.me/api/portraits/med/men/23.jpg',
+    thumbnail: 'https://randomuser.me/api/portraits/thumb/men/23.jpg'
+  },
+  nat: 'DK'
+}
+analytics> db.persons.aggregate([
+... { $project:
+...  {
+...   _id:1,
+...   email:1,
+...   name:1,
+...   gender:1,
+...   birthdate:{$toDate:"$dob.date"},
+...   age:"$dob.age",
+...   location:
+...   {
+...   	type:"Point",
+...   	coordinates:[
+...   		{$convert:{input:'$location.coordinates.longitude',to:"double",onError:0.0,onNull:0.0}},
+...   		{$convert:{input:'$location.coordinates.latitude',to:"double",onError:0.0,onNull:0.0}}]
+...   }
+...   }},
+... {$project: {gender: 1,location: 1,email:1,birthdate:1,age:1, 
+... 
+...  fullname: {$concat: [
+... 
+...  {$toUpper:{$substrCP:["$name.first",0,1]}},
+... 
+... {$substrCP:['$name.first',1,{$subtract:[{$strLenCP:'$name.first'},1]}]}," ",
+... 
+... {$toUpper:{$substrCP:["$name.last",0,1]}},
+... 
+... {$substrCP:['$name.last',1,{$subtract:[{$strLenCP:'$name.last'},1]}]}]}}},
+... 
+... {$group:{_id:{birthYear:{$isoWeekYear:"$dob.date"},numPersons:{$sum:1}}},
+... {$sort:{numPersons:1}}
+Uncaught:
+SyntaxError: Unexpected token (31:0)
+
+  29 |
+  30 | {$group:{_id:{birthYear:{$isoWeekYear:"$dob.date"},numPersons:{$sum:1}}},
+> 31 | {$sort:{numPersons:1}}
+     | ^
+  32 |
+
+analytics> db.persons.aggregate([
+... { $project:
+...  {
+...   _id:1,
+...   email:1,
+...   name:1,
+...   gender:1,
+...   birthdate:{$toDate:"$dob.date"},
+...   age:"$dob.age",
+...   location:
+...   {
+...   	type:"Point",
+...   	coordinates:[
+...   		{$convert:{input:'$location.coordinates.longitude',to:"double",onError:0.0,onNull:0.0}},
+...   		{$convert:{input:'$location.coordinates.latitude',to:"double",onError:0.0,onNull:0.0}}]
+...   }
+...   }},
+... {$project: {gender: 1,location: 1,email:1,birthdate:1,age:1, 
+... 
+...  fullname: {$concat: [
+... 
+...  {$toUpper:{$substrCP:["$name.first",0,1]}},
+... 
+... {$substrCP:['$name.first',1,{$subtract:[{$strLenCP:'$name.first'},1]}]}," ",
+... 
+... {$toUpper:{$substrCP:["$name.last",0,1]}},
+... 
+... {$substrCP:['$name.last',1,{$subtract:[{$strLenCP:'$name.last'},1]}]}]}}},
+... 
+... {$group:{_id:{birthYear:{$isoWeekYear:"$dob.date"},numPersons:{$sum:1}}}},
+... {$sort:{numPersons:1}}
+... ])
+[ { _id: { birthYear: null, numPersons: 1 } } ]
+analytics> db.persons.aggregate([
+... { $project:
+...  {
+...   _id:1,
+...   email:1,
+...   name:1,
+...   gender:1,
+...   birthdate:{$toDate:"$dob.date"},
+...   age:"$dob.age",
+...   location:
+...   {
+...   	type:"Point",
+...   	coordinates:[
+...   		{$convert:{input:'$location.coordinates.longitude',to:"double",onError:0.0,onNull:0.0}},
+...   		{$convert:{input:'$location.coordinates.latitude',to:"double",onError:0.0,onNull:0.0}}]
+...   }
+...   }},
+... {$project: {gender: 1,location: 1,email:1,birthdate:1,age:1, 
+... 
+...  fullname: {$concat: [
+... 
+...  {$toUpper:{$substrCP:["$name.first",0,1]}},
+... 
+... {$substrCP:['$name.first',1,{$subtract:[{$strLenCP:'$name.first'},1]}]}," ",
+... 
+... {$toUpper:{$substrCP:["$name.last",0,1]}},
+... 
+... {$substrCP:['$name.last',1,{$subtract:[{$strLenCP:'$name.last'},1]}]}]}}},
+... 
+... {$group:{_id:{birthYear:{$isoWeekYear:{$convert:{input:"$dob.date",to:"date",onNull:0.0,onError:0.0}}},numPersons:{$sum:1}}}},
+... {$sort:{numPersons:1}}
+... ])
+MongoServerError[Location16006]: PlanExecutor error during aggregation :: caused by :: can't convert from BSON type int to Date
+analytics> db.persons.aggregate([
+... { $project:
+...  {
+...   _id:1,
+...   email:1,
+...   name:1,
+...   gender:1,
+...   birthdate:{$toDate:"$dob.date"},
+...   age:"$dob.age",
+...   location:
+...   {
+...   	type:"Point",
+...   	coordinates:[
+...   		{$convert:{input:'$location.coordinates.longitude',to:"double",onError:0.0,onNull:0.0}},
+...   		{$convert:{input:'$location.coordinates.latitude',to:"double",onError:0.0,onNull:0.0}}]
+...   }
+...   }},
+... {$project: {gender: 1,location: 1,email:1,birthdate:1,age:1, 
+... 
+...  fullname: {$concat: [
+... 
+...  {$toUpper:{$substrCP:["$name.first",0,1]}},
+... 
+... {$substrCP:['$name.first',1,{$subtract:[{$strLenCP:'$name.first'},1]}]}," ",
+... 
+... {$toUpper:{$substrCP:["$name.last",0,1]}},
+... 
+... {$substrCP:['$name.last',1,{$subtract:[{$strLenCP:'$name.last'},1]}]}]}}},
+... 
+... {$group:{_id:{birthYear:{$isoWeekYear:{$convert:{input:"$dob.date",to:"date",onNull:0.0,onError:0.0}}},numPersons:{$sum:1}}}},
+... {$sort:{numPersons:1}}
+... ])
+MongoServerError[Location16006]: PlanExecutor error during aggregation :: caused by :: can't convert from BSON type int to Date
+analytics> db.persons.aggregate([
+... { $project:
+...  {
+...   _id:1,
+...   email:1,
+...   name:1,
+...   gender:1,
+...   birthdate:{$toDate:"$dob.date"},
+...   age:"$dob.age",
+...   location:
+...   {
+...   	type:"Point",
+...   	coordinates:[
+...   		{$convert:{input:'$location.coordinates.longitude',to:"double",onError:0.0,onNull:0.0}},
+...   		{$convert:{input:'$location.coordinates.latitude',to:"double",onError:0.0,onNull:0.0}}]
+...   }
+...   }},
+... {$project: {gender: 1,location: 1,email:1,birthdate:1,age:1, 
+... 
+...  fullname: {$concat: [
+... 
+...  {$toUpper:{$substrCP:["$name.first",0,1]}},
+... 
+... {$substrCP:['$name.first',1,{$subtract:[{$strLenCP:'$name.first'},1]}]}," ",
+... 
+... {$toUpper:{$substrCP:["$name.last",0,1]}},
+... 
+... {$substrCP:['$name.last',1,{$subtract:[{$strLenCP:'$name.last'},1]}]}]}}},
+... 
+... {$group:{_id:{birthYear:{$isoWeekYear:"birthdate"},numPersons:{$sum:1}}}},
+... {$sort:{numPersons:1}}
+... ])
+MongoServerError[Location16006]: Failed to optimize pipeline :: caused by :: can't convert from BSON type string to Date
+analytics> db.persons.aggregate([
+... { $project:
+...  {
+...   _id:1,
+...   email:1,
+...   name:1,
+...   gender:1,
+...   birthdate:{$toDate:"$dob.date"},
+...   age:"$dob.age",
+...   location:
+...   {
+...   	type:"Point",
+...   	coordinates:[
+...   		{$convert:{input:'$location.coordinates.longitude',to:"double",onError:0.0,onNull:0.0}},
+...   		{$convert:{input:'$location.coordinates.latitude',to:"double",onError:0.0,onNull:0.0}}]
+...   }
+...   }},
+... {$project: {gender: 1,location: 1,email:1,birthdate:1,age:1, 
+... 
+...  fullname: {$concat: [
+... 
+...  {$toUpper:{$substrCP:["$name.first",0,1]}},
+... 
+... {$substrCP:['$name.first',1,{$subtract:[{$strLenCP:'$name.first'},1]}]}," ",
+... 
+... {$toUpper:{$substrCP:["$name.last",0,1]}},
+... 
+... {$substrCP:['$name.last',1,{$subtract:[{$strLenCP:'$name.last'},1]}]}]}}},
+... 
+... {$group:{_id:{birthYear:{$isoWeekYear:"birthdate"}},numPersons:{$sum:1}}},
+... {$sort:{numPersons:1}}
+... ])
+MongoServerError[Location16006]: Failed to optimize pipeline :: caused by :: can't convert from BSON type string to Date
+analytics> db.persons.aggregate([
+... { $project:
+...  {
+...   _id:1,
+...   email:1,
+...   name:1,
+...   gender:1,
+...   birthdate:{$toDate:"$dob.date"},
+...   age:"$dob.age",
+...   location:
+...   {
+...   	type:"Point",
+...   	coordinates:[
+...   		{$convert:{input:'$location.coordinates.longitude',to:"double",onError:0.0,onNull:0.0}},
+...   		{$convert:{input:'$location.coordinates.latitude',to:"double",onError:0.0,onNull:0.0}}]
+...   }}},
+... {$project: {gender: 1,location: 1,email:1,birthdate:1,age:1, 
+... 
+...  fullname: {$concat: [
+... 
+...  {$toUpper:{$substrCP:["$name.first",0,1]}},
+... 
+... {$substrCP:['$name.first',1,{$subtract:[{$strLenCP:'$name.first'},1]}]}," ",
+... 
+... {$toUpper:{$substrCP:["$name.last",0,1]}},
+... 
+... {$substrCP:['$name.last',1,{$subtract:[{$strLenCP:'$name.last'},1]}]}]}}},
+... 
+... {$group:{_id:{birthYear:{$isoWeekYear:"birthdate"}},numPersons:{$sum:1}}},
+... 
+... {$sort:{numPersons:1}}])
+MongoServerError[Location16006]: Failed to optimize pipeline :: caused by :: can't convert from BSON type string to Date
+analytics> db.persons.aggregate([ { $project: { _id: 1, email: 1, name: 1, gender: 1, birthdate: { $toDate: "$dob.date" }, age: "$dob.age", location: { type: "Point", coordinates: [ { $convert: { input: '$location.coordinates.longitude', to: "double", onError: 0.0, onNull: 0.0 } }, { $convert: { input: '$location.coordinates.latitude', to: "double", onError: 0.0, onNull: 0.0 } }] } } }, { $project: { gender: 1, location: 1, email: 1, birthdate: 1, age: 1, fullname: { $concat: [ { $toUpper: { $substrCP: ["$name.first", 0, 1] } }, { $substrCP: ['$name.first', 1, { $subtract: [{ $strLenCP: '$name.first' }, 1] }] }, " ", { $toUpper: { $substrCP: ["$name.last", 0, 1] } }, { $substrCP: ['$name.last', 1, { $subtract: [{ $strLenCP: '$name.last' }, 1] }] }] } } }, { $group: { _id: { birthYear: { $isoWeekYear: "birthdate" } }, numPersons: { $sum: 1 } } }, { $sort: { numPersons: 1 } }])
+analytics> db.persons.aggregate([
+... { $project:
+...  {
+...   _id:1,
+...   email:1,
+...   name:1,
+...   gender:1,
+...   birthdate:{$toDate:"$dob.date"},
+...   age:"$dob.age",
+...   location:
+...   {
+...   	type:"Point",
+...   	coordinates:[
+...   		{$convert:{input:'$location.coordinates.longitude',to:"double",onError:0.0,onNull:0.0}},
+...   		{$convert:{input:'$location.coordinates.latitude',to:"double",onError:0.0,onNull:0.0}}]
+...   }}},
+... {$project: {gender: 1,location: 1,email:1,birthdate:1,age:1, 
+... 
+...  fullname: {$concat: [
+... 
+...  {$toUpper:{$substrCP:["$name.first",0,1]}},
+... 
+... {$substrCP:['$name.first',1,{$subtract:[{$strLenCP:'$name.first'},1]}]}," ",
+... 
+... {$toUpper:{$substrCP:["$name.last",0,1]}},
+... 
+... {$substrCP:['$name.last',1,{$subtract:[{$strLenCP:'$name.last'},1]}]}]}}},
+... 
+... {$group:{_id:{birthYear:{$isoWeekYear:"$birthdate"}},numPersons:{$sum:1}}},
+... 
+... {$sort:{numPersons:1}}])
+[
+  { _id: { birthYear: Long('1944') }, numPersons: 27 },
+  { _id: { birthYear: Long('1997') }, numPersons: 52 },
+  { _id: { birthYear: Long('1969') }, numPersons: 78 },
+  { _id: { birthYear: Long('1951') }, numPersons: 79 },
+  { _id: { birthYear: Long('1985') }, numPersons: 79 },
+  { _id: { birthYear: Long('1972') }, numPersons: 80 },
+  { _id: { birthYear: Long('1957') }, numPersons: 82 },
+  { _id: { birthYear: Long('1979') }, numPersons: 84 },
+  { _id: { birthYear: Long('1978') }, numPersons: 85 },
+  { _id: { birthYear: Long('1952') }, numPersons: 85 },
+  { _id: { birthYear: Long('1977') }, numPersons: 86 },
+  { _id: { birthYear: Long('1996') }, numPersons: 86 },
+  { _id: { birthYear: Long('1980') }, numPersons: 86 },
+  { _id: { birthYear: Long('1956') }, numPersons: 87 },
+  { _id: { birthYear: Long('1964') }, numPersons: 87 },
+  { _id: { birthYear: Long('1971') }, numPersons: 88 },
+  { _id: { birthYear: Long('1988') }, numPersons: 89 },
+  { _id: { birthYear: Long('1962') }, numPersons: 90 },
+  { _id: { birthYear: Long('1949') }, numPersons: 91 },
+  { _id: { birthYear: Long('1987') }, numPersons: 92 }
+]
+Type "it" for more
+analytics> db.persons.aggregate([ { $project: { _id: 1, email: 1, name: 1, gender: 1, birthdate: { $toDate: "$dob.date" }, age: "$dob.age", location: { type: "Point", coordinates: [ { $convert: { input: '$location.coordinates.longitude', to: "double", onError: 0.0, onNull: 0.0 } }, { $convert: { input: '$location.coordinates.latitude', to: "double", onError: 0.0, onNull: 0.0 } }] } } }, { $project: { gender: 1, location: 1, email: 1, birthdate: 1, age: 1, fullname: { $concat: [ { $toUpper: { $substrCP: ["$name.first", 0, 1] } }, { $substrCP: ['$name.first', 1, { $subtract: [{ $strLenCP: '$name.first' }, 1] }] }, " ", { $toUpper: { $substrCP: ["$name.last", 0, 1] } }, { $substrCP: ['$name.last', 1, { $subtract: [{ $strLenCP: '$name.last' }, 1] }] }] } } }, { $group: { _id: { birthYear: { $isoWeekYear: "$birthdate" } }, numPersons: { $sum: 1 } } }, { $sort: { numPersons: -1 } }])
+[
+  { _id: { birthYear: Long('1955') }, numPersons: 113 },
+  { _id: { birthYear: Long('1961') }, numPersons: 111 },
+  { _id: { birthYear: Long('1960') }, numPersons: 110 },
+  { _id: { birthYear: Long('1993') }, numPersons: 110 },
+  { _id: { birthYear: Long('1975') }, numPersons: 107 },
+  { _id: { birthYear: Long('1945') }, numPersons: 106 },
+  { _id: { birthYear: Long('1976') }, numPersons: 105 },
+  { _id: { birthYear: Long('1967') }, numPersons: 104 },
+  { _id: { birthYear: Long('1990') }, numPersons: 103 },
+  { _id: { birthYear: Long('1981') }, numPersons: 102 },
+  { _id: { birthYear: Long('1994') }, numPersons: 102 },
+  { _id: { birthYear: Long('1995') }, numPersons: 101 },
+  { _id: { birthYear: Long('1958') }, numPersons: 101 },
+  { _id: { birthYear: Long('1946') }, numPersons: 100 },
+  { _id: { birthYear: Long('1948') }, numPersons: 100 },
+  { _id: { birthYear: Long('1983') }, numPersons: 99 },
+  { _id: { birthYear: Long('1950') }, numPersons: 99 },
+  { _id: { birthYear: Long('1970') }, numPersons: 99 },
+  { _id: { birthYear: Long('1963') }, numPersons: 98 },
+  { _id: { birthYear: Long('1965') }, numPersons: 98 }
+]
+Type "it" for more
+analytics> db.persons.aggregate([
+... { $project:
+...  {
+...   _id:1,
+...   email:1,
+...   name:1,
+...   gender:1,
+...   birthdate:"$dob.date",
+...   age:"$dob.age",
+...   location:
+...   {
+...   	type:"Point",
+...   	coordinates:[
+...   		{$convert:{input:'$location.coordinates.longitude',to:"double",onError:0.0,onNull:0.0}},
+...   		{$convert:{input:'$location.coordinates.latitude',to:"double",onError:0.0,onNull:0.0}}]
+...   }}},
+... {$project: {gender: 1,location: 1,email:1,birthdate:1,age:1, 
+... 
+...  fullname: {$concat: [
+... 
+...  {$toUpper:{$substrCP:["$name.first",0,1]}},
+... 
+... {$substrCP:['$name.first',1,{$subtract:[{$strLenCP:'$name.first'},1]}]}," ",
+... 
+... {$toUpper:{$substrCP:["$name.last",0,1]}},
+... 
+... {$substrCP:['$name.last',1,{$subtract:[{$strLenCP:'$name.last'},1]}]}]}}},
+... 
+... {$group:{_id:{birthYear:{$isoWeekYear:"$birthdate"}},numPersons:{$sum:1}}},
+... 
+... {$sort:{numPersons:1}}])
+MongoServerError[Location16006]: PlanExecutor error during aggregation :: caused by :: can't convert from BSON type string to Date
+analytics> db.persons.aggregate([
+... { $project:
+...  {
+...   _id:1,
+...   email:1,
+...   name:1,
+...   gender:1,
+...   birthdate:"$dob.date",
+...   age:"$dob.age",
+...   location:
+...   {
+...   	type:"Point",
+...   	coordinates:[
+...   		{$convert:{input:'$location.coordinates.longitude',to:"double",onError:0.0,onNull:0.0}},
+...   		{$convert:{input:'$location.coordinates.latitude',to:"double",onError:0.0,onNull:0.0}}]
+...   }}},
+... {$project: {gender: 1,location: 1,email:1,birthdate:1,age:1, 
+... 
+...  fullname: {$concat: [
+... 
+...  {$toUpper:{$substrCP:["$name.first",0,1]}},
+... 
+... {$substrCP:['$name.first',1,{$subtract:[{$strLenCP:'$name.first'},1]}]}," ",
+... 
+... {$toUpper:{$substrCP:["$name.last",0,1]}},
+... 
+... {$substrCP:['$name.last',1,{$subtract:[{$strLenCP:'$name.last'},1]}]}]}}},
+... 
+... {$group:{_id:{birthYear:{$isoWeekYear:{$convert:{input:"$birthdate",to:"date",onNull:0.0,onError:0.0}}}},numPersons:{$sum:1}}},
+... 
+... {$sort:{numPersons:1}}])
+[
+  { _id: { birthYear: Long('1944') }, numPersons: 27 },
+  { _id: { birthYear: Long('1997') }, numPersons: 52 },
+  { _id: { birthYear: Long('1969') }, numPersons: 78 },
+  { _id: { birthYear: Long('1951') }, numPersons: 79 },
+  { _id: { birthYear: Long('1985') }, numPersons: 79 },
+  { _id: { birthYear: Long('1972') }, numPersons: 80 },
+  { _id: { birthYear: Long('1957') }, numPersons: 82 },
+  { _id: { birthYear: Long('1979') }, numPersons: 84 },
+  { _id: { birthYear: Long('1952') }, numPersons: 85 },
+  { _id: { birthYear: Long('1978') }, numPersons: 85 },
+  { _id: { birthYear: Long('1980') }, numPersons: 86 },
+  { _id: { birthYear: Long('1977') }, numPersons: 86 },
+  { _id: { birthYear: Long('1996') }, numPersons: 86 },
+  { _id: { birthYear: Long('1956') }, numPersons: 87 },
+  { _id: { birthYear: Long('1964') }, numPersons: 87 },
+  { _id: { birthYear: Long('1971') }, numPersons: 88 },
+  { _id: { birthYear: Long('1988') }, numPersons: 89 },
+  { _id: { birthYear: Long('1962') }, numPersons: 90 },
+  { _id: { birthYear: Long('1949') }, numPersons: 91 },
+  { _id: { birthYear: Long('1966') }, numPersons: 92 }
+]
+Type "it" for more
+analytics> db.persons.aggregate([
+... { $project:
+...  {
+...   _id:1,
+...   email:1,
+...   name:1,
+...   gender:1,
+...   birthdate:"$dob.date",
+...   age:"$dob.age",
+...   location:
+...   {
+...   	type:"Point",
+...   	coordinates:[
+...   		{$convert:{input:'$location.coordinates.longitude',to:"double",onError:0.0,onNull:0.0}},
+...   		{$convert:{input:'$location.coordinates.latitude',to:"double",onError:0.0,onNull:0.0}}]
+...   }}},
+... {$project: {gender: 1,location: 1,email:1,birthdate:1,age:1, 
+... 
+...  fullname: {$concat: [
+... 
+...  {$toUpper:{$substrCP:["$name.first",0,1]}},
+... 
+... {$substrCP:['$name.first',1,{$subtract:[{$strLenCP:'$name.first'},1]}]}," ",
+... 
+... {$toUpper:{$substrCP:["$name.last",0,1]}},
+... 
+... {$substrCP:['$name.last',1,{$subtract:[{$strLenCP:'$name.last'},1]}]}]}}},
+... 
+... {$group:{_id:{birthYear:{$isoWeekYear:{$todate:"$birthdate"}}},numPersons:{$sum:1}}},
+... 
+... {$sort:{numPersons:1}}])
+MongoServerError[InvalidPipelineOperator]: Unrecognized expression '$todate'
+analytics> db.persons.aggregate([
+... { $project:
+...  {
+...   _id:1,
+...   email:1,
+...   name:1,
+...   gender:1,
+...   birthdate:"$dob.date",
+...   age:"$dob.age",
+...   location:
+...   {
+...   	type:"Point",
+...   	coordinates:[
+...   		{$convert:{input:'$location.coordinates.longitude',to:"double",onError:0.0,onNull:0.0}},
+...   		{$convert:{input:'$location.coordinates.latitude',to:"double",onError:0.0,onNull:0.0}}]
+...   }}},
+... {$project: {gender: 1,location: 1,email:1,birthdate:1,age:1, 
+... 
+...  fullname: {$concat: [
+... 
+...  {$toUpper:{$substrCP:["$name.first",0,1]}},
+... 
+... {$substrCP:['$name.first',1,{$subtract:[{$strLenCP:'$name.first'},1]}]}," ",
+... 
+... {$toUpper:{$substrCP:["$name.last",0,1]}},
+... 
+... {$substrCP:['$name.last',1,{$subtract:[{$strLenCP:'$name.last'},1]}]}]}}},
+... 
+... {$group:{_id:{birthYear:{$isoWeekYear:{$toDate:"$birthdate"}}},numPersons:{$sum:1}}},
+... 
+... {$sort:{numPersons:1}}])
+[
+  { _id: { birthYear: Long('1944') }, numPersons: 27 },
+  { _id: { birthYear: Long('1997') }, numPersons: 52 },
+  { _id: { birthYear: Long('1969') }, numPersons: 78 },
+  { _id: { birthYear: Long('1985') }, numPersons: 79 },
+  { _id: { birthYear: Long('1951') }, numPersons: 79 },
+  { _id: { birthYear: Long('1972') }, numPersons: 80 },
+  { _id: { birthYear: Long('1957') }, numPersons: 82 },
+  { _id: { birthYear: Long('1979') }, numPersons: 84 },
+  { _id: { birthYear: Long('1952') }, numPersons: 85 },
+  { _id: { birthYear: Long('1978') }, numPersons: 85 },
+  { _id: { birthYear: Long('1977') }, numPersons: 86 },
+  { _id: { birthYear: Long('1980') }, numPersons: 86 },
+  { _id: { birthYear: Long('1996') }, numPersons: 86 },
+  { _id: { birthYear: Long('1956') }, numPersons: 87 },
+  { _id: { birthYear: Long('1964') }, numPersons: 87 },
+  { _id: { birthYear: Long('1971') }, numPersons: 88 },
+  { _id: { birthYear: Long('1988') }, numPersons: 89 },
+  { _id: { birthYear: Long('1962') }, numPersons: 90 },
+  { _id: { birthYear: Long('1949') }, numPersons: 91 },
+  { _id: { birthYear: Long('1966') }, numPersons: 92 }
+]
+Type "it" for more
+analytics> show collections;
+persons
+analytics> db.persons.findOne()
+{
+  _id: ObjectId('677772e0ae898e105a49fe57'),
+  gender: 'male',
+  name: { title: 'mr', first: 'victor', last: 'pedersen' },
+  location: {
+    street: '2156 stenbjergvej',
+    city: 'billum',
+    state: 'nordjylland',
+    postcode: 56649,
+    coordinates: { latitude: '-29.8113', longitude: '-31.0208' },
+    timezone: {
+      offset: '+5:30',
+      description: 'Bombay, Calcutta, Madras, New Delhi'
+    }
+  },
+  email: 'victor.pedersen@example.com',
+  login: {
+    uuid: 'fbb3c298-2cea-4415-84d1-74233525c325',
+    username: 'smallbutterfly536',
+    password: 'down',
+    salt: 'iW5QrgwW',
+    md5: '3cc8b8a4d69321a408cd46174e163594',
+    sha1: '681c0353b34fae08422686eea190e1c09472fc1f',
+    sha256: 'eb5251e929c56dfd19fc597123ed6ec2d0130a2c3c1bf8fc9c2ff8f29830a3b7'
+  },
+  dob: { date: '1959-02-19T23:56:23Z', age: 59 },
+  registered: { date: '2004-07-07T22:37:39Z', age: 14 },
+  phone: '23138213',
+  cell: '30393606',
+  id: { name: 'CPR', value: '506102-2208' },
+  picture: {
+    large: 'https://randomuser.me/api/portraits/men/23.jpg',
+    medium: 'https://randomuser.me/api/portraits/med/men/23.jpg',
+    thumbnail: 'https://randomuser.me/api/portraits/thumb/men/23.jpg'
+  },
+  nat: 'DK'
+}
+analytics> show dbs;
+Abhishek        72.00 KiB
+Bike           116.00 KiB
+Book           112.00 KiB
+Car             80.00 KiB
+CityData       112.00 KiB
+College         56.00 KiB
+ContactData      3.71 MiB
+Credit          16.00 KiB
+Flights        116.00 KiB
+School         112.00 KiB
+Store           40.00 KiB
+Support         88.00 KiB
+admin           40.00 KiB
+analytics        2.81 MiB
+blog           112.00 KiB
+bookRegistry    80.00 KiB
+boxOffice       80.00 KiB
+companyData     96.00 KiB
+config          72.00 KiB
+financialData   40.00 KiB
+hospital        40.00 KiB
+local          256.00 KiB
+moviesData     192.00 KiB
+shop            96.00 KiB
+user            72.00 KiB
+analytics> use School;
+switched to db School
+School> show collections;
+students
+teachers
+School> db.teachers.findOne()
+{
+  _id: ObjectId('675eb2ebf7a0226d0f1cda58'),
+  Address: [
+    { Street: 'Golok Gali' },
+    { Village: 'Golok' },
+    { Street: 'Hanuman Gali' }
+  ],
+  TotalAge: 45,
+  FullName: 'RadhaMayaa'
+}
+School> db.teachers.find()
+[
+  {
+    _id: ObjectId('675eb2ebf7a0226d0f1cda58'),
+    Address: [
+      { Street: 'Golok Gali' },
+      { Village: 'Golok' },
+      { Street: 'Hanuman Gali' }
+    ],
+    TotalAge: 45,
+    FullName: 'RadhaMayaa'
+  },
+  {
+    _id: ObjectId('675eb2ebf7a0226d0f1cda59'),
+    TotalAge: 47,
+    Address: [
+      { Street: 'Shiv Mandir', Village: 'Golok' },
+      { Street: 'Parvati Sarovar', Village: 'Chhapiya' }
+    ],
+    FullName: 'KrishnaPitasiri'
+  }
+]
+School> db.teachers.deleteMany();
+MongoshInvalidInputError: [COMMON-10001] Missing required argument at position 0 (Collection.deleteMany)
+School> db.teachers.deleteMany({})
+{ acknowledged: true, deletedCount: 2 }
+School> show collections;
+students
+teachers
+School> db.teachers.findOne();
+null
+School> db.teachers.insertMany{[
+Uncaught:
+SyntaxError: Missing semicolon. (1:22)
+
+> 1 | db.teachers.insertMany{[
+    |                       ^
+  2 |
+
+School> {
+School> db.teachers.insertMany([
+... {
+... "name":"Abhishek Tyagi",
+... RollNo:12,
+... Age:24,
+... 
+School> show collections;
+students
+teachers
+School> db.teachers.find()
+
+School> db.teachers.find();
+
+School> db.teachers.findOne();
+null
+School> db.teachers.insertMany([
+... {
+... "name":"Chanakye",
+... Age:43,
+... Salary:12000,
+... "Subjects":["Maths","Politics","Science","Commerce"]
+... },
+... {
+... "name":"Aryabaat",
+... Age:54,
+... Salary:15000,
+... "Subjects":["Maths","Commerce","Cosmology","Science"]
+... }
+... ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('677f84584bfabc997d6f424b'),
+    '1': ObjectId('677f84584bfabc997d6f424c')
+  }
+}
+School> db.teachers.find();
+[
+  {
+    _id: ObjectId('677f84584bfabc997d6f424b'),
+    name: 'Chanakye',
+    Age: 43,
+    Salary: 12000,
+    Subjects: [ 'Maths', 'Politics', 'Science', 'Commerce' ]
+  },
+  {
+    _id: ObjectId('677f84584bfabc997d6f424c'),
+    name: 'Aryabaat',
+    Age: 54,
+    Salary: 15000,
+    Subjects: [ 'Maths', 'Commerce', 'Cosmology', 'Science' ]
+  }
+]
+School> show collections;
+students
+teachers
+School> db.students.findOne()
+{
+  _id: ObjectId('6767e5e10643a49bfd3a1fb9'),
+  name: 'Abhishek Tyagi',
+  Age: 23,
+  Salary: 150000,
+  Address: [
+    { Street: 'Parvati Mayaa', City: 'Mahedev Khashi' },
+    { Street: 'Radha Mayaa', City: 'Krishna Mathura' },
+    { Street: 'Ganga Mayaa', City: 'Haridwar' }
+  ]
+}
+School> shoi dbs;
+Uncaught:
+SyntaxError: Missing semicolon. (1:4)
+
+> 1 | shoi dbs;
+    |     ^
+  2 |
+
+School> show dbs;
+Abhishek        72.00 KiB
+Bike           116.00 KiB
+Book           112.00 KiB
+Car             80.00 KiB
+CityData       112.00 KiB
+College         56.00 KiB
+ContactData      3.71 MiB
+Credit          16.00 KiB
+Flights        116.00 KiB
+School         104.00 KiB
+Store           40.00 KiB
+Support         88.00 KiB
+admin           40.00 KiB
+analytics        2.81 MiB
+blog           112.00 KiB
+bookRegistry    80.00 KiB
+boxOffice       80.00 KiB
+companyData     96.00 KiB
+config          72.00 KiB
+financialData   40.00 KiB
+hospital        40.00 KiB
+local          256.00 KiB
+moviesData     192.00 KiB
+shop            96.00 KiB
+user            72.00 KiB
+School> show collections;
+students
+teachers
+School> db.teachers.findOne()
+{
+  _id: ObjectId('677f84584bfabc997d6f424b'),
+  name: 'Chanakye',
+  Age: 43,
+  Salary: 12000,
+  Subjects: [ 'Maths', 'Politics', 'Science', 'Commerce' ]
+}
+School> db.teachers.find();
+[
+  {
+    _id: ObjectId('677f84584bfabc997d6f424b'),
+    name: 'Chanakye',
+    Age: 43,
+    Salary: 12000,
+    Subjects: [ 'Maths', 'Politics', 'Science', 'Commerce' ]
+  },
+  {
+    _id: ObjectId('677f84584bfabc997d6f424c'),
+    name: 'Aryabaat',
+    Age: 54,
+    Salary: 15000,
+    Subjects: [ 'Maths', 'Commerce', 'Cosmology', 'Science' ]
+  }
+]
+School> sg=how dbs;
+Uncaught:
+SyntaxError: Missing semicolon. (1:6)
+
+> 1 | sg=how dbs;
+    |       ^
+  2 |
+
+School> show dbs;
+Abhishek        72.00 KiB
+Bike           116.00 KiB
+Book           112.00 KiB
+Car             80.00 KiB
+CityData       112.00 KiB
+College         56.00 KiB
+ContactData      3.71 MiB
+Credit          16.00 KiB
+Flights        116.00 KiB
+School         104.00 KiB
+Store           40.00 KiB
+Support         88.00 KiB
+admin           40.00 KiB
+analytics        2.81 MiB
+blog           112.00 KiB
+bookRegistry    80.00 KiB
+boxOffice       80.00 KiB
+companyData     96.00 KiB
+config          72.00 KiB
+financialData   40.00 KiB
+hospital        40.00 KiB
+local          256.00 KiB
+moviesData     192.00 KiB
+shop            96.00 KiB
+user            72.00 KiB
+School> show collections;
+students
+teachers
+School> use analytics;
+switched to db analytics
+analytics> show dbs;
+Abhishek        72.00 KiB
+Bike           116.00 KiB
+Book           112.00 KiB
+Car             80.00 KiB
+CityData       112.00 KiB
+College         56.00 KiB
+ContactData      3.71 MiB
+Credit          16.00 KiB
+Flights        116.00 KiB
+School         104.00 KiB
+Store           40.00 KiB
+Support         88.00 KiB
+admin           40.00 KiB
+analytics        2.81 MiB
+blog           112.00 KiB
+bookRegistry    80.00 KiB
+boxOffice       80.00 KiB
+companyData     96.00 KiB
+config          96.00 KiB
+financialData   40.00 KiB
+hospital        40.00 KiB
+local          256.00 KiB
+moviesData     192.00 KiB
+shop            96.00 KiB
+user            72.00 KiB
+analytics> connect user;
+Uncaught:
+SyntaxError: Missing semicolon. (1:7)
+
+> 1 | connect user;
+    |        ^
+  2 |
+
+analytics> show collections;
+persons
+analytics> db.friends.insertMany([
+... [
+...   {
+...     "name": "Max",
+...     "hobbies": ["Sports", "Cooking"],
+...     "age": 29,
+...     "examScores": [
+...       { "difficulty": 4, "score": 57.9 },
+...       { "difficulty": 6, "score": 62.1 },
+...       { "difficulty": 3, "score": 88.5 }
+...     ]
+...   },
+...   {
+...     "name": "Manu",
+...     "hobbies": ["Eating", "Data Analytics"],
+...     "age": 30,
+...     "examScores": [
+...       { "difficulty": 7, "score": 52.1 },
+...       { "difficulty": 2, "score": 74.3 },
+...       { "difficulty": 5, "score": 53.1 }
+...     ]
+...   },
+...   {
+...     "name": "Maria",
+...     "hobbies": ["Cooking", "Skiing"],
+...     "age": 29,
+...     "examScores": [
+...       { "difficulty": 3, "score": 75.1 },
+...       { "difficulty": 8, "score": 44.2 },
+...       { "difficulty": 6, "score": 61.5 }
+...     ]
+...   }
+... ]
+...   )
+Uncaught:
+SyntaxError: Unexpected token, expected "," (34:2)
+
+  32 |   }
+  33 | ]
+> 34 |   )
+     |   ^
+  35 |
+
+analytics> db.friends.insertMany(
+... 
+...   {
+...     "name": "Max",
+...     "hobbies": ["Sports", "Cooking"],
+...     "age": 29,
+...     "examScores": [
+...       { "difficulty": 4, "score": 57.9 },
+...       { "difficulty": 6, "score": 62.1 },
+...       { "difficulty": 3, "score": 88.5 }
+...     ]
+...   },
+...   {
+...     "name": "Manu",
+...     "hobbies": ["Eating", "Data Analytics"],
+...     "age": 30,
+...     "examScores": [
+...       { "difficulty": 7, "score": 52.1 },
+...       { "difficulty": 2, "score": 74.3 },
+...       { "difficulty": 5, "score": 53.1 }
+...     ]
+...   },
+...   {
+...     "name": "Maria",
+...     "hobbies": ["Cooking", "Skiing"],
+...     "age": 29,
+...     "examScores": [
+...       { "difficulty": 3, "score": 75.1 },
+...       { "difficulty": 8, "score": 44.2 },
+...       { "difficulty": 6, "score": 61.5 }
+...     ]
+...   }
+... ])
+Uncaught:
+SyntaxError: Unexpected token, expected "," (33:0)
+
+  31 |     ]
+  32 |   }
+> 33 | ])
+     | ^
+  34 |
+
+analytics> db.friends.insertMany( { "name": "Max", "hobbies": ["Sports", "Cooking"], "age": 29, "examScores": [ { "difficulty": 4, "score": 57.9 }, { "difficulty": 6, "score": 62.1 }, { "difficulty": 3, "score": 88.5 } ] }, { "name": "Manu", "hobbies": ["Eating", "Data Analytics"], "age": 30, "examScores": [ { "difficulty": 7, "score": 52.1 }, { "difficulty": 2, "score": 74.3 }, { "difficulty": 5, "score": 53.1 } ] }, { "name": "Maria", "hobbies": ["Cooking", "Skiing"], "age": 29, "examScores": [ { "difficulty": 3, "score": 75.1 }, { "difficulty": 8, "score": 44.2 }, { "difficulty": 6, "score": 61.5 }])
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:598)
+
+> 1 | db.friends.insertMany( { "name": "Max", "hobbies": ["Sports", "Cooking"], "age": 29, "examScores": [ { "difficulty": 4, "score": 57.9 }, { "difficulty": 6, "score": 62.1 }, { "difficulty": 3, "score": 88.5 } ] }, { "name": "Manu", "hobbies": ["Eating", "Data Analytics"], "age": 30, "examScores": [ { "difficulty": 7, "score": 52.1 }, { "difficulty": 2, "score": 74.3 }, { "difficulty": 5, "score": 53.1 } ] }, { "name": "Maria", "hobbies": ["Cooking", "Skiing"], "age": 29, "examScores": [ { "difficulty": 3, "score": 75.1 }, { "difficulty": 8, "score": 44.2 }, { "difficulty": 6, "score": 61.5 }])
+    |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       ^
+  2 |
+
+analytics> db.friends.insertMany([
+...   {
+...     "name": "Max",
+...     "hobbies": ["Sports", "Cooking"],
+...     "age": 29,
+...     "examScores": [
+...       { "difficulty": 4, "score": 57.9 },
+...       { "difficulty": 6, "score": 62.1 },
+...       { "difficulty": 3, "score": 88.5 }
+...     ]
+...   },
+...   {
+...     "name": "Manu",
+...     "hobbies": ["Eating", "Data Analytics"],
+...     "age": 30,
+...     "examScores": [
+...       { "difficulty": 7, "score": 52.1 },
+...       { "difficulty": 2, "score": 74.3 },
+...       { "difficulty": 5, "score": 53.1 }
+...     ]
+...   },
+...   {
+...     "name": "Maria",
+...     "hobbies": ["Cooking", "Skiing"],
+...     "age": 29,
+...     "examScores": [
+...       { "difficulty": 3, "score": 75.1 },
+...       { "difficulty": 8, "score": 44.2 },
+...       { "difficulty": 6, "score": 61.5 }
+...     ]
+...   }
+... ])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('677fd9644bfabc997d6f424d'),
+    '1': ObjectId('677fd9644bfabc997d6f424e'),
+    '2': ObjectId('677fd9644bfabc997d6f424f')
+  }
+}
+analytics> show collections;
+friends
+persons
+analytics> db.friends.findone()
+TypeError: db.friends.findone is not a function
+analytics> db.friends.findOne()
+{
+  _id: ObjectId('677fd9644bfabc997d6f424d'),
+  name: 'Max',
+  hobbies: [ 'Sports', 'Cooking' ],
+  age: 29,
+  examScores: [
+    { difficulty: 4, score: 57.9 },
+    { difficulty: 6, score: 62.1 },
+    { difficulty: 3, score: 88.5 }
+  ]
+}
+analytics> db.friends.find()
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> show collections;
+friends
+persons
+analytics> mongo -version;
+ReferenceError: mongo is not defined
+analytics> mongodb --version();
+Uncaught:
+SyntaxError: Missing semicolon. (1:10)
+
+> 1 | mongodb --version();
+    |           ^
+  2 |
+
+analytics> mongo --version();
+Uncaught:
+SyntaxError: Missing semicolon. (1:8)
+
+> 1 | mongo --version();
+    |         ^
+  2 |
+
+analytics> db.version();
+7.0.2
+analytics> $ mongod --version
+Uncaught:
+SyntaxError: Missing semicolon. (1:1)
+
+> 1 | $ mongod --version
+    |  ^
+  2 |
+
+analytics> $mongod --version
+Uncaught:
+SyntaxError: Missing semicolon. (1:10)
+
+> 1 | $mongod --version
+    |           ^
+  2 |
+
+analytics> $mongod --version;
+Uncaught:
+SyntaxError: Missing semicolon. (1:10)
+
+> 1 | $mongod --version;
+    |           ^
+  2 |
+
+analytics> $ mongod --version
+Uncaught:
+SyntaxError: Missing semicolon. (1:1)
+
+> 1 | $ mongod --version
+    |  ^
+  2 |
+
+analytics> db.stats();
+{
+  db: 'analytics',
+  collections: Long('2'),
+  views: Long('0'),
+  objects: Long('5003'),
+  avgObjSize: 1095.726564061563,
+  dataSize: 5481920,
+  storageSize: 2899968,
+  indexes: Long('2'),
+  indexSize: 86016,
+  totalSize: 2985984,
+  scaleFactor: Long('1'),
+  fsUsedSize: 216032112640,
+  fsTotalSize: 245107195904,
+  ok: 1
+}
+analytics> show collections;
+friends
+persons
+analytics> db.friends.fin()_
+Uncaught:
+SyntaxError: Missing semicolon. (1:16)
+
+> 1 | db.friends.fin()_
+    |                 ^
+  2 |
+
+analytics> 
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+analytics> db.friends.fin();
+TypeError: db.friends.fin is not a function
+analytics> db.friends.find();
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> db.friends.aggregate([
+... {$group:{_id:"$age"}}])
+[ { _id: 29 }, { _id: 30 } ]
+analytics> db.friends.aggregate([ { $group: { _id:{age:"$age" } }])
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:54)
+
+> 1 | db.friends.aggregate([ { $group: { _id:{age:"$age" } }])
+    |                                                       ^
+  2 |
+
+analytics> db.friends.aggregate([ { $group: { _id:{age:"$age" }}}])
+[ { _id: { age: 29 } }, { _id: { age: 30 } } ]
+analytics> db.friends.aggregate([ { $group: { _id:{age:"$age"},count:{$sum:1}}}])
+[ { _id: { age: 29 }, count: 2 }, { _id: { age: 30 }, count: 1 } ]
+analytics> db.friends.aggregate([ { $group: { _id:"$age",count:{$sum:1}}}])
+[ { _id: 29, count: 2 }, { _id: 30, count: 1 } ]
+analytics> db.friends.findOne()
+{
+  _id: ObjectId('677fd9644bfabc997d6f424d'),
+  name: 'Max',
+  hobbies: [ 'Sports', 'Cooking' ],
+  age: 29,
+  examScores: [
+    { difficulty: 4, score: 57.9 },
+    { difficulty: 6, score: 62.1 },
+    { difficulty: 3, score: 88.5 }
+  ]
+}
+analytics> db.friends.find()
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> db.friends.aggregate([
+... {$group:{_id:{age:"$age"},allhobbies:
+... {$push:"$hobbies"}}}])
+[
+  { _id: { age: 30 }, allhobbies: [ [ 'Eating', 'Data Analytics' ] ] },
+  {
+    _id: { age: 29 },
+    allhobbies: [ [ 'Sports', 'Cooking' ], [ 'Cooking', 'Skiing' ] ]
+  }
+]
+analytics> db.friends.find()
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> show collections;
+friends
+persons
+analytics> db.persons.find().count();
+(node:26665) [MONGODB DRIVER] Warning: cursor.count is deprecated and will be removed in the next major version, please use `collection.estimatedDocumentCount` or `collection.countDocuments` instead 
+5000
+analytics> db.persons.find();
+[
+  {
+    _id: ObjectId('677772e0ae898e105a49fe57'),
+    gender: 'male',
+    name: { title: 'mr', first: 'victor', last: 'pedersen' },
+    location: {
+      street: '2156 stenbjergvej',
+      city: 'billum',
+      state: 'nordjylland',
+      postcode: 56649,
+      coordinates: { latitude: '-29.8113', longitude: '-31.0208' },
+      timezone: {
+        offset: '+5:30',
+        description: 'Bombay, Calcutta, Madras, New Delhi'
+      }
+    },
+    email: 'victor.pedersen@example.com',
+    login: {
+      uuid: 'fbb3c298-2cea-4415-84d1-74233525c325',
+      username: 'smallbutterfly536',
+      password: 'down',
+      salt: 'iW5QrgwW',
+      md5: '3cc8b8a4d69321a408cd46174e163594',
+      sha1: '681c0353b34fae08422686eea190e1c09472fc1f',
+      sha256: 'eb5251e929c56dfd19fc597123ed6ec2d0130a2c3c1bf8fc9c2ff8f29830a3b7'
+    },
+    dob: { date: '1959-02-19T23:56:23Z', age: 59 },
+    registered: { date: '2004-07-07T22:37:39Z', age: 14 },
+    phone: '23138213',
+    cell: '30393606',
+    id: { name: 'CPR', value: '506102-2208' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/23.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/23.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/23.jpg'
+    },
+    nat: 'DK'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe58'),
+    gender: 'male',
+    name: { title: 'mr', first: 'carl', last: 'jacobs' },
+    location: {
+      street: '6948 springfield road',
+      city: 'arklow',
+      state: 'wicklow',
+      postcode: 71309,
+      coordinates: { latitude: '-29.6721', longitude: '-154.6037' },
+      timezone: { offset: '-11:00', description: 'Midway Island, Samoa' }
+    },
+    email: 'carl.jacobs@example.com',
+    login: {
+      uuid: '4f591981-b214-4430-9902-70bc0faa7e81',
+      username: 'organicladybug144',
+      password: 'hank',
+      salt: 'PC6Ig6sD',
+      md5: 'd94aac977512cb2bb005dfa360b40018',
+      sha1: 'a5ffeb65557693e443e195bdf9c066dca33dc47d',
+      sha256: 'f9aa851b943d9a8a876062e48b91b9af190a37779df009a20bc268c25ce48a7f'
+    },
+    dob: { date: '1984-09-30T01:20:26Z', age: 33 },
+    registered: { date: '2008-10-29T02:25:24Z', age: 9 },
+    phone: '031-501-5147',
+    cell: '081-090-3541',
+    id: { name: 'PPS', value: '9806982T' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/44.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/44.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/44.jpg'
+    },
+    nat: 'IE'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe59'),
+    gender: 'male',
+    name: { title: 'mr', first: 'zachary', last: 'lo' },
+    location: {
+      street: '3193 king st',
+      city: 'chipman',
+      state: 'yukon',
+      postcode: 'H8N 1Q8',
+      coordinates: { latitude: '76.4507', longitude: '-70.2264' },
+      timezone: {
+        offset: '+11:00',
+        description: 'Magadan, Solomon Islands, New Caledonia'
+      }
+    },
+    email: 'zachary.lo@example.com',
+    login: {
+      uuid: '76970c67-4801-4926-80f0-4872fe0aee42',
+      username: 'lazyrabbit189',
+      password: 'pass1',
+      salt: 'BVMLMPwZ',
+      md5: 'a6ff61f912af9958587e0fc0c8dc920b',
+      sha1: 'bd37d1c699fb5a17031924c37e5d90ba4403e598',
+      sha256: '0305e3ebf6f4502790d804cff5989a6a928f466af6e36bd808ad9ed24e51fee7'
+    },
+    dob: { date: '1988-10-17T03:45:04Z', age: 29 },
+    registered: { date: '2011-09-29T20:54:32Z', age: 6 },
+    phone: '273-427-0510',
+    cell: '309-911-7770',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/9.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/9.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/9.jpg'
+    },
+    nat: 'CA'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe5a'),
+    gender: 'male',
+    name: { title: 'mr', first: 'harvey', last: 'chambers' },
+    location: {
+      street: '3287 high street',
+      city: 'carlow',
+      state: 'wexford',
+      postcode: 47671,
+      coordinates: { latitude: '-22.5329', longitude: '168.9462' },
+      timezone: {
+        offset: '+5:00',
+        description: 'Ekaterinburg, Islamabad, Karachi, Tashkent'
+      }
+    },
+    email: 'harvey.chambers@example.com',
+    login: {
+      uuid: '8f583f57-c999-4a5d-a8c1-d913b574c082',
+      username: 'greenrabbit148',
+      password: 'june',
+      salt: 'dAsaXJGK',
+      md5: 'e3759db2391b798ffea2cc168e1280fd',
+      sha1: 'a3e77fd5fdd75e3b173ceec6c3c1bbe5e83540cc',
+      sha256: '7564eac1899234d5902fadfb995303a58370232f54bee6adb26e25394e2ffddd'
+    },
+    dob: { date: '1988-05-27T00:14:03Z', age: 30 },
+    registered: { date: '2007-03-11T06:20:19Z', age: 11 },
+    phone: '061-265-5188',
+    cell: '081-146-8382',
+    id: { name: 'PPS', value: '5608572T' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/82.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/82.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/82.jpg'
+    },
+    nat: 'IE'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe5b'),
+    gender: 'male',
+    name: { title: 'mr', first: 'gideon', last: 'van drongelen' },
+    location: {
+      street: '9982 catharijnekade',
+      city: 'vlaardingen',
+      state: 'gelderland',
+      postcode: 65750,
+      coordinates: { latitude: '-86.1268', longitude: '-54.1364' },
+      timezone: {
+        offset: '+3:00',
+        description: 'Baghdad, Riyadh, Moscow, St. Petersburg'
+      }
+    },
+    email: 'gideon.vandrongelen@example.com',
+    login: {
+      uuid: '1ff22ccb-14e8-42ae-a762-b552f60640c9',
+      username: 'angryrabbit395',
+      password: 'gotcha',
+      salt: 'KWxOE5yb',
+      md5: '9e4c766ad10186796fa138fa690c1029',
+      sha1: '000f6eb6e91d2404f7cbc8b0b485a86a8c198fcd',
+      sha256: '82286824c8d704cdcf970c488bc0f2d4c208f5ed4ae74656bbca354964576f62'
+    },
+    dob: { date: '1971-03-28T04:47:21Z', age: 47 },
+    registered: { date: '2004-10-20T18:02:16Z', age: 13 },
+    phone: '(198)-755-0721',
+    cell: '(241)-161-7474',
+    id: { name: 'BSN', value: '66692214' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/11.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/11.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/11.jpg'
+    },
+    nat: 'NL'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe5c'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'پریا', last: 'پارسا' },
+    location: {
+      street: '2889 اجاره دار',
+      city: 'بوشهر',
+      state: 'خراسان جنوبی',
+      postcode: 32528,
+      coordinates: { latitude: '4.6625', longitude: '34.1689' },
+      timezone: {
+        offset: '+3:00',
+        description: 'Baghdad, Riyadh, Moscow, St. Petersburg'
+      }
+    },
+    email: 'پریا.پارسا@example.com',
+    login: {
+      uuid: '75c0d4dd-3a88-42dd-a7ad-5d39b0d8b4b1',
+      username: 'orangesnake137',
+      password: '1031',
+      salt: 'NRy5mtiy',
+      md5: '76aac038463dbbed95cb107811879981',
+      sha1: '7013f5d075efcfc35b1cb18298bd7e81db566af2',
+      sha256: '6a2792cf9c0386679eb2ca357bcae567907bcfad0d400a56d4c3dd55203d8c61'
+    },
+    dob: { date: '1962-01-10T05:26:30Z', age: 56 },
+    registered: { date: '2015-03-20T08:41:37Z', age: 3 },
+    phone: '053-06884781',
+    cell: '0993-557-5092',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/52.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/52.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/52.jpg'
+    },
+    nat: 'IR'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe5d'),
+    gender: 'female',
+    name: { title: 'miss', first: 'maeva', last: 'wilson' },
+    location: {
+      street: '4962 36th ave',
+      city: 'jasper',
+      state: 'northwest territories',
+      postcode: 'U0A 4J6',
+      coordinates: { latitude: '-31.6359', longitude: '111.3806' },
+      timezone: {
+        offset: '+9:00',
+        description: 'Tokyo, Seoul, Osaka, Sapporo, Yakutsk'
+      }
+    },
+    email: 'maeva.wilson@example.com',
+    login: {
+      uuid: '8f2d499c-6a7e-4606-8c58-211fdb880c31',
+      username: 'smallgoose815',
+      password: 'weston',
+      salt: 'TyL1q8hK',
+      md5: 'bcedea61753320688ea27be01982556d',
+      sha1: '9e075df851fdaf292170d8e0a92c19ee37fba0f2',
+      sha256: '6f022405c6a384de3ab5cfc98cccdd97570e5b412046d05dfb79c23ae37612fa'
+    },
+    dob: { date: '1962-08-11T20:51:07Z', age: 56 },
+    registered: { date: '2016-10-03T10:02:55Z', age: 1 },
+    phone: '727-218-6012',
+    cell: '443-382-6538',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/96.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/96.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/96.jpg'
+    },
+    nat: 'CA'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe5e'),
+    gender: 'male',
+    name: { title: 'mr', first: 'elijah', last: 'lewis' },
+    location: {
+      street: '2623 paddock way',
+      city: 'virginia beach',
+      state: 'wyoming',
+      postcode: 54880,
+      coordinates: { latitude: '-42.6128', longitude: '-18.5996' },
+      timezone: { offset: '+3:30', description: 'Tehran' }
+    },
+    email: 'elijah.lewis@example.com',
+    login: {
+      uuid: '2292b7c7-a9bf-4341-abbd-c5841444ab6e',
+      username: 'angrygorilla267',
+      password: 'toonarmy',
+      salt: 'DUtMcvWR',
+      md5: '258eaa742373ee70976d53d1b84d4764',
+      sha1: '62f168f38fa3f6efbd815b58518775d3c6cf0080',
+      sha256: 'a4ab496047b9de7df39adbdabfecc813b8da428087029c94c2b748cef092f85e'
+    },
+    dob: { date: '1986-03-29T06:40:18Z', age: 32 },
+    registered: { date: '2007-12-24T10:32:11Z', age: 10 },
+    phone: '(187)-486-3727',
+    cell: '(986)-974-0857',
+    id: { name: 'SSN', value: '127-66-9786' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/57.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/57.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/57.jpg'
+    },
+    nat: 'US'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe5f'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'olav', last: 'oehme' },
+    location: {
+      street: 'gartenstraße 64',
+      city: 'nastätten',
+      state: 'mecklenburg-vorpommern',
+      postcode: 93640,
+      coordinates: { latitude: '-52.8348', longitude: '-67.5738' },
+      timezone: {
+        offset: '-3:00',
+        description: 'Brazil, Buenos Aires, Georgetown'
+      }
+    },
+    email: 'olav.oehme@example.com',
+    login: {
+      uuid: '2608c05c-8951-4aee-bcd2-f598c80f32bb',
+      username: 'heavypeacock371',
+      password: 'silent',
+      salt: 'E6R29k0e',
+      md5: '587f4392dc06a9fb69a52eae94fd32f2',
+      sha1: '82eba68b1fe2407281da5787b9b89505c663b587',
+      sha256: '304034638901015d8a7b2fd43530fffc4c7d621ccfab98de935d9c8387198796'
+    },
+    dob: { date: '1960-11-28T23:07:18Z', age: 57 },
+    registered: { date: '2011-05-31T00:24:05Z', age: 7 },
+    phone: '0748-6607336',
+    cell: '0176-5787554',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/6.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/6.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/6.jpg'
+    },
+    nat: 'DE'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe60'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'madeleine', last: 'till' },
+    location: {
+      street: 'im winkel 166',
+      city: 'villingen-schwenningen',
+      state: 'baden-württemberg',
+      postcode: 32227,
+      coordinates: { latitude: '83.3998', longitude: '-172.3753' },
+      timezone: {
+        offset: '+5:30',
+        description: 'Bombay, Calcutta, Madras, New Delhi'
+      }
+    },
+    email: 'madeleine.till@example.com',
+    login: {
+      uuid: 'e70766b6-9d4f-419f-85c5-efc3c42db023',
+      username: 'goldencat450',
+      password: 'panthers',
+      salt: 'mHOsDM43',
+      md5: 'a97539f5d7b6c7302d3f3c1dd1d389b5',
+      sha1: 'a991dd190a83856b04d41a5e64bc41b5728b6903',
+      sha256: 'bd123b2b2aae61c6e8d3449bb14c6a032b4860275da781f8ffc73f5500e667bd'
+    },
+    dob: { date: '1954-05-01T02:34:40Z', age: 64 },
+    registered: { date: '2008-06-14T03:14:37Z', age: 10 },
+    phone: '0209-9573743',
+    cell: '0173-1226290',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/27.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/27.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/27.jpg'
+    },
+    nat: 'DE'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe61'),
+    gender: 'female',
+    name: { title: 'miss', first: 'shona', last: 'kemperman' },
+    location: {
+      street: '2685 adriaen van ostadelaan',
+      city: 'giessenlanden',
+      state: 'noord-brabant',
+      postcode: 57798,
+      coordinates: { latitude: '-14.4912', longitude: '-8.5570' },
+      timezone: { offset: '-12:00', description: 'Eniwetok, Kwajalein' }
+    },
+    email: 'shona.kemperman@example.com',
+    login: {
+      uuid: '45d4a86e-c007-45af-9489-49ff77c4905c',
+      username: 'bluetiger298',
+      password: 'xander',
+      salt: 'ANHBICA9',
+      md5: '56560a9b266dac51c04c43a9a845b7af',
+      sha1: '419f27be45ebb9635904e61c7e865ce13d963f63',
+      sha256: '10e7dab700ebd2b0edfced679f2cd4e4f67d2f65711d7af62e04d282b65a4161'
+    },
+    dob: { date: '1948-04-23T03:40:22Z', age: 70 },
+    registered: { date: '2003-12-29T05:37:33Z', age: 14 },
+    phone: '(132)-806-7647',
+    cell: '(766)-268-3084',
+    id: { name: 'BSN', value: '99563655' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/14.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/14.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/14.jpg'
+    },
+    nat: 'NL'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe62'),
+    gender: 'female',
+    name: { title: 'ms', first: 'louise', last: 'graham' },
+    location: {
+      street: '5108 south street',
+      city: 'cashel',
+      state: 'galway',
+      postcode: 45802,
+      coordinates: { latitude: '35.5726', longitude: '148.0944' },
+      timezone: { offset: '+2:00', description: 'Kaliningrad, South Africa' }
+    },
+    email: 'louise.graham@example.com',
+    login: {
+      uuid: '062c592e-c6eb-44c3-beda-fb71e9c13bba',
+      username: 'whitekoala325',
+      password: 'harry',
+      salt: 'OjIRb3hP',
+      md5: 'fc32be9814936026c62bb21bb4a029cd',
+      sha1: '6350de80d1be4af1e7b2a498962f69993082126c',
+      sha256: 'abc804d7d87f0fd1a058b8db7acdf1d62e0b80412e282c427173c466040b29d1'
+    },
+    dob: { date: '1971-01-21T20:36:16Z', age: 47 },
+    registered: { date: '2002-10-19T17:05:42Z', age: 15 },
+    phone: '011-434-7405',
+    cell: '081-010-7792',
+    id: { name: 'PPS', value: '9774048T' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/59.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/59.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/59.jpg'
+    },
+    nat: 'IE'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe63'),
+    gender: 'male',
+    name: { title: 'mr', first: 'isolino', last: 'viana' },
+    location: {
+      street: '7224 rua são jorge ',
+      city: 'cascavel',
+      state: 'são paulo',
+      postcode: 40229,
+      coordinates: { latitude: '78.8545', longitude: '101.5995' },
+      timezone: { offset: '-10:00', description: 'Hawaii' }
+    },
+    email: 'isolino.viana@example.com',
+    login: {
+      uuid: 'db3dca95-4597-4e7e-bdf2-f1c7b4491b6e',
+      username: 'blackfrog453',
+      password: 'poncho',
+      salt: 'ahSsAq5r',
+      md5: '27f4c22bb816c5b30306932094224ece',
+      sha1: 'ab1735d464b80e04e26b808d72c95ca528d60962',
+      sha256: '5e79c6f1371fc259c022c2aee096296432a36973986218aabdca8b5c3bce73b1'
+    },
+    dob: { date: '1959-03-22T14:53:41Z', age: 59 },
+    registered: { date: '2002-04-12T09:48:12Z', age: 16 },
+    phone: '(85) 7465-1411',
+    cell: '(07) 4883-9964',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/58.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/58.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/58.jpg'
+    },
+    nat: 'BR'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe64'),
+    gender: 'female',
+    name: { title: 'miss', first: 'mestan', last: 'kaplangı' },
+    location: {
+      street: '2575 abanoz sk',
+      city: 'elazığ',
+      state: 'kırşehir',
+      postcode: 48715,
+      coordinates: { latitude: '25.1614', longitude: '43.9085' },
+      timezone: {
+        offset: '+4:00',
+        description: 'Abu Dhabi, Muscat, Baku, Tbilisi'
+      }
+    },
+    email: 'mestan.kaplangı@example.com',
+    login: {
+      uuid: '1c449a8b-db88-4754-aae5-b66e0338a479',
+      username: 'bigelephant762',
+      password: 'patty',
+      salt: 'n2sxEnSR',
+      md5: '6f6904b481cb51f2e068fad23ceffa73',
+      sha1: '276e8c992cf366ff06c868290a164a2727cc1d41',
+      sha256: '14a2d569e3ac745afcb07991b61e95e8c85d9e04c1f8725163e466284f4a5900'
+    },
+    dob: { date: '1951-12-17T20:03:33Z', age: 66 },
+    registered: { date: '2006-04-05T12:24:26Z', age: 12 },
+    phone: '(729)-603-0876',
+    cell: '(250)-580-1253',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/42.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/42.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/42.jpg'
+    },
+    nat: 'TR'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe65'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'katie', last: 'welch' },
+    location: {
+      street: '3356 highfield road',
+      city: 'dunboyne',
+      state: 'dublin city',
+      postcode: 99090,
+      coordinates: { latitude: '71.9851', longitude: '135.9359' },
+      timezone: {
+        offset: '-3:00',
+        description: 'Brazil, Buenos Aires, Georgetown'
+      }
+    },
+    email: 'katie.welch@example.com',
+    login: {
+      uuid: 'a4262643-0ff9-4c5c-a452-34a4f0dc8d52',
+      username: 'blackbear565',
+      password: 'beatles1',
+      salt: '2lGmdNiv',
+      md5: 'f411d7f4bd8ec68c9def4701572509a6',
+      sha1: '802e286cef20c0ed2575cce82553a5749570b356',
+      sha256: '2688e7f41e9bbf81ea719b916c9a0abc6fb6e75351289d972759e60fb2ed35c6'
+    },
+    dob: { date: '1990-10-14T05:02:12Z', age: 27 },
+    registered: { date: '2007-12-21T20:44:40Z', age: 10 },
+    phone: '011-694-3254',
+    cell: '081-184-0215',
+    id: { name: 'PPS', value: '4743256T' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/88.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/88.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/88.jpg'
+    },
+    nat: 'IE'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe66'),
+    gender: 'female',
+    name: { title: 'miss', first: 'sandra', last: 'lorenzo' },
+    location: {
+      street: '7814 avenida de andalucía',
+      city: 'pamplona',
+      state: 'la rioja',
+      postcode: 47467,
+      coordinates: { latitude: '-88.6846', longitude: '-83.3326' },
+      timezone: { offset: '-10:00', description: 'Hawaii' }
+    },
+    email: 'sandra.lorenzo@example.com',
+    login: {
+      uuid: '04986a86-976f-4f3e-b112-244e0aca7cba',
+      username: 'orangegorilla209',
+      password: 'viking',
+      salt: 'v1Igycsr',
+      md5: 'f57648fcee958b878f636a48ad24839a',
+      sha1: '4001ff4031172172aaf46e27b60691be99feed2a',
+      sha256: 'fd287a853407637110e5df4749cab043391c2b2442aa6e218bde7b5aa5563366'
+    },
+    dob: { date: '1975-03-23T17:01:45Z', age: 43 },
+    registered: { date: '2017-12-13T21:16:35Z', age: 0 },
+    phone: '911-571-659',
+    cell: '674-415-588',
+    id: { name: 'DNI', value: '87273544-J' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/72.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/72.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/72.jpg'
+    },
+    nat: 'ES'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe67'),
+    gender: 'male',
+    name: { title: 'mr', first: 'بنیامین', last: 'سالاری' },
+    location: {
+      street: '1347 شهید بهشتی',
+      city: 'اسلام‌شهر',
+      state: 'البرز',
+      postcode: 68120,
+      coordinates: { latitude: '21.3388', longitude: '-90.9499' },
+      timezone: {
+        offset: '0:00',
+        description: 'Western Europe Time, London, Lisbon, Casablanca'
+      }
+    },
+    email: 'بنیامین.سالاری@example.com',
+    login: {
+      uuid: 'ae60d6ff-8a5a-4889-ba5a-88b346a28b0e',
+      username: 'purplepanda349',
+      password: 'sinned',
+      salt: 'LHAFDaKM',
+      md5: '3ee195d637115263b5459fdb2df3a63b',
+      sha1: 'c5112f9362eaba7b3ea6417d65da26efb850bf01',
+      sha256: 'f8822bdefb73fac6c095b80a8e1141b584775e11cd4ed8e757d4fbba29f20b09'
+    },
+    dob: { date: '1984-03-10T22:12:43Z', age: 34 },
+    registered: { date: '2015-11-01T14:21:17Z', age: 2 },
+    phone: '051-74345067',
+    cell: '0983-365-2290',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/52.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/52.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/52.jpg'
+    },
+    nat: 'IR'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe68'),
+    gender: 'female',
+    name: { title: 'madame', first: 'andreia', last: 'arnaud' },
+    location: {
+      street: '7425 route de genas',
+      city: "l'abbaye",
+      state: 'schwyz',
+      postcode: 7441,
+      coordinates: { latitude: '-67.6434', longitude: '59.5703' },
+      timezone: { offset: '-12:00', description: 'Eniwetok, Kwajalein' }
+    },
+    email: 'andreia.arnaud@example.com',
+    login: {
+      uuid: '6f647090-766c-4708-920c-bf4fcc617d15',
+      username: 'organicgoose539',
+      password: 'bestbuy',
+      salt: '2g7xpk8Z',
+      md5: 'e032913bb9e7c0504cff46efa0cf01cd',
+      sha1: 'ffaa47cdc0891dfcbea3e4076999235c49635576',
+      sha256: '6e392bc95c930bb6e828b814a3ba554e0eebcdbd0505346f81995be8ec774b4f'
+    },
+    dob: { date: '1960-01-31T05:16:10Z', age: 58 },
+    registered: { date: '2003-10-19T20:41:13Z', age: 14 },
+    phone: '(563)-009-4755',
+    cell: '(842)-068-0366',
+    id: { name: 'AVS', value: '756.5206.2620.86' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/3.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/3.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/3.jpg'
+    },
+    nat: 'CH'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe69'),
+    gender: 'female',
+    name: { title: 'ms', first: 'anaëlle', last: 'adam' },
+    location: {
+      street: '6952 rue abel-ferry',
+      city: 'toulouse',
+      state: 'mayenne',
+      postcode: 69995,
+      coordinates: { latitude: '3.6559', longitude: '174.2405' },
+      timezone: {
+        offset: '+8:00',
+        description: 'Beijing, Perth, Singapore, Hong Kong'
+      }
+    },
+    email: 'anaëlle.adam@example.com',
+    login: {
+      uuid: '1bb3f501-b464-4e4b-a564-09d9b7b82721',
+      username: 'brownwolf302',
+      password: 'gaston',
+      salt: 'eFuVRBvj',
+      md5: 'aea71691758ed3149dfe6ff09f99a280',
+      sha1: 'd97cafb941fa4b54f891eecf856de90fed00b43e',
+      sha256: '25e7da7cddeca26e733e74a5414616fc565fbb5847f5a9f749565477459cfbf3'
+    },
+    dob: { date: '1987-10-20T11:33:44Z', age: 30 },
+    registered: { date: '2008-01-09T05:32:18Z', age: 10 },
+    phone: '01-38-71-69-99',
+    cell: '06-94-15-71-81',
+    id: { name: 'INSEE', value: '2NNaN77968794 05' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/82.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/82.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/82.jpg'
+    },
+    nat: 'FR'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe6a'),
+    gender: 'female',
+    name: { title: 'miss', first: 'anne', last: 'ruiz' },
+    location: {
+      street: '5523 cackson st',
+      city: 'devonport',
+      state: 'northern territory',
+      postcode: 9797,
+      coordinates: { latitude: '-84.1572', longitude: '78.0207' },
+      timezone: {
+        offset: '+9:00',
+        description: 'Tokyo, Seoul, Osaka, Sapporo, Yakutsk'
+      }
+    },
+    email: 'anne.ruiz@example.com',
+    login: {
+      uuid: '7ee5ffa7-ea97-40a4-a476-3d4673bba13b',
+      username: 'happyrabbit405',
+      password: '1qaz2wsx',
+      salt: 'I2cXRgLP',
+      md5: '7e660dcb6162f659f0cc658cf0d0722e',
+      sha1: '4bf5521bb7e22092df2f3d0c9e09d7530ab95fc6',
+      sha256: 'b658ea12176845a7e0c344dcc8ca7e11bdda1bb5601b4e13c9425ecf33820702'
+    },
+    dob: { date: '1982-10-09T12:10:42Z', age: 35 },
+    registered: { date: '2016-09-06T20:51:12Z', age: 2 },
+    phone: '06-1601-9518',
+    cell: '0479-884-985',
+    id: { name: 'TFN', value: '987210251' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/51.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/51.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/51.jpg'
+    },
+    nat: 'AU'
+  }
+]
+Type "it" for more
+analytics> db.persons.findOne();
+{
+  _id: ObjectId('677772e0ae898e105a49fe57'),
+  gender: 'male',
+  name: { title: 'mr', first: 'victor', last: 'pedersen' },
+  location: {
+    street: '2156 stenbjergvej',
+    city: 'billum',
+    state: 'nordjylland',
+    postcode: 56649,
+    coordinates: { latitude: '-29.8113', longitude: '-31.0208' },
+    timezone: {
+      offset: '+5:30',
+      description: 'Bombay, Calcutta, Madras, New Delhi'
+    }
+  },
+  email: 'victor.pedersen@example.com',
+  login: {
+    uuid: 'fbb3c298-2cea-4415-84d1-74233525c325',
+    username: 'smallbutterfly536',
+    password: 'down',
+    salt: 'iW5QrgwW',
+    md5: '3cc8b8a4d69321a408cd46174e163594',
+    sha1: '681c0353b34fae08422686eea190e1c09472fc1f',
+    sha256: 'eb5251e929c56dfd19fc597123ed6ec2d0130a2c3c1bf8fc9c2ff8f29830a3b7'
+  },
+  dob: { date: '1959-02-19T23:56:23Z', age: 59 },
+  registered: { date: '2004-07-07T22:37:39Z', age: 14 },
+  phone: '23138213',
+  cell: '30393606',
+  id: { name: 'CPR', value: '506102-2208' },
+  picture: {
+    large: 'https://randomuser.me/api/portraits/men/23.jpg',
+    medium: 'https://randomuser.me/api/portraits/med/men/23.jpg',
+    thumbnail: 'https://randomuser.me/api/portraits/thumb/men/23.jpg'
+  },
+  nat: 'DK'
+}
+analytics> show collections;
+friends
+persons
+analytics> db.friends.aggregate([
+... {$unwind:"$hobbies"}
+... ])
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: 'Sports',
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: 'Cooking',
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: 'Eating',
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: 'Data Analytics',
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: 'Cooking',
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: 'Skiing',
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> db.persons.find();
+[
+  {
+    _id: ObjectId('677772e0ae898e105a49fe57'),
+    gender: 'male',
+    name: { title: 'mr', first: 'victor', last: 'pedersen' },
+    location: {
+      street: '2156 stenbjergvej',
+      city: 'billum',
+      state: 'nordjylland',
+      postcode: 56649,
+      coordinates: { latitude: '-29.8113', longitude: '-31.0208' },
+      timezone: {
+        offset: '+5:30',
+        description: 'Bombay, Calcutta, Madras, New Delhi'
+      }
+    },
+    email: 'victor.pedersen@example.com',
+    login: {
+      uuid: 'fbb3c298-2cea-4415-84d1-74233525c325',
+      username: 'smallbutterfly536',
+      password: 'down',
+      salt: 'iW5QrgwW',
+      md5: '3cc8b8a4d69321a408cd46174e163594',
+      sha1: '681c0353b34fae08422686eea190e1c09472fc1f',
+      sha256: 'eb5251e929c56dfd19fc597123ed6ec2d0130a2c3c1bf8fc9c2ff8f29830a3b7'
+    },
+    dob: { date: '1959-02-19T23:56:23Z', age: 59 },
+    registered: { date: '2004-07-07T22:37:39Z', age: 14 },
+    phone: '23138213',
+    cell: '30393606',
+    id: { name: 'CPR', value: '506102-2208' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/23.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/23.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/23.jpg'
+    },
+    nat: 'DK'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe58'),
+    gender: 'male',
+    name: { title: 'mr', first: 'carl', last: 'jacobs' },
+    location: {
+      street: '6948 springfield road',
+      city: 'arklow',
+      state: 'wicklow',
+      postcode: 71309,
+      coordinates: { latitude: '-29.6721', longitude: '-154.6037' },
+      timezone: { offset: '-11:00', description: 'Midway Island, Samoa' }
+    },
+    email: 'carl.jacobs@example.com',
+    login: {
+      uuid: '4f591981-b214-4430-9902-70bc0faa7e81',
+      username: 'organicladybug144',
+      password: 'hank',
+      salt: 'PC6Ig6sD',
+      md5: 'd94aac977512cb2bb005dfa360b40018',
+      sha1: 'a5ffeb65557693e443e195bdf9c066dca33dc47d',
+      sha256: 'f9aa851b943d9a8a876062e48b91b9af190a37779df009a20bc268c25ce48a7f'
+    },
+    dob: { date: '1984-09-30T01:20:26Z', age: 33 },
+    registered: { date: '2008-10-29T02:25:24Z', age: 9 },
+    phone: '031-501-5147',
+    cell: '081-090-3541',
+    id: { name: 'PPS', value: '9806982T' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/44.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/44.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/44.jpg'
+    },
+    nat: 'IE'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe59'),
+    gender: 'male',
+    name: { title: 'mr', first: 'zachary', last: 'lo' },
+    location: {
+      street: '3193 king st',
+      city: 'chipman',
+      state: 'yukon',
+      postcode: 'H8N 1Q8',
+      coordinates: { latitude: '76.4507', longitude: '-70.2264' },
+      timezone: {
+        offset: '+11:00',
+        description: 'Magadan, Solomon Islands, New Caledonia'
+      }
+    },
+    email: 'zachary.lo@example.com',
+    login: {
+      uuid: '76970c67-4801-4926-80f0-4872fe0aee42',
+      username: 'lazyrabbit189',
+      password: 'pass1',
+      salt: 'BVMLMPwZ',
+      md5: 'a6ff61f912af9958587e0fc0c8dc920b',
+      sha1: 'bd37d1c699fb5a17031924c37e5d90ba4403e598',
+      sha256: '0305e3ebf6f4502790d804cff5989a6a928f466af6e36bd808ad9ed24e51fee7'
+    },
+    dob: { date: '1988-10-17T03:45:04Z', age: 29 },
+    registered: { date: '2011-09-29T20:54:32Z', age: 6 },
+    phone: '273-427-0510',
+    cell: '309-911-7770',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/9.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/9.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/9.jpg'
+    },
+    nat: 'CA'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe5a'),
+    gender: 'male',
+    name: { title: 'mr', first: 'harvey', last: 'chambers' },
+    location: {
+      street: '3287 high street',
+      city: 'carlow',
+      state: 'wexford',
+      postcode: 47671,
+      coordinates: { latitude: '-22.5329', longitude: '168.9462' },
+      timezone: {
+        offset: '+5:00',
+        description: 'Ekaterinburg, Islamabad, Karachi, Tashkent'
+      }
+    },
+    email: 'harvey.chambers@example.com',
+    login: {
+      uuid: '8f583f57-c999-4a5d-a8c1-d913b574c082',
+      username: 'greenrabbit148',
+      password: 'june',
+      salt: 'dAsaXJGK',
+      md5: 'e3759db2391b798ffea2cc168e1280fd',
+      sha1: 'a3e77fd5fdd75e3b173ceec6c3c1bbe5e83540cc',
+      sha256: '7564eac1899234d5902fadfb995303a58370232f54bee6adb26e25394e2ffddd'
+    },
+    dob: { date: '1988-05-27T00:14:03Z', age: 30 },
+    registered: { date: '2007-03-11T06:20:19Z', age: 11 },
+    phone: '061-265-5188',
+    cell: '081-146-8382',
+    id: { name: 'PPS', value: '5608572T' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/82.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/82.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/82.jpg'
+    },
+    nat: 'IE'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe5b'),
+    gender: 'male',
+    name: { title: 'mr', first: 'gideon', last: 'van drongelen' },
+    location: {
+      street: '9982 catharijnekade',
+      city: 'vlaardingen',
+      state: 'gelderland',
+      postcode: 65750,
+      coordinates: { latitude: '-86.1268', longitude: '-54.1364' },
+      timezone: {
+        offset: '+3:00',
+        description: 'Baghdad, Riyadh, Moscow, St. Petersburg'
+      }
+    },
+    email: 'gideon.vandrongelen@example.com',
+    login: {
+      uuid: '1ff22ccb-14e8-42ae-a762-b552f60640c9',
+      username: 'angryrabbit395',
+      password: 'gotcha',
+      salt: 'KWxOE5yb',
+      md5: '9e4c766ad10186796fa138fa690c1029',
+      sha1: '000f6eb6e91d2404f7cbc8b0b485a86a8c198fcd',
+      sha256: '82286824c8d704cdcf970c488bc0f2d4c208f5ed4ae74656bbca354964576f62'
+    },
+    dob: { date: '1971-03-28T04:47:21Z', age: 47 },
+    registered: { date: '2004-10-20T18:02:16Z', age: 13 },
+    phone: '(198)-755-0721',
+    cell: '(241)-161-7474',
+    id: { name: 'BSN', value: '66692214' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/11.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/11.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/11.jpg'
+    },
+    nat: 'NL'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe5c'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'پریا', last: 'پارسا' },
+    location: {
+      street: '2889 اجاره دار',
+      city: 'بوشهر',
+      state: 'خراسان جنوبی',
+      postcode: 32528,
+      coordinates: { latitude: '4.6625', longitude: '34.1689' },
+      timezone: {
+        offset: '+3:00',
+        description: 'Baghdad, Riyadh, Moscow, St. Petersburg'
+      }
+    },
+    email: 'پریا.پارسا@example.com',
+    login: {
+      uuid: '75c0d4dd-3a88-42dd-a7ad-5d39b0d8b4b1',
+      username: 'orangesnake137',
+      password: '1031',
+      salt: 'NRy5mtiy',
+      md5: '76aac038463dbbed95cb107811879981',
+      sha1: '7013f5d075efcfc35b1cb18298bd7e81db566af2',
+      sha256: '6a2792cf9c0386679eb2ca357bcae567907bcfad0d400a56d4c3dd55203d8c61'
+    },
+    dob: { date: '1962-01-10T05:26:30Z', age: 56 },
+    registered: { date: '2015-03-20T08:41:37Z', age: 3 },
+    phone: '053-06884781',
+    cell: '0993-557-5092',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/52.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/52.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/52.jpg'
+    },
+    nat: 'IR'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe5d'),
+    gender: 'female',
+    name: { title: 'miss', first: 'maeva', last: 'wilson' },
+    location: {
+      street: '4962 36th ave',
+      city: 'jasper',
+      state: 'northwest territories',
+      postcode: 'U0A 4J6',
+      coordinates: { latitude: '-31.6359', longitude: '111.3806' },
+      timezone: {
+        offset: '+9:00',
+        description: 'Tokyo, Seoul, Osaka, Sapporo, Yakutsk'
+      }
+    },
+    email: 'maeva.wilson@example.com',
+    login: {
+      uuid: '8f2d499c-6a7e-4606-8c58-211fdb880c31',
+      username: 'smallgoose815',
+      password: 'weston',
+      salt: 'TyL1q8hK',
+      md5: 'bcedea61753320688ea27be01982556d',
+      sha1: '9e075df851fdaf292170d8e0a92c19ee37fba0f2',
+      sha256: '6f022405c6a384de3ab5cfc98cccdd97570e5b412046d05dfb79c23ae37612fa'
+    },
+    dob: { date: '1962-08-11T20:51:07Z', age: 56 },
+    registered: { date: '2016-10-03T10:02:55Z', age: 1 },
+    phone: '727-218-6012',
+    cell: '443-382-6538',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/96.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/96.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/96.jpg'
+    },
+    nat: 'CA'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe5e'),
+    gender: 'male',
+    name: { title: 'mr', first: 'elijah', last: 'lewis' },
+    location: {
+      street: '2623 paddock way',
+      city: 'virginia beach',
+      state: 'wyoming',
+      postcode: 54880,
+      coordinates: { latitude: '-42.6128', longitude: '-18.5996' },
+      timezone: { offset: '+3:30', description: 'Tehran' }
+    },
+    email: 'elijah.lewis@example.com',
+    login: {
+      uuid: '2292b7c7-a9bf-4341-abbd-c5841444ab6e',
+      username: 'angrygorilla267',
+      password: 'toonarmy',
+      salt: 'DUtMcvWR',
+      md5: '258eaa742373ee70976d53d1b84d4764',
+      sha1: '62f168f38fa3f6efbd815b58518775d3c6cf0080',
+      sha256: 'a4ab496047b9de7df39adbdabfecc813b8da428087029c94c2b748cef092f85e'
+    },
+    dob: { date: '1986-03-29T06:40:18Z', age: 32 },
+    registered: { date: '2007-12-24T10:32:11Z', age: 10 },
+    phone: '(187)-486-3727',
+    cell: '(986)-974-0857',
+    id: { name: 'SSN', value: '127-66-9786' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/57.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/57.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/57.jpg'
+    },
+    nat: 'US'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe5f'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'olav', last: 'oehme' },
+    location: {
+      street: 'gartenstraße 64',
+      city: 'nastätten',
+      state: 'mecklenburg-vorpommern',
+      postcode: 93640,
+      coordinates: { latitude: '-52.8348', longitude: '-67.5738' },
+      timezone: {
+        offset: '-3:00',
+        description: 'Brazil, Buenos Aires, Georgetown'
+      }
+    },
+    email: 'olav.oehme@example.com',
+    login: {
+      uuid: '2608c05c-8951-4aee-bcd2-f598c80f32bb',
+      username: 'heavypeacock371',
+      password: 'silent',
+      salt: 'E6R29k0e',
+      md5: '587f4392dc06a9fb69a52eae94fd32f2',
+      sha1: '82eba68b1fe2407281da5787b9b89505c663b587',
+      sha256: '304034638901015d8a7b2fd43530fffc4c7d621ccfab98de935d9c8387198796'
+    },
+    dob: { date: '1960-11-28T23:07:18Z', age: 57 },
+    registered: { date: '2011-05-31T00:24:05Z', age: 7 },
+    phone: '0748-6607336',
+    cell: '0176-5787554',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/6.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/6.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/6.jpg'
+    },
+    nat: 'DE'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe60'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'madeleine', last: 'till' },
+    location: {
+      street: 'im winkel 166',
+      city: 'villingen-schwenningen',
+      state: 'baden-württemberg',
+      postcode: 32227,
+      coordinates: { latitude: '83.3998', longitude: '-172.3753' },
+      timezone: {
+        offset: '+5:30',
+        description: 'Bombay, Calcutta, Madras, New Delhi'
+      }
+    },
+    email: 'madeleine.till@example.com',
+    login: {
+      uuid: 'e70766b6-9d4f-419f-85c5-efc3c42db023',
+      username: 'goldencat450',
+      password: 'panthers',
+      salt: 'mHOsDM43',
+      md5: 'a97539f5d7b6c7302d3f3c1dd1d389b5',
+      sha1: 'a991dd190a83856b04d41a5e64bc41b5728b6903',
+      sha256: 'bd123b2b2aae61c6e8d3449bb14c6a032b4860275da781f8ffc73f5500e667bd'
+    },
+    dob: { date: '1954-05-01T02:34:40Z', age: 64 },
+    registered: { date: '2008-06-14T03:14:37Z', age: 10 },
+    phone: '0209-9573743',
+    cell: '0173-1226290',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/27.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/27.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/27.jpg'
+    },
+    nat: 'DE'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe61'),
+    gender: 'female',
+    name: { title: 'miss', first: 'shona', last: 'kemperman' },
+    location: {
+      street: '2685 adriaen van ostadelaan',
+      city: 'giessenlanden',
+      state: 'noord-brabant',
+      postcode: 57798,
+      coordinates: { latitude: '-14.4912', longitude: '-8.5570' },
+      timezone: { offset: '-12:00', description: 'Eniwetok, Kwajalein' }
+    },
+    email: 'shona.kemperman@example.com',
+    login: {
+      uuid: '45d4a86e-c007-45af-9489-49ff77c4905c',
+      username: 'bluetiger298',
+      password: 'xander',
+      salt: 'ANHBICA9',
+      md5: '56560a9b266dac51c04c43a9a845b7af',
+      sha1: '419f27be45ebb9635904e61c7e865ce13d963f63',
+      sha256: '10e7dab700ebd2b0edfced679f2cd4e4f67d2f65711d7af62e04d282b65a4161'
+    },
+    dob: { date: '1948-04-23T03:40:22Z', age: 70 },
+    registered: { date: '2003-12-29T05:37:33Z', age: 14 },
+    phone: '(132)-806-7647',
+    cell: '(766)-268-3084',
+    id: { name: 'BSN', value: '99563655' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/14.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/14.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/14.jpg'
+    },
+    nat: 'NL'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe62'),
+    gender: 'female',
+    name: { title: 'ms', first: 'louise', last: 'graham' },
+    location: {
+      street: '5108 south street',
+      city: 'cashel',
+      state: 'galway',
+      postcode: 45802,
+      coordinates: { latitude: '35.5726', longitude: '148.0944' },
+      timezone: { offset: '+2:00', description: 'Kaliningrad, South Africa' }
+    },
+    email: 'louise.graham@example.com',
+    login: {
+      uuid: '062c592e-c6eb-44c3-beda-fb71e9c13bba',
+      username: 'whitekoala325',
+      password: 'harry',
+      salt: 'OjIRb3hP',
+      md5: 'fc32be9814936026c62bb21bb4a029cd',
+      sha1: '6350de80d1be4af1e7b2a498962f69993082126c',
+      sha256: 'abc804d7d87f0fd1a058b8db7acdf1d62e0b80412e282c427173c466040b29d1'
+    },
+    dob: { date: '1971-01-21T20:36:16Z', age: 47 },
+    registered: { date: '2002-10-19T17:05:42Z', age: 15 },
+    phone: '011-434-7405',
+    cell: '081-010-7792',
+    id: { name: 'PPS', value: '9774048T' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/59.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/59.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/59.jpg'
+    },
+    nat: 'IE'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe63'),
+    gender: 'male',
+    name: { title: 'mr', first: 'isolino', last: 'viana' },
+    location: {
+      street: '7224 rua são jorge ',
+      city: 'cascavel',
+      state: 'são paulo',
+      postcode: 40229,
+      coordinates: { latitude: '78.8545', longitude: '101.5995' },
+      timezone: { offset: '-10:00', description: 'Hawaii' }
+    },
+    email: 'isolino.viana@example.com',
+    login: {
+      uuid: 'db3dca95-4597-4e7e-bdf2-f1c7b4491b6e',
+      username: 'blackfrog453',
+      password: 'poncho',
+      salt: 'ahSsAq5r',
+      md5: '27f4c22bb816c5b30306932094224ece',
+      sha1: 'ab1735d464b80e04e26b808d72c95ca528d60962',
+      sha256: '5e79c6f1371fc259c022c2aee096296432a36973986218aabdca8b5c3bce73b1'
+    },
+    dob: { date: '1959-03-22T14:53:41Z', age: 59 },
+    registered: { date: '2002-04-12T09:48:12Z', age: 16 },
+    phone: '(85) 7465-1411',
+    cell: '(07) 4883-9964',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/58.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/58.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/58.jpg'
+    },
+    nat: 'BR'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe64'),
+    gender: 'female',
+    name: { title: 'miss', first: 'mestan', last: 'kaplangı' },
+    location: {
+      street: '2575 abanoz sk',
+      city: 'elazığ',
+      state: 'kırşehir',
+      postcode: 48715,
+      coordinates: { latitude: '25.1614', longitude: '43.9085' },
+      timezone: {
+        offset: '+4:00',
+        description: 'Abu Dhabi, Muscat, Baku, Tbilisi'
+      }
+    },
+    email: 'mestan.kaplangı@example.com',
+    login: {
+      uuid: '1c449a8b-db88-4754-aae5-b66e0338a479',
+      username: 'bigelephant762',
+      password: 'patty',
+      salt: 'n2sxEnSR',
+      md5: '6f6904b481cb51f2e068fad23ceffa73',
+      sha1: '276e8c992cf366ff06c868290a164a2727cc1d41',
+      sha256: '14a2d569e3ac745afcb07991b61e95e8c85d9e04c1f8725163e466284f4a5900'
+    },
+    dob: { date: '1951-12-17T20:03:33Z', age: 66 },
+    registered: { date: '2006-04-05T12:24:26Z', age: 12 },
+    phone: '(729)-603-0876',
+    cell: '(250)-580-1253',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/42.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/42.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/42.jpg'
+    },
+    nat: 'TR'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe65'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'katie', last: 'welch' },
+    location: {
+      street: '3356 highfield road',
+      city: 'dunboyne',
+      state: 'dublin city',
+      postcode: 99090,
+      coordinates: { latitude: '71.9851', longitude: '135.9359' },
+      timezone: {
+        offset: '-3:00',
+        description: 'Brazil, Buenos Aires, Georgetown'
+      }
+    },
+    email: 'katie.welch@example.com',
+    login: {
+      uuid: 'a4262643-0ff9-4c5c-a452-34a4f0dc8d52',
+      username: 'blackbear565',
+      password: 'beatles1',
+      salt: '2lGmdNiv',
+      md5: 'f411d7f4bd8ec68c9def4701572509a6',
+      sha1: '802e286cef20c0ed2575cce82553a5749570b356',
+      sha256: '2688e7f41e9bbf81ea719b916c9a0abc6fb6e75351289d972759e60fb2ed35c6'
+    },
+    dob: { date: '1990-10-14T05:02:12Z', age: 27 },
+    registered: { date: '2007-12-21T20:44:40Z', age: 10 },
+    phone: '011-694-3254',
+    cell: '081-184-0215',
+    id: { name: 'PPS', value: '4743256T' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/88.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/88.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/88.jpg'
+    },
+    nat: 'IE'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe66'),
+    gender: 'female',
+    name: { title: 'miss', first: 'sandra', last: 'lorenzo' },
+    location: {
+      street: '7814 avenida de andalucía',
+      city: 'pamplona',
+      state: 'la rioja',
+      postcode: 47467,
+      coordinates: { latitude: '-88.6846', longitude: '-83.3326' },
+      timezone: { offset: '-10:00', description: 'Hawaii' }
+    },
+    email: 'sandra.lorenzo@example.com',
+    login: {
+      uuid: '04986a86-976f-4f3e-b112-244e0aca7cba',
+      username: 'orangegorilla209',
+      password: 'viking',
+      salt: 'v1Igycsr',
+      md5: 'f57648fcee958b878f636a48ad24839a',
+      sha1: '4001ff4031172172aaf46e27b60691be99feed2a',
+      sha256: 'fd287a853407637110e5df4749cab043391c2b2442aa6e218bde7b5aa5563366'
+    },
+    dob: { date: '1975-03-23T17:01:45Z', age: 43 },
+    registered: { date: '2017-12-13T21:16:35Z', age: 0 },
+    phone: '911-571-659',
+    cell: '674-415-588',
+    id: { name: 'DNI', value: '87273544-J' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/72.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/72.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/72.jpg'
+    },
+    nat: 'ES'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe67'),
+    gender: 'male',
+    name: { title: 'mr', first: 'بنیامین', last: 'سالاری' },
+    location: {
+      street: '1347 شهید بهشتی',
+      city: 'اسلام‌شهر',
+      state: 'البرز',
+      postcode: 68120,
+      coordinates: { latitude: '21.3388', longitude: '-90.9499' },
+      timezone: {
+        offset: '0:00',
+        description: 'Western Europe Time, London, Lisbon, Casablanca'
+      }
+    },
+    email: 'بنیامین.سالاری@example.com',
+    login: {
+      uuid: 'ae60d6ff-8a5a-4889-ba5a-88b346a28b0e',
+      username: 'purplepanda349',
+      password: 'sinned',
+      salt: 'LHAFDaKM',
+      md5: '3ee195d637115263b5459fdb2df3a63b',
+      sha1: 'c5112f9362eaba7b3ea6417d65da26efb850bf01',
+      sha256: 'f8822bdefb73fac6c095b80a8e1141b584775e11cd4ed8e757d4fbba29f20b09'
+    },
+    dob: { date: '1984-03-10T22:12:43Z', age: 34 },
+    registered: { date: '2015-11-01T14:21:17Z', age: 2 },
+    phone: '051-74345067',
+    cell: '0983-365-2290',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/52.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/52.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/52.jpg'
+    },
+    nat: 'IR'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe68'),
+    gender: 'female',
+    name: { title: 'madame', first: 'andreia', last: 'arnaud' },
+    location: {
+      street: '7425 route de genas',
+      city: "l'abbaye",
+      state: 'schwyz',
+      postcode: 7441,
+      coordinates: { latitude: '-67.6434', longitude: '59.5703' },
+      timezone: { offset: '-12:00', description: 'Eniwetok, Kwajalein' }
+    },
+    email: 'andreia.arnaud@example.com',
+    login: {
+      uuid: '6f647090-766c-4708-920c-bf4fcc617d15',
+      username: 'organicgoose539',
+      password: 'bestbuy',
+      salt: '2g7xpk8Z',
+      md5: 'e032913bb9e7c0504cff46efa0cf01cd',
+      sha1: 'ffaa47cdc0891dfcbea3e4076999235c49635576',
+      sha256: '6e392bc95c930bb6e828b814a3ba554e0eebcdbd0505346f81995be8ec774b4f'
+    },
+    dob: { date: '1960-01-31T05:16:10Z', age: 58 },
+    registered: { date: '2003-10-19T20:41:13Z', age: 14 },
+    phone: '(563)-009-4755',
+    cell: '(842)-068-0366',
+    id: { name: 'AVS', value: '756.5206.2620.86' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/3.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/3.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/3.jpg'
+    },
+    nat: 'CH'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe69'),
+    gender: 'female',
+    name: { title: 'ms', first: 'anaëlle', last: 'adam' },
+    location: {
+      street: '6952 rue abel-ferry',
+      city: 'toulouse',
+      state: 'mayenne',
+      postcode: 69995,
+      coordinates: { latitude: '3.6559', longitude: '174.2405' },
+      timezone: {
+        offset: '+8:00',
+        description: 'Beijing, Perth, Singapore, Hong Kong'
+      }
+    },
+    email: 'anaëlle.adam@example.com',
+    login: {
+      uuid: '1bb3f501-b464-4e4b-a564-09d9b7b82721',
+      username: 'brownwolf302',
+      password: 'gaston',
+      salt: 'eFuVRBvj',
+      md5: 'aea71691758ed3149dfe6ff09f99a280',
+      sha1: 'd97cafb941fa4b54f891eecf856de90fed00b43e',
+      sha256: '25e7da7cddeca26e733e74a5414616fc565fbb5847f5a9f749565477459cfbf3'
+    },
+    dob: { date: '1987-10-20T11:33:44Z', age: 30 },
+    registered: { date: '2008-01-09T05:32:18Z', age: 10 },
+    phone: '01-38-71-69-99',
+    cell: '06-94-15-71-81',
+    id: { name: 'INSEE', value: '2NNaN77968794 05' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/82.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/82.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/82.jpg'
+    },
+    nat: 'FR'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe6a'),
+    gender: 'female',
+    name: { title: 'miss', first: 'anne', last: 'ruiz' },
+    location: {
+      street: '5523 cackson st',
+      city: 'devonport',
+      state: 'northern territory',
+      postcode: 9797,
+      coordinates: { latitude: '-84.1572', longitude: '78.0207' },
+      timezone: {
+        offset: '+9:00',
+        description: 'Tokyo, Seoul, Osaka, Sapporo, Yakutsk'
+      }
+    },
+    email: 'anne.ruiz@example.com',
+    login: {
+      uuid: '7ee5ffa7-ea97-40a4-a476-3d4673bba13b',
+      username: 'happyrabbit405',
+      password: '1qaz2wsx',
+      salt: 'I2cXRgLP',
+      md5: '7e660dcb6162f659f0cc658cf0d0722e',
+      sha1: '4bf5521bb7e22092df2f3d0c9e09d7530ab95fc6',
+      sha256: 'b658ea12176845a7e0c344dcc8ca7e11bdda1bb5601b4e13c9425ecf33820702'
+    },
+    dob: { date: '1982-10-09T12:10:42Z', age: 35 },
+    registered: { date: '2016-09-06T20:51:12Z', age: 2 },
+    phone: '06-1601-9518',
+    cell: '0479-884-985',
+    id: { name: 'TFN', value: '987210251' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/51.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/51.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/51.jpg'
+    },
+    nat: 'AU'
+  }
+]
+Type "it" for more
+analytics> db.friends.find();
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> db.friends.aggregate([ { $unwind: "$hobbies" }] )
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: 'Sports',
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: 'Cooking',
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: 'Eating',
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: 'Data Analytics',
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: 'Cooking',
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: 'Skiing',
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> db.friends.aggregate([
+... 
+... {$unwind:"$hobbies"},
+... {$group:{_id:{age:"$age"},allhobbies:{$push:"$hobbies"}}}
+... ])
+[
+  {
+    _id: { age: 29 },
+    allhobbies: [ 'Sports', 'Cooking', 'Cooking', 'Skiing' ]
+  },
+  { _id: { age: 30 }, allhobbies: [ 'Eating', 'Data Analytics' ] }
+]
+analytics> db.friends.aggregate([{ $group: { _id: { age: "$age" }, allhobbies: { $push: "$hobbies" } } }] )
+[
+  {
+    _id: { age: 29 },
+    allhobbies: [ [ 'Sports', 'Cooking' ], [ 'Cooking', 'Skiing' ] ]
+  },
+  { _id: { age: 30 }, allhobbies: [ [ 'Eating', 'Data Analytics' ] ] }
+]
+analytics> show collections;
+friends
+persons
+analytics> db.friends.find();
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> db.friends.aggregate([
+... {$project:{_id:0,examscore:{$slice:["examScores",1]}}}
+... ]);
+MongoServerError[Location28724]: Failed to optimize pipeline :: caused by :: First argument to $slice must be an array, but is of type: string
+analytics> db.friends.aggregate([ { $project: { _id: 0, examscore: { $slice: ["$examScores", 1] } } }] );
+[
+  { examscore: [ { difficulty: 4, score: 57.9 } ] },
+  { examscore: [ { difficulty: 7, score: 52.1 } ] },
+  { examscore: [ { difficulty: 3, score: 75.1 } ] }
+]
+analytics> db.friends.aggregate([ { $project: { _id: 1, examscore: { $slice: ["$examScores", 1] } } }] );
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    examscore: [ { difficulty: 4, score: 57.9 } ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    examscore: [ { difficulty: 7, score: 52.1 } ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    examscore: [ { difficulty: 3, score: 75.1 } ]
+  }
+]
+analytics> db.friends.aggregate([ { $project: { _id: 1, examscore: { $slice: ["$examScores", -1] } } }] );
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    examscore: [ { difficulty: 3, score: 88.5 } ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    examscore: [ { difficulty: 5, score: 53.1 } ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    examscore: [ { difficulty: 6, score: 61.5 } ]
+  }
+]
+analytics> db.friends.fibnd();
+TypeError: db.friends.fibnd is not a function
+analytics> db.friends.find();
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> db.friends.aggregate([
+... {$project:{_id:1,arrays:
+... {$slice:[[1,2,3,4,5],1]}}}])
+[
+  { _id: ObjectId('677fd9644bfabc997d6f424d'), arrays: [ 1 ] },
+  { _id: ObjectId('677fd9644bfabc997d6f424e'), arrays: [ 1 ] },
+  { _id: ObjectId('677fd9644bfabc997d6f424f'), arrays: [ 1 ] }
+]
+analytics> db.friends.aggregate([ { $project: { _id: 1, arrays: { $slice: [[1, 2, 3, 4, 5], 3] } } }])
+[
+  { _id: ObjectId('677fd9644bfabc997d6f424d'), arrays: [ 1, 2, 3 ] },
+  { _id: ObjectId('677fd9644bfabc997d6f424e'), arrays: [ 1, 2, 3 ] },
+  { _id: ObjectId('677fd9644bfabc997d6f424f'), arrays: [ 1, 2, 3 ] }
+]
+analytics> db.friends.aggregate([ { $project: { _id: 1, arrays: { $slice: [[1, 2, 3, 4, 5], 6] } } }])
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    arrays: [ 1, 2, 3, 4, 5 ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    arrays: [ 1, 2, 3, 4, 5 ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    arrays: [ 1, 2, 3, 4, 5 ]
+  }
+]
+analytics> db.friends.aggregate([ { $project: { _id: 1, arrays: { $slice: [[1, 2, 3, 4, 5], ] } } }])
+MongoServerError[Location28667]: Invalid $project :: caused by :: Expression $slice takes at least 2 arguments, and at most 3, but 1 were passed in.
+analytics> db.friends.aggregate([ { $project: { _id: 1, arrays: { $slice: [[1, 2, 3, 4, 5],0, ] } } }])
+analytics> db.friends.aggregate([ { $project: { _id: 1, arrays: { $slice: [[1, 2, 3, 4, 5], 0,3] } } }])
+[
+  { _id: ObjectId('677fd9644bfabc997d6f424d'), arrays: [ 1, 2, 3 ] },
+  { _id: ObjectId('677fd9644bfabc997d6f424e'), arrays: [ 1, 2, 3 ] },
+  { _id: ObjectId('677fd9644bfabc997d6f424f'), arrays: [ 1, 2, 3 ] }
+]
+analytics> db.friends.aggregate([ { $project: { _id: 1, arrays: { $slice: [[1, 2, 3, 4, 5],0,3]}}}])
+[
+  { _id: ObjectId('677fd9644bfabc997d6f424d'), arrays: [ 1, 2, 3 ] },
+  { _id: ObjectId('677fd9644bfabc997d6f424e'), arrays: [ 1, 2, 3 ] },
+  { _id: ObjectId('677fd9644bfabc997d6f424f'), arrays: [ 1, 2, 3 ] }
+]
+analytics> db.friends.aggregate([ { $project: { _id: 1, arrays: { $slice: [[1, 2, 3, 4, 5],0,2]}}}])
+[
+  { _id: ObjectId('677fd9644bfabc997d6f424d'), arrays: [ 1, 2 ] },
+  { _id: ObjectId('677fd9644bfabc997d6f424e'), arrays: [ 1, 2 ] },
+  { _id: ObjectId('677fd9644bfabc997d6f424f'), arrays: [ 1, 2 ] }
+]
+analytics> show collections;l
+MongoshInvalidInputError: [COMMON-10001] 'collections;l' is not a valid argument for "show".
+analytics> 
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+analytics> show collections;
+friends
+persons
+analytics> db.friends.find();
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> show dbsl;
+MongoshInvalidInputError: [COMMON-10001] 'dbsl' is not a valid argument for "show".
+analytics> show dbs;
+Abhishek        72.00 KiB
+Bike           116.00 KiB
+Book           112.00 KiB
+Car             80.00 KiB
+CityData       112.00 KiB
+College         56.00 KiB
+ContactData      3.71 MiB
+Credit          16.00 KiB
+Flights        116.00 KiB
+School         104.00 KiB
+Store           40.00 KiB
+Support         88.00 KiB
+admin           40.00 KiB
+analytics        2.85 MiB
+blog           112.00 KiB
+bookRegistry    80.00 KiB
+boxOffice       80.00 KiB
+companyData     96.00 KiB
+config          96.00 KiB
+financialData   40.00 KiB
+hospital        40.00 KiB
+local          256.00 KiB
+moviesData     192.00 KiB
+shop            96.00 KiB
+user            72.00 KiB
+analytics> show collections;
+friends
+persons
+analytics> db.friends.aggregate([
+... 
+analytics> show colections;
+MongoshInvalidInputError: [COMMON-10001] 'colections' is not a valid argument for "show".
+analytics> show collections;
+friends
+persons
+analytics> db.friends.find();
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> db.friends.aggregate([
+... {$group:{_id:{age:"$age"},allHobbies:{$push:"$hobbies"}}}
+... ])
+[
+  {
+    _id: { age: 29 },
+    allHobbies: [ [ 'Sports', 'Cooking' ], [ 'Cooking', 'Skiing' ] ]
+  },
+  { _id: { age: 30 }, allHobbies: [ [ 'Eating', 'Data Analytics' ] ] }
+]
+analytics> show collections;
+friends
+persons
+analytics> db.friends.find()_;
+Uncaught:
+SyntaxError: Missing semicolon. (1:17)
+
+> 1 | db.friends.find()_;
+    |                  ^
+  2 |
+
+analytics> db.friends.find();
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> db.friends.aggregate([
+... {$project:{_id:{age:"$age"},allHobbies:{$push:"$hoobies"}}}
+... ])
+MongoServerError[Location31325]: Invalid $project :: caused by :: Unknown expression $push
+analytics> db.friends.aggregate([ { $group: { _id: { age: "$age" }, allHobbies: { $push: "$hoobies" } } }] )
+[
+  { _id: { age: 29 }, allHobbies: [] },
+  { _id: { age: 30 }, allHobbies: [] }
+]
+analytics> db.friends.aggregate([{$group:{_id:{age:"$age"},allHobbies:{$push:"$hoobies"}}}] )
+[
+  { _id: { age: 30 }, allHobbies: [] },
+  { _id: { age: 29 }, allHobbies: [] }
+]
+analytics> db.friends.aggregate([{$group:{_id:{age:"$age"},allHobbies:{$push:"$hobies"}}}] )
+[
+  { _id: { age: 30 }, allHobbies: [] },
+  { _id: { age: 29 }, allHobbies: [] }
+]
+analytics> db.friends.aggregate([{$group:{_id:{age:"$age"},allHobbies:{$push:"$hobies"}}}] )
+[
+  { _id: { age: 29 }, allHobbies: [] },
+  { _id: { age: 30 }, allHobbies: [] }
+]
+analytics> db.friends.aggregate([{$group:{_id:{age:"$age"},allHobbies:{$push:"$hobbies"}}}] )
+[
+  {
+    _id: { age: 29 },
+    allHobbies: [ [ 'Sports', 'Cooking' ], [ 'Cooking', 'Skiing' ] ]
+  },
+  { _id: { age: 30 }, allHobbies: [ [ 'Eating', 'Data Analytics' ] ] }
+]
+analytics> db.friends.aggregate([{$group:{_id:{age:"$age"},allHobbies:{$push:"$hobbies"}}}] )
+[
+  {
+    _id: { age: 29 },
+    allHobbies: [ [ 'Sports', 'Cooking' ], [ 'Cooking', 'Skiing' ] ]
+  },
+  { _id: { age: 30 }, allHobbies: [ [ 'Eating', 'Data Analytics' ] ] }
+]
+analytics> db.friends.aggregate([
+... {$group:{_id:{age:"$age"},allhobbies:{$addToSet:"$hobbies"}}}
+... ])
+[
+  {
+    _id: { age: 29 },
+    allhobbies: [ [ 'Cooking', 'Skiing' ], [ 'Sports', 'Cooking' ] ]
+  },
+  { _id: { age: 30 }, allhobbies: [ [ 'Eating', 'Data Analytics' ] ] }
+]
+analytics> show collections;
+friends
+persons
+analytics> show dbs;
+Abhishek        72.00 KiB
+Bike           116.00 KiB
+Book           112.00 KiB
+Car             80.00 KiB
+CityData       112.00 KiB
+College         56.00 KiB
+ContactData      3.71 MiB
+Credit          16.00 KiB
+Flights        116.00 KiB
+School         104.00 KiB
+Store           40.00 KiB
+Support         88.00 KiB
+admin           40.00 KiB
+analytics        2.85 MiB
+blog           112.00 KiB
+bookRegistry    80.00 KiB
+boxOffice       80.00 KiB
+companyData     96.00 KiB
+config          96.00 KiB
+financialData   40.00 KiB
+hospital        40.00 KiB
+local          256.00 KiB
+moviesData     192.00 KiB
+shop            96.00 KiB
+user            72.00 KiB
+analytics> show collections;
+friends
+persons
+analytics> db.friends,.findOne();
+Uncaught:
+SyntaxError: Unexpected token (1:11)
+
+> 1 | db.friends,.findOne();
+    |            ^
+  2 |
+
+analytics> db.friends.findOne();
+{
+  _id: ObjectId('677fd9644bfabc997d6f424d'),
+  name: 'Max',
+  hobbies: [ 'Sports', 'Cooking' ],
+  age: 29,
+  examScores: [
+    { difficulty: 4, score: 57.9 },
+    { difficulty: 6, score: 62.1 },
+    { difficulty: 3, score: 88.5 }
+  ]
+}
+analytics> db.friends.find();
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> db.friends.find().çount();
+TypeError: db.friends.find().çount is not a function
+analytics> db.friends.find();
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> db.friends.aggregate([
+... {$unwind:"$hobbies"},
+... {$group:{_id:{age:"$age"},allhobbies:{$push:"$hobbies"}}}
+... ])
+[
+  {
+    _id: { age: 29 },
+    allhobbies: [ 'Sports', 'Cooking', 'Cooking', 'Skiing' ]
+  },
+  { _id: { age: 30 }, allhobbies: [ 'Eating', 'Data Analytics' ] }
+]
+analytics> db.friends.aggregate([ { $unwind: "$hobbies" }, { $group: { _id: { age: "$age" }, allhobbies: {] )
+analytics> db.friends.aggregate([ { $unwind: "$hobbies" }, { $group: { _id: { age: "$age" }, allhobbies: {$push: "$hobbies" }}}])
+[
+  { _id: { age: 30 }, allhobbies: [ 'Eating', 'Data Analytics' ] },
+  {
+    _id: { age: 29 },
+    allhobbies: [ 'Sports', 'Cooking', 'Cooking', 'Skiing' ]
+  }
+]
+analytics> db.friends.aggregate([{$unwind:"$hobbies" }])
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: 'Sports',
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: 'Cooking',
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: 'Eating',
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: 'Data Analytics',
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: 'Cooking',
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: 'Skiing',
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> db.friends.aggregate([ { $unwind: "$hobbies" }, { $group: { _id: { age: "$age" }, allhobbies: {$addToSet:"$hobbies"}}}])
+[
+  { _id: { age: 29 }, allhobbies: [ 'Cooking', 'Sports', 'Skiing' ] },
+  { _id: { age: 30 }, allhobbies: [ 'Data Analytics', 'Eating' ] }
+]
+analytics> db.friends.aggregate([ { $unwind: "$hobbies" }, { $group: { _id: { age: "$age" }, allhobbies: {$push:"$hobbies"}}}])
+[
+  { _id: { age: 30 }, allhobbies: [ 'Eating', 'Data Analytics' ] },
+  {
+    _id: { age: 29 },
+    allhobbies: [ 'Sports', 'Cooking', 'Cooking', 'Skiing' ]
+  }
+]
+analytics> kkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkkk
+analytics> show collections;
+friends
+persons
+analytics> db.friends.find();
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> db.friends.aggreagte([
+... {$project:{_id:0,numScores:{$size:"$examScores"}}}
+... ])
+TypeError: db.friends.aggreagte is not a function
+analytics> db.friends.aggregate([ { $project: { _id: 0, numScores: { $size: "$examScores" } } }] )
+[ { numScores: 3 }, { numScores: 3 }, { numScores: 3 } ]
+analytics> db.friends.aggregate([ { $project: { _id: 1, numScores: { $size: "$examScores" } } }] )
+[
+  { _id: ObjectId('677fd9644bfabc997d6f424d'), numScores: 3 },
+  { _id: ObjectId('677fd9644bfabc997d6f424e'), numScores: 3 },
+  { _id: ObjectId('677fd9644bfabc997d6f424f'), numScores: 3 }
+]
+analytics> show collections;
+friends
+persons
+analytics> db.friends.find();
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> show collections;
+friends
+persons
+analytics> db.friends.find();
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> show dbs;
+Abhishek        72.00 KiB
+Bike           116.00 KiB
+Book           112.00 KiB
+Car             80.00 KiB
+CityData       112.00 KiB
+College         56.00 KiB
+ContactData      3.71 MiB
+Credit          16.00 KiB
+Flights        116.00 KiB
+School         104.00 KiB
+Store           40.00 KiB
+Support         88.00 KiB
+admin           40.00 KiB
+analytics        2.85 MiB
+blog           112.00 KiB
+bookRegistry    80.00 KiB
+boxOffice       80.00 KiB
+companyData     96.00 KiB
+config          96.00 KiB
+financialData   40.00 KiB
+hospital        40.00 KiB
+local          256.00 KiB
+moviesData     192.00 KiB
+shop            96.00 KiB
+user            72.00 KiB
+analytics> show collections
+friends
+persons
+analytics> db.friends;
+analytics.friends
+analytics> show collections;
+friends
+persons
+analytics> db.friends.find();
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> db.friends.aggregate([
+... {$project:{_id:0,
+... scores:{$filter:{input:"$examscores",as:"sc",cond:{$gt:["$$sc.score",60]}}}}}])
+[ { scores: null }, { scores: null }, { scores: null } ]
+analytics> db.friends.aggregate([{$project:{_id: 0,scores:{$filter:{input: "$examScores", as: "sc",cond:{$gt: ["$$sc.score", 60] } } } } }])
+[
+  {
+    scores: [ { difficulty: 6, score: 62.1 }, { difficulty: 3, score: 88.5 } ]
+  },
+  { scores: [ { difficulty: 2, score: 74.3 } ] },
+  {
+    scores: [ { difficulty: 3, score: 75.1 }, { difficulty: 6, score: 61.5 } ]
+  }
+]
+analytics> db.friends.aggregate([{$project:{_id: 0,scores:{$filter:{input: "$examScores", as: "sc",cond:{$gt: ["$$sc.score", 50] } } } } }])
+[
+  {
+    scores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    scores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    scores: [ { difficulty: 3, score: 75.1 }, { difficulty: 6, score: 61.5 } ]
+  }
+]
+analytics> db.friends.find();
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> db.friends.aggregate([{$project:{_id: 0,scores:{$filter:{input: "$examScores", as: "sc",cond:{$gt: ["$$sc.score", 50] } } } } }])
+[
+  {
+    scores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    scores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    scores: [ { difficulty: 3, score: 75.1 }, { difficulty: 6, score: 61.5 } ]
+  }
+]
+analytics> db.friends.aggregate([{$project:{_id: 1,scores:{$filter:{input: "$examScores", as: "sc",cond:{$gt: ["$$sc.score", 50] } } } } }])
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    scores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    scores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    scores: [ { difficulty: 3, score: 75.1 }, { difficulty: 6, score: 61.5 } ]
+  }
+]
+analytics> show collections;
+friends
+persons
+analytics> db.friends.find();
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> db.friends.aggregate([
+... {$unwind:"$examScores"}
+... ])
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 4, score: 57.9 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 6, score: 62.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 3, score: 88.5 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 7, score: 52.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 2, score: 74.3 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 5, score: 53.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 3, score: 75.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 8, score: 44.2 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 6, score: 61.5 }
+  }
+]
+analytics> db.friends.aggregate([
+... {$group:{_id:{age:"$age"},numscount:{$sum:1}}}])
+[
+  { _id: { age: 29 }, numscount: 2 },
+  { _id: { age: 30 }, numscount: 1 }
+]
+analytics> db.friends.aggregate([ { $unwind: "$examScores" }] )
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 4, score: 57.9 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 6, score: 62.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 3, score: 88.5 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 7, score: 52.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 2, score: 74.3 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 5, score: 53.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 3, score: 75.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 8, score: 44.2 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 6, score: 61.5 }
+  }
+]
+analytics> db.friends.aggregate([ { $unwind: "$examScores" },{$sort:{examScores:-1}}])
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 8, score: 44.2 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 7, score: 52.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 6, score: 62.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 6, score: 61.5 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 5, score: 53.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 4, score: 57.9 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 3, score: 88.5 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 3, score: 75.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 2, score: 74.3 }
+  }
+]
+analytics> show collecrtions;
+MongoshInvalidInputError: [COMMON-10001] 'collecrtions' is not a valid argument for "show".
+analytics> show collections;
+friends
+persons
+analytics> db.friends.aggregate([ { $unwind: "$examScores" },{$sort:{examScores:-1}}])
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 8, score: 44.2 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 7, score: 52.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 6, score: 62.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 6, score: 61.5 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 5, score: 53.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 4, score: 57.9 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 3, score: 88.5 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 3, score: 75.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 2, score: 74.3 }
+  }
+]
+analytics> db.friends.aggregate([ { $unwind: "$examScores" },{$sort:{examScores:1}}])
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 2, score: 74.3 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 3, score: 75.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 3, score: 88.5 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 4, score: 57.9 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 5, score: 53.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 6, score: 61.5 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 6, score: 62.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 7, score: 52.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 8, score: 44.2 }
+  }
+]
+analytics> db.friends.aggregate([ { $unwind: "$examScores" },{$sort:{examScores:-1}}])
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 8, score: 44.2 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 7, score: 52.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 6, score: 62.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 6, score: 61.5 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 5, score: 53.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 4, score: 57.9 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 3, score: 88.5 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 3, score: 75.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 2, score: 74.3 }
+  }
+]
+analytics> db.friends.find();
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> db.friends.aggregate([ { $unwind: "$examScores" },{$sort:{examScores:-1}}])
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 8, score: 44.2 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 7, score: 52.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 6, score: 62.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 6, score: 61.5 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 5, score: 53.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 4, score: 57.9 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 3, score: 88.5 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 3, score: 75.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 2, score: 74.3 }
+  }
+]
+analytics> show collections;
+friends
+persons
+analytics> db.friends.find();
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> db.friends.aggregate([
+... {$unwind:db.friends.aggregate([ }
+Uncaught:
+SyntaxError: Unexpected token (2:32)
+
+  1 | db.friends.aggregate([
+> 2 | {$unwind:db.friends.aggregate([ }
+    |                                 ^
+  3 |
+
+analytics> 
+(To exit, press Ctrl+C again or Ctrl+D or type .exit)
+analytics> db.friends.aggregate([ {$unwind:"$examScores"}]);
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 4, score: 57.9 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 6, score: 62.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 3, score: 88.5 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 7, score: 52.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 2, score: 74.3 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 5, score: 53.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 3, score: 75.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 8, score: 44.2 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 6, score: 61.5 }
+  }
+]
+analytics> db.friends.aggregate([ {$unwind:"$examScores"},{$sort:{"examScores.score":-1}]);
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:77)
+
+> 1 | db.friends.aggregate([ {$unwind:"$examScores"},{$sort:{"examScores.score":-1}]);
+    |                                                                              ^
+  2 |
+
+analytics> db.friends.aggregate([ {$unwind:"$examScores"},{$sort:{"examScores.score":-1}}]);
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 3, score: 88.5 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 3, score: 75.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 2, score: 74.3 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 6, score: 62.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 6, score: 61.5 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 4, score: 57.9 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 5, score: 53.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 7, score: 52.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 8, score: 44.2 }
+  }
+]
+analytics> db.friends.aggregate([ {$unwind:"$examScores"},{$sort:{"examScores":-1}}]);
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 8, score: 44.2 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 7, score: 52.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 6, score: 62.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 6, score: 61.5 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 5, score: 53.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 4, score: 57.9 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 3, score: 88.5 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 3, score: 75.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 2, score: 74.3 }
+  }
+]
+analytics> db.friends.aggregate([ {$unwind:"$examScores"},{$sort:{"examScores":-1}}]);
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 8, score: 44.2 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 7, score: 52.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 6, score: 62.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 6, score: 61.5 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 5, score: 53.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 4, score: 57.9 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: { difficulty: 3, score: 88.5 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: { difficulty: 3, score: 75.1 }
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: { difficulty: 2, score: 74.3 }
+  }
+]
+analytics> db.friends.aggregate([ {$unwind:"$examScores"},{$sort:{"examScores":-1}
+... 
+analytics> db.friends.aggregate([
+... {$unwind:"$examScores"},
+... {$project:{_id:0,name:1,age:1,score:
+... "$examScores.score"}},
+... {$sort:
+... {score:-1}}])
+[
+  { name: 'Max', age: 29, score: 88.5 },
+  { name: 'Maria', age: 29, score: 75.1 },
+  { name: 'Manu', age: 30, score: 74.3 },
+  { name: 'Max', age: 29, score: 62.1 },
+  { name: 'Maria', age: 29, score: 61.5 },
+  { name: 'Max', age: 29, score: 57.9 },
+  { name: 'Manu', age: 30, score: 53.1 },
+  { name: 'Manu', age: 30, score: 52.1 },
+  { name: 'Maria', age: 29, score: 44.2 }
+]
+analytics> show collections;
+friends
+persons
+analytics> db.friends.finbd();
+TypeError: db.friends.finbd is not a function
+analytics> db.friends.find();
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> show dbsa;
+MongoshInvalidInputError: [COMMON-10001] 'dbsa' is not a valid argument for "show".
+analytics> show dbs;
+Abhishek        72.00 KiB
+Bike           116.00 KiB
+Book           112.00 KiB
+Car             80.00 KiB
+CityData       112.00 KiB
+College         56.00 KiB
+ContactData      3.71 MiB
+Credit          16.00 KiB
+Flights        116.00 KiB
+School         104.00 KiB
+Store           40.00 KiB
+Support         88.00 KiB
+admin           40.00 KiB
+analytics        2.85 MiB
+blog           112.00 KiB
+bookRegistry    80.00 KiB
+boxOffice       80.00 KiB
+companyData     96.00 KiB
+config         108.00 KiB
+financialData   40.00 KiB
+hospital        40.00 KiB
+local          256.00 KiB
+moviesData     192.00 KiB
+shop            96.00 KiB
+user            72.00 KiB
+analytics> show collections;
+friends
+persons
+analytics> show collection;
+MongoshInvalidInputError: [COMMON-10001] 'collection' is not a valid argument for "show".
+analytics> show collections\;
+MongoshInvalidInputError: [COMMON-10001] 'collections\' is not a valid argument for "show".
+analytics> show collections;
+friends
+persons
+analytics> db.friends.find();
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> show collections;
+friends
+persons
+analytics> db.friends.aggregate([
+... {$unwind:"$examScores"},
+... {$project:{_id:0,name:1,age:1,score:"$examScores.score"},
+... {$sort:{score:-1}}])
+Uncaught:
+SyntaxError: Unexpected token (4:0)
+
+  2 | {$unwind:"$examScores"},
+  3 | {$project:{_id:0,name:1,age:1,score:"$examScores.score"},
+> 4 | {$sort:{score:-1}}])
+    | ^
+  5 |
+
+analytics> db.friends.aggregate([ {$unwind:"$examScores"}, {$project:{_id:0,name:1,age:1,score:"$examScores.score"}},{$sort:{score:-1}}])
+[
+  { name: 'Max', age: 29, score: 88.5 },
+  { name: 'Maria', age: 29, score: 75.1 },
+  { name: 'Manu', age: 30, score: 74.3 },
+  { name: 'Max', age: 29, score: 62.1 },
+  { name: 'Maria', age: 29, score: 61.5 },
+  { name: 'Max', age: 29, score: 57.9 },
+  { name: 'Manu', age: 30, score: 53.1 },
+  { name: 'Manu', age: 30, score: 52.1 },
+  { name: 'Maria', age: 29, score: 44.2 }
+]
+analytics> db.friends.aggregate([ {$unwind:"$examScores"}, {$project:{_id:0,name:1,age:1,score:"$examScores.score"}},{$sort:{score:1}}])
+[
+  { name: 'Maria', age: 29, score: 44.2 },
+  { name: 'Manu', age: 30, score: 52.1 },
+  { name: 'Manu', age: 30, score: 53.1 },
+  { name: 'Max', age: 29, score: 57.9 },
+  { name: 'Maria', age: 29, score: 61.5 },
+  { name: 'Max', age: 29, score: 62.1 },
+  { name: 'Manu', age: 30, score: 74.3 },
+  { name: 'Maria', age: 29, score: 75.1 },
+  { name: 'Max', age: 29, score: 88.5 }
+]
+analytics> db.friends.aggregate([ {$unwind:"$examScores"}, {$project:{_id:0,name:1,age:1,score:"$examScores.score"}},{$sort:{score:-1}}])
+[
+  { name: 'Max', age: 29, score: 88.5 },
+  { name: 'Maria', age: 29, score: 75.1 },
+  { name: 'Manu', age: 30, score: 74.3 },
+  { name: 'Max', age: 29, score: 62.1 },
+  { name: 'Maria', age: 29, score: 61.5 },
+  { name: 'Max', age: 29, score: 57.9 },
+  { name: 'Manu', age: 30, score: 53.1 },
+  { name: 'Manu', age: 30, score: 52.1 },
+  { name: 'Maria', age: 29, score: 44.2 }
+]
+analytics> db.friends.aggregate([ {$unwind:"$examScores"}, {$project:{_id:0,name:1,age:1,score:"$examScores.score"}},{$sort:{score:-1}},])
+[
+  { name: 'Max', age: 29, score: 88.5 },
+  { name: 'Maria', age: 29, score: 75.1 },
+  { name: 'Manu', age: 30, score: 74.3 },
+  { name: 'Max', age: 29, score: 62.1 },
+  { name: 'Maria', age: 29, score: 61.5 },
+  { name: 'Max', age: 29, score: 57.9 },
+  { name: 'Manu', age: 30, score: 53.1 },
+  { name: 'Manu', age: 30, score: 52.1 },
+  { name: 'Maria', age: 29, score: 44.2 }
+]
+analytics> 
+
+analytics> db.friends.aggregate([ {$unwind:"$examScores"}, {$project:{_id:0,name:1,age:1,score:"$examScores.score"}},{$sort:{score:-1}},])
+analytics> show collections;
+friends
+persons
+analytics> db.friends.find()
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics>  db.friends.aggregate([ 
+...  {$unwind:"$examScores"},
+...  {$project:{_id:0,name:1,age:1,score:"$examScores.score"}},
+...  {$sort:{score:-1}},
+...  {$group:{_id:"$_id",name:{$first:"$name"},maxScore:{$max:'$score'}}}
+...  {$sort:{maxScore:-1}}
+Uncaught:
+SyntaxError: Unexpected token, expected "," (6:1)
+
+  4 |  {$sort:{score:-1}},
+  5 |  {$group:{_id:"$_id",name:{$first:"$name"},maxScore:{$max:'$score'}}}
+> 6 |  {$sort:{maxScore:-1}}
+    |  ^
+  7 |
+
+analytics>  ])
+Uncaught:
+SyntaxError: Unexpected token (1:1)
+
+> 1 |  ])
+    |  ^
+  2 |
+
+analytics>  db.friends.aggregate([ 
+...  {$unwind:"$examScores"},
+...  {$project:{_id:0,name:1,age:1,score:"$examScores.score"}},
+...  {$sort:{score:-1}},
+...  {$group:{_id:"$_id",name:{$first:"$name"},maxScore:{$max:'$score'}}},
+...  {$sort:{maxScore:-1}}
+...  ])
+[ { _id: null, name: 'Max', maxScore: 88.5 } ]
+analytics> 
+
+analytics>  db.friends.aggregate([ 
+...  {$unwind:"$examScores"},
+...  {$project:{_id:1,name:1,age:1,score:"$examScores.score"}},
+...  {$sort:{score:-1}},
+...  {$group:{_id:"$_id",name:{$first:"$name"},maxScore:{$max:'$score'}}},
+...  {$sort:{maxScore:-1}}
+...  ])
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    maxScore: 88.5
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    maxScore: 75.1
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    maxScore: 74.3
+  }
+]
+analytics> 
+
+analytics> show collections;
+friends
+persons
+analytics> db.persons.find({"$dob.age":18});
+MongoServerError[BadValue]: unknown top level operator: $dob.age. If you have a field name that starts with a '$' symbol, consider using $getField or $setField.
+analytics> db.persons.find({"dob.age":18});
+
+analytics> show collections;
+friends
+persons
+analytics> db.persons.findOne();
+{
+  _id: ObjectId('677772e0ae898e105a49fe57'),
+  gender: 'male',
+  name: { title: 'mr', first: 'victor', last: 'pedersen' },
+  location: {
+    street: '2156 stenbjergvej',
+    city: 'billum',
+    state: 'nordjylland',
+    postcode: 56649,
+    coordinates: { latitude: '-29.8113', longitude: '-31.0208' },
+    timezone: {
+      offset: '+5:30',
+      description: 'Bombay, Calcutta, Madras, New Delhi'
+    }
+  },
+  email: 'victor.pedersen@example.com',
+  login: {
+    uuid: 'fbb3c298-2cea-4415-84d1-74233525c325',
+    username: 'smallbutterfly536',
+    password: 'down',
+    salt: 'iW5QrgwW',
+    md5: '3cc8b8a4d69321a408cd46174e163594',
+    sha1: '681c0353b34fae08422686eea190e1c09472fc1f',
+    sha256: 'eb5251e929c56dfd19fc597123ed6ec2d0130a2c3c1bf8fc9c2ff8f29830a3b7'
+  },
+  dob: { date: '1959-02-19T23:56:23Z', age: 59 },
+  registered: { date: '2004-07-07T22:37:39Z', age: 14 },
+  phone: '23138213',
+  cell: '30393606',
+  id: { name: 'CPR', value: '506102-2208' },
+  picture: {
+    large: 'https://randomuser.me/api/portraits/men/23.jpg',
+    medium: 'https://randomuser.me/api/portraits/med/men/23.jpg',
+    thumbnail: 'https://randomuser.me/api/portraits/thumb/men/23.jpg'
+  },
+  nat: 'DK'
+}
+analytics> db.persons.find({"$dob.age":{$eq:18}});
+MongoServerError[BadValue]: unknown top level operator: $dob.age. If you have a field name that starts with a '$' symbol, consider using $getField or $setField.
+analytics> db.persons.find({"dob.age":{$eq:18}});
+
+analytics> db.persons.find({"dob.age":{$gt:18}});
+[
+  {
+    _id: ObjectId('677772e0ae898e105a49fe57'),
+    gender: 'male',
+    name: { title: 'mr', first: 'victor', last: 'pedersen' },
+    location: {
+      street: '2156 stenbjergvej',
+      city: 'billum',
+      state: 'nordjylland',
+      postcode: 56649,
+      coordinates: { latitude: '-29.8113', longitude: '-31.0208' },
+      timezone: {
+        offset: '+5:30',
+        description: 'Bombay, Calcutta, Madras, New Delhi'
+      }
+    },
+    email: 'victor.pedersen@example.com',
+    login: {
+      uuid: 'fbb3c298-2cea-4415-84d1-74233525c325',
+      username: 'smallbutterfly536',
+      password: 'down',
+      salt: 'iW5QrgwW',
+      md5: '3cc8b8a4d69321a408cd46174e163594',
+      sha1: '681c0353b34fae08422686eea190e1c09472fc1f',
+      sha256: 'eb5251e929c56dfd19fc597123ed6ec2d0130a2c3c1bf8fc9c2ff8f29830a3b7'
+    },
+    dob: { date: '1959-02-19T23:56:23Z', age: 59 },
+    registered: { date: '2004-07-07T22:37:39Z', age: 14 },
+    phone: '23138213',
+    cell: '30393606',
+    id: { name: 'CPR', value: '506102-2208' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/23.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/23.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/23.jpg'
+    },
+    nat: 'DK'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe58'),
+    gender: 'male',
+    name: { title: 'mr', first: 'carl', last: 'jacobs' },
+    location: {
+      street: '6948 springfield road',
+      city: 'arklow',
+      state: 'wicklow',
+      postcode: 71309,
+      coordinates: { latitude: '-29.6721', longitude: '-154.6037' },
+      timezone: { offset: '-11:00', description: 'Midway Island, Samoa' }
+    },
+    email: 'carl.jacobs@example.com',
+    login: {
+      uuid: '4f591981-b214-4430-9902-70bc0faa7e81',
+      username: 'organicladybug144',
+      password: 'hank',
+      salt: 'PC6Ig6sD',
+      md5: 'd94aac977512cb2bb005dfa360b40018',
+      sha1: 'a5ffeb65557693e443e195bdf9c066dca33dc47d',
+      sha256: 'f9aa851b943d9a8a876062e48b91b9af190a37779df009a20bc268c25ce48a7f'
+    },
+    dob: { date: '1984-09-30T01:20:26Z', age: 33 },
+    registered: { date: '2008-10-29T02:25:24Z', age: 9 },
+    phone: '031-501-5147',
+    cell: '081-090-3541',
+    id: { name: 'PPS', value: '9806982T' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/44.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/44.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/44.jpg'
+    },
+    nat: 'IE'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe59'),
+    gender: 'male',
+    name: { title: 'mr', first: 'zachary', last: 'lo' },
+    location: {
+      street: '3193 king st',
+      city: 'chipman',
+      state: 'yukon',
+      postcode: 'H8N 1Q8',
+      coordinates: { latitude: '76.4507', longitude: '-70.2264' },
+      timezone: {
+        offset: '+11:00',
+        description: 'Magadan, Solomon Islands, New Caledonia'
+      }
+    },
+    email: 'zachary.lo@example.com',
+    login: {
+      uuid: '76970c67-4801-4926-80f0-4872fe0aee42',
+      username: 'lazyrabbit189',
+      password: 'pass1',
+      salt: 'BVMLMPwZ',
+      md5: 'a6ff61f912af9958587e0fc0c8dc920b',
+      sha1: 'bd37d1c699fb5a17031924c37e5d90ba4403e598',
+      sha256: '0305e3ebf6f4502790d804cff5989a6a928f466af6e36bd808ad9ed24e51fee7'
+    },
+    dob: { date: '1988-10-17T03:45:04Z', age: 29 },
+    registered: { date: '2011-09-29T20:54:32Z', age: 6 },
+    phone: '273-427-0510',
+    cell: '309-911-7770',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/9.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/9.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/9.jpg'
+    },
+    nat: 'CA'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe5a'),
+    gender: 'male',
+    name: { title: 'mr', first: 'harvey', last: 'chambers' },
+    location: {
+      street: '3287 high street',
+      city: 'carlow',
+      state: 'wexford',
+      postcode: 47671,
+      coordinates: { latitude: '-22.5329', longitude: '168.9462' },
+      timezone: {
+        offset: '+5:00',
+        description: 'Ekaterinburg, Islamabad, Karachi, Tashkent'
+      }
+    },
+    email: 'harvey.chambers@example.com',
+    login: {
+      uuid: '8f583f57-c999-4a5d-a8c1-d913b574c082',
+      username: 'greenrabbit148',
+      password: 'june',
+      salt: 'dAsaXJGK',
+      md5: 'e3759db2391b798ffea2cc168e1280fd',
+      sha1: 'a3e77fd5fdd75e3b173ceec6c3c1bbe5e83540cc',
+      sha256: '7564eac1899234d5902fadfb995303a58370232f54bee6adb26e25394e2ffddd'
+    },
+    dob: { date: '1988-05-27T00:14:03Z', age: 30 },
+    registered: { date: '2007-03-11T06:20:19Z', age: 11 },
+    phone: '061-265-5188',
+    cell: '081-146-8382',
+    id: { name: 'PPS', value: '5608572T' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/82.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/82.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/82.jpg'
+    },
+    nat: 'IE'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe5b'),
+    gender: 'male',
+    name: { title: 'mr', first: 'gideon', last: 'van drongelen' },
+    location: {
+      street: '9982 catharijnekade',
+      city: 'vlaardingen',
+      state: 'gelderland',
+      postcode: 65750,
+      coordinates: { latitude: '-86.1268', longitude: '-54.1364' },
+      timezone: {
+        offset: '+3:00',
+        description: 'Baghdad, Riyadh, Moscow, St. Petersburg'
+      }
+    },
+    email: 'gideon.vandrongelen@example.com',
+    login: {
+      uuid: '1ff22ccb-14e8-42ae-a762-b552f60640c9',
+      username: 'angryrabbit395',
+      password: 'gotcha',
+      salt: 'KWxOE5yb',
+      md5: '9e4c766ad10186796fa138fa690c1029',
+      sha1: '000f6eb6e91d2404f7cbc8b0b485a86a8c198fcd',
+      sha256: '82286824c8d704cdcf970c488bc0f2d4c208f5ed4ae74656bbca354964576f62'
+    },
+    dob: { date: '1971-03-28T04:47:21Z', age: 47 },
+    registered: { date: '2004-10-20T18:02:16Z', age: 13 },
+    phone: '(198)-755-0721',
+    cell: '(241)-161-7474',
+    id: { name: 'BSN', value: '66692214' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/11.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/11.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/11.jpg'
+    },
+    nat: 'NL'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe5c'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'پریا', last: 'پارسا' },
+    location: {
+      street: '2889 اجاره دار',
+      city: 'بوشهر',
+      state: 'خراسان جنوبی',
+      postcode: 32528,
+      coordinates: { latitude: '4.6625', longitude: '34.1689' },
+      timezone: {
+        offset: '+3:00',
+        description: 'Baghdad, Riyadh, Moscow, St. Petersburg'
+      }
+    },
+    email: 'پریا.پارسا@example.com',
+    login: {
+      uuid: '75c0d4dd-3a88-42dd-a7ad-5d39b0d8b4b1',
+      username: 'orangesnake137',
+      password: '1031',
+      salt: 'NRy5mtiy',
+      md5: '76aac038463dbbed95cb107811879981',
+      sha1: '7013f5d075efcfc35b1cb18298bd7e81db566af2',
+      sha256: '6a2792cf9c0386679eb2ca357bcae567907bcfad0d400a56d4c3dd55203d8c61'
+    },
+    dob: { date: '1962-01-10T05:26:30Z', age: 56 },
+    registered: { date: '2015-03-20T08:41:37Z', age: 3 },
+    phone: '053-06884781',
+    cell: '0993-557-5092',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/52.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/52.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/52.jpg'
+    },
+    nat: 'IR'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe5d'),
+    gender: 'female',
+    name: { title: 'miss', first: 'maeva', last: 'wilson' },
+    location: {
+      street: '4962 36th ave',
+      city: 'jasper',
+      state: 'northwest territories',
+      postcode: 'U0A 4J6',
+      coordinates: { latitude: '-31.6359', longitude: '111.3806' },
+      timezone: {
+        offset: '+9:00',
+        description: 'Tokyo, Seoul, Osaka, Sapporo, Yakutsk'
+      }
+    },
+    email: 'maeva.wilson@example.com',
+    login: {
+      uuid: '8f2d499c-6a7e-4606-8c58-211fdb880c31',
+      username: 'smallgoose815',
+      password: 'weston',
+      salt: 'TyL1q8hK',
+      md5: 'bcedea61753320688ea27be01982556d',
+      sha1: '9e075df851fdaf292170d8e0a92c19ee37fba0f2',
+      sha256: '6f022405c6a384de3ab5cfc98cccdd97570e5b412046d05dfb79c23ae37612fa'
+    },
+    dob: { date: '1962-08-11T20:51:07Z', age: 56 },
+    registered: { date: '2016-10-03T10:02:55Z', age: 1 },
+    phone: '727-218-6012',
+    cell: '443-382-6538',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/96.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/96.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/96.jpg'
+    },
+    nat: 'CA'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe5e'),
+    gender: 'male',
+    name: { title: 'mr', first: 'elijah', last: 'lewis' },
+    location: {
+      street: '2623 paddock way',
+      city: 'virginia beach',
+      state: 'wyoming',
+      postcode: 54880,
+      coordinates: { latitude: '-42.6128', longitude: '-18.5996' },
+      timezone: { offset: '+3:30', description: 'Tehran' }
+    },
+    email: 'elijah.lewis@example.com',
+    login: {
+      uuid: '2292b7c7-a9bf-4341-abbd-c5841444ab6e',
+      username: 'angrygorilla267',
+      password: 'toonarmy',
+      salt: 'DUtMcvWR',
+      md5: '258eaa742373ee70976d53d1b84d4764',
+      sha1: '62f168f38fa3f6efbd815b58518775d3c6cf0080',
+      sha256: 'a4ab496047b9de7df39adbdabfecc813b8da428087029c94c2b748cef092f85e'
+    },
+    dob: { date: '1986-03-29T06:40:18Z', age: 32 },
+    registered: { date: '2007-12-24T10:32:11Z', age: 10 },
+    phone: '(187)-486-3727',
+    cell: '(986)-974-0857',
+    id: { name: 'SSN', value: '127-66-9786' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/57.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/57.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/57.jpg'
+    },
+    nat: 'US'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe5f'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'olav', last: 'oehme' },
+    location: {
+      street: 'gartenstraße 64',
+      city: 'nastätten',
+      state: 'mecklenburg-vorpommern',
+      postcode: 93640,
+      coordinates: { latitude: '-52.8348', longitude: '-67.5738' },
+      timezone: {
+        offset: '-3:00',
+        description: 'Brazil, Buenos Aires, Georgetown'
+      }
+    },
+    email: 'olav.oehme@example.com',
+    login: {
+      uuid: '2608c05c-8951-4aee-bcd2-f598c80f32bb',
+      username: 'heavypeacock371',
+      password: 'silent',
+      salt: 'E6R29k0e',
+      md5: '587f4392dc06a9fb69a52eae94fd32f2',
+      sha1: '82eba68b1fe2407281da5787b9b89505c663b587',
+      sha256: '304034638901015d8a7b2fd43530fffc4c7d621ccfab98de935d9c8387198796'
+    },
+    dob: { date: '1960-11-28T23:07:18Z', age: 57 },
+    registered: { date: '2011-05-31T00:24:05Z', age: 7 },
+    phone: '0748-6607336',
+    cell: '0176-5787554',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/6.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/6.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/6.jpg'
+    },
+    nat: 'DE'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe60'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'madeleine', last: 'till' },
+    location: {
+      street: 'im winkel 166',
+      city: 'villingen-schwenningen',
+      state: 'baden-württemberg',
+      postcode: 32227,
+      coordinates: { latitude: '83.3998', longitude: '-172.3753' },
+      timezone: {
+        offset: '+5:30',
+        description: 'Bombay, Calcutta, Madras, New Delhi'
+      }
+    },
+    email: 'madeleine.till@example.com',
+    login: {
+      uuid: 'e70766b6-9d4f-419f-85c5-efc3c42db023',
+      username: 'goldencat450',
+      password: 'panthers',
+      salt: 'mHOsDM43',
+      md5: 'a97539f5d7b6c7302d3f3c1dd1d389b5',
+      sha1: 'a991dd190a83856b04d41a5e64bc41b5728b6903',
+      sha256: 'bd123b2b2aae61c6e8d3449bb14c6a032b4860275da781f8ffc73f5500e667bd'
+    },
+    dob: { date: '1954-05-01T02:34:40Z', age: 64 },
+    registered: { date: '2008-06-14T03:14:37Z', age: 10 },
+    phone: '0209-9573743',
+    cell: '0173-1226290',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/27.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/27.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/27.jpg'
+    },
+    nat: 'DE'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe61'),
+    gender: 'female',
+    name: { title: 'miss', first: 'shona', last: 'kemperman' },
+    location: {
+      street: '2685 adriaen van ostadelaan',
+      city: 'giessenlanden',
+      state: 'noord-brabant',
+      postcode: 57798,
+      coordinates: { latitude: '-14.4912', longitude: '-8.5570' },
+      timezone: { offset: '-12:00', description: 'Eniwetok, Kwajalein' }
+    },
+    email: 'shona.kemperman@example.com',
+    login: {
+      uuid: '45d4a86e-c007-45af-9489-49ff77c4905c',
+      username: 'bluetiger298',
+      password: 'xander',
+      salt: 'ANHBICA9',
+      md5: '56560a9b266dac51c04c43a9a845b7af',
+      sha1: '419f27be45ebb9635904e61c7e865ce13d963f63',
+      sha256: '10e7dab700ebd2b0edfced679f2cd4e4f67d2f65711d7af62e04d282b65a4161'
+    },
+    dob: { date: '1948-04-23T03:40:22Z', age: 70 },
+    registered: { date: '2003-12-29T05:37:33Z', age: 14 },
+    phone: '(132)-806-7647',
+    cell: '(766)-268-3084',
+    id: { name: 'BSN', value: '99563655' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/14.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/14.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/14.jpg'
+    },
+    nat: 'NL'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe62'),
+    gender: 'female',
+    name: { title: 'ms', first: 'louise', last: 'graham' },
+    location: {
+      street: '5108 south street',
+      city: 'cashel',
+      state: 'galway',
+      postcode: 45802,
+      coordinates: { latitude: '35.5726', longitude: '148.0944' },
+      timezone: { offset: '+2:00', description: 'Kaliningrad, South Africa' }
+    },
+    email: 'louise.graham@example.com',
+    login: {
+      uuid: '062c592e-c6eb-44c3-beda-fb71e9c13bba',
+      username: 'whitekoala325',
+      password: 'harry',
+      salt: 'OjIRb3hP',
+      md5: 'fc32be9814936026c62bb21bb4a029cd',
+      sha1: '6350de80d1be4af1e7b2a498962f69993082126c',
+      sha256: 'abc804d7d87f0fd1a058b8db7acdf1d62e0b80412e282c427173c466040b29d1'
+    },
+    dob: { date: '1971-01-21T20:36:16Z', age: 47 },
+    registered: { date: '2002-10-19T17:05:42Z', age: 15 },
+    phone: '011-434-7405',
+    cell: '081-010-7792',
+    id: { name: 'PPS', value: '9774048T' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/59.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/59.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/59.jpg'
+    },
+    nat: 'IE'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe63'),
+    gender: 'male',
+    name: { title: 'mr', first: 'isolino', last: 'viana' },
+    location: {
+      street: '7224 rua são jorge ',
+      city: 'cascavel',
+      state: 'são paulo',
+      postcode: 40229,
+      coordinates: { latitude: '78.8545', longitude: '101.5995' },
+      timezone: { offset: '-10:00', description: 'Hawaii' }
+    },
+    email: 'isolino.viana@example.com',
+    login: {
+      uuid: 'db3dca95-4597-4e7e-bdf2-f1c7b4491b6e',
+      username: 'blackfrog453',
+      password: 'poncho',
+      salt: 'ahSsAq5r',
+      md5: '27f4c22bb816c5b30306932094224ece',
+      sha1: 'ab1735d464b80e04e26b808d72c95ca528d60962',
+      sha256: '5e79c6f1371fc259c022c2aee096296432a36973986218aabdca8b5c3bce73b1'
+    },
+    dob: { date: '1959-03-22T14:53:41Z', age: 59 },
+    registered: { date: '2002-04-12T09:48:12Z', age: 16 },
+    phone: '(85) 7465-1411',
+    cell: '(07) 4883-9964',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/58.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/58.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/58.jpg'
+    },
+    nat: 'BR'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe64'),
+    gender: 'female',
+    name: { title: 'miss', first: 'mestan', last: 'kaplangı' },
+    location: {
+      street: '2575 abanoz sk',
+      city: 'elazığ',
+      state: 'kırşehir',
+      postcode: 48715,
+      coordinates: { latitude: '25.1614', longitude: '43.9085' },
+      timezone: {
+        offset: '+4:00',
+        description: 'Abu Dhabi, Muscat, Baku, Tbilisi'
+      }
+    },
+    email: 'mestan.kaplangı@example.com',
+    login: {
+      uuid: '1c449a8b-db88-4754-aae5-b66e0338a479',
+      username: 'bigelephant762',
+      password: 'patty',
+      salt: 'n2sxEnSR',
+      md5: '6f6904b481cb51f2e068fad23ceffa73',
+      sha1: '276e8c992cf366ff06c868290a164a2727cc1d41',
+      sha256: '14a2d569e3ac745afcb07991b61e95e8c85d9e04c1f8725163e466284f4a5900'
+    },
+    dob: { date: '1951-12-17T20:03:33Z', age: 66 },
+    registered: { date: '2006-04-05T12:24:26Z', age: 12 },
+    phone: '(729)-603-0876',
+    cell: '(250)-580-1253',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/42.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/42.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/42.jpg'
+    },
+    nat: 'TR'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe65'),
+    gender: 'female',
+    name: { title: 'mrs', first: 'katie', last: 'welch' },
+    location: {
+      street: '3356 highfield road',
+      city: 'dunboyne',
+      state: 'dublin city',
+      postcode: 99090,
+      coordinates: { latitude: '71.9851', longitude: '135.9359' },
+      timezone: {
+        offset: '-3:00',
+        description: 'Brazil, Buenos Aires, Georgetown'
+      }
+    },
+    email: 'katie.welch@example.com',
+    login: {
+      uuid: 'a4262643-0ff9-4c5c-a452-34a4f0dc8d52',
+      username: 'blackbear565',
+      password: 'beatles1',
+      salt: '2lGmdNiv',
+      md5: 'f411d7f4bd8ec68c9def4701572509a6',
+      sha1: '802e286cef20c0ed2575cce82553a5749570b356',
+      sha256: '2688e7f41e9bbf81ea719b916c9a0abc6fb6e75351289d972759e60fb2ed35c6'
+    },
+    dob: { date: '1990-10-14T05:02:12Z', age: 27 },
+    registered: { date: '2007-12-21T20:44:40Z', age: 10 },
+    phone: '011-694-3254',
+    cell: '081-184-0215',
+    id: { name: 'PPS', value: '4743256T' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/88.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/88.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/88.jpg'
+    },
+    nat: 'IE'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe66'),
+    gender: 'female',
+    name: { title: 'miss', first: 'sandra', last: 'lorenzo' },
+    location: {
+      street: '7814 avenida de andalucía',
+      city: 'pamplona',
+      state: 'la rioja',
+      postcode: 47467,
+      coordinates: { latitude: '-88.6846', longitude: '-83.3326' },
+      timezone: { offset: '-10:00', description: 'Hawaii' }
+    },
+    email: 'sandra.lorenzo@example.com',
+    login: {
+      uuid: '04986a86-976f-4f3e-b112-244e0aca7cba',
+      username: 'orangegorilla209',
+      password: 'viking',
+      salt: 'v1Igycsr',
+      md5: 'f57648fcee958b878f636a48ad24839a',
+      sha1: '4001ff4031172172aaf46e27b60691be99feed2a',
+      sha256: 'fd287a853407637110e5df4749cab043391c2b2442aa6e218bde7b5aa5563366'
+    },
+    dob: { date: '1975-03-23T17:01:45Z', age: 43 },
+    registered: { date: '2017-12-13T21:16:35Z', age: 0 },
+    phone: '911-571-659',
+    cell: '674-415-588',
+    id: { name: 'DNI', value: '87273544-J' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/72.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/72.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/72.jpg'
+    },
+    nat: 'ES'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe67'),
+    gender: 'male',
+    name: { title: 'mr', first: 'بنیامین', last: 'سالاری' },
+    location: {
+      street: '1347 شهید بهشتی',
+      city: 'اسلام‌شهر',
+      state: 'البرز',
+      postcode: 68120,
+      coordinates: { latitude: '21.3388', longitude: '-90.9499' },
+      timezone: {
+        offset: '0:00',
+        description: 'Western Europe Time, London, Lisbon, Casablanca'
+      }
+    },
+    email: 'بنیامین.سالاری@example.com',
+    login: {
+      uuid: 'ae60d6ff-8a5a-4889-ba5a-88b346a28b0e',
+      username: 'purplepanda349',
+      password: 'sinned',
+      salt: 'LHAFDaKM',
+      md5: '3ee195d637115263b5459fdb2df3a63b',
+      sha1: 'c5112f9362eaba7b3ea6417d65da26efb850bf01',
+      sha256: 'f8822bdefb73fac6c095b80a8e1141b584775e11cd4ed8e757d4fbba29f20b09'
+    },
+    dob: { date: '1984-03-10T22:12:43Z', age: 34 },
+    registered: { date: '2015-11-01T14:21:17Z', age: 2 },
+    phone: '051-74345067',
+    cell: '0983-365-2290',
+    id: { name: '', value: null },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/men/52.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/men/52.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/men/52.jpg'
+    },
+    nat: 'IR'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe68'),
+    gender: 'female',
+    name: { title: 'madame', first: 'andreia', last: 'arnaud' },
+    location: {
+      street: '7425 route de genas',
+      city: "l'abbaye",
+      state: 'schwyz',
+      postcode: 7441,
+      coordinates: { latitude: '-67.6434', longitude: '59.5703' },
+      timezone: { offset: '-12:00', description: 'Eniwetok, Kwajalein' }
+    },
+    email: 'andreia.arnaud@example.com',
+    login: {
+      uuid: '6f647090-766c-4708-920c-bf4fcc617d15',
+      username: 'organicgoose539',
+      password: 'bestbuy',
+      salt: '2g7xpk8Z',
+      md5: 'e032913bb9e7c0504cff46efa0cf01cd',
+      sha1: 'ffaa47cdc0891dfcbea3e4076999235c49635576',
+      sha256: '6e392bc95c930bb6e828b814a3ba554e0eebcdbd0505346f81995be8ec774b4f'
+    },
+    dob: { date: '1960-01-31T05:16:10Z', age: 58 },
+    registered: { date: '2003-10-19T20:41:13Z', age: 14 },
+    phone: '(563)-009-4755',
+    cell: '(842)-068-0366',
+    id: { name: 'AVS', value: '756.5206.2620.86' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/3.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/3.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/3.jpg'
+    },
+    nat: 'CH'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe69'),
+    gender: 'female',
+    name: { title: 'ms', first: 'anaëlle', last: 'adam' },
+    location: {
+      street: '6952 rue abel-ferry',
+      city: 'toulouse',
+      state: 'mayenne',
+      postcode: 69995,
+      coordinates: { latitude: '3.6559', longitude: '174.2405' },
+      timezone: {
+        offset: '+8:00',
+        description: 'Beijing, Perth, Singapore, Hong Kong'
+      }
+    },
+    email: 'anaëlle.adam@example.com',
+    login: {
+      uuid: '1bb3f501-b464-4e4b-a564-09d9b7b82721',
+      username: 'brownwolf302',
+      password: 'gaston',
+      salt: 'eFuVRBvj',
+      md5: 'aea71691758ed3149dfe6ff09f99a280',
+      sha1: 'd97cafb941fa4b54f891eecf856de90fed00b43e',
+      sha256: '25e7da7cddeca26e733e74a5414616fc565fbb5847f5a9f749565477459cfbf3'
+    },
+    dob: { date: '1987-10-20T11:33:44Z', age: 30 },
+    registered: { date: '2008-01-09T05:32:18Z', age: 10 },
+    phone: '01-38-71-69-99',
+    cell: '06-94-15-71-81',
+    id: { name: 'INSEE', value: '2NNaN77968794 05' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/82.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/82.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/82.jpg'
+    },
+    nat: 'FR'
+  },
+  {
+    _id: ObjectId('677772e0ae898e105a49fe6a'),
+    gender: 'female',
+    name: { title: 'miss', first: 'anne', last: 'ruiz' },
+    location: {
+      street: '5523 cackson st',
+      city: 'devonport',
+      state: 'northern territory',
+      postcode: 9797,
+      coordinates: { latitude: '-84.1572', longitude: '78.0207' },
+      timezone: {
+        offset: '+9:00',
+        description: 'Tokyo, Seoul, Osaka, Sapporo, Yakutsk'
+      }
+    },
+    email: 'anne.ruiz@example.com',
+    login: {
+      uuid: '7ee5ffa7-ea97-40a4-a476-3d4673bba13b',
+      username: 'happyrabbit405',
+      password: '1qaz2wsx',
+      salt: 'I2cXRgLP',
+      md5: '7e660dcb6162f659f0cc658cf0d0722e',
+      sha1: '4bf5521bb7e22092df2f3d0c9e09d7530ab95fc6',
+      sha256: 'b658ea12176845a7e0c344dcc8ca7e11bdda1bb5601b4e13c9425ecf33820702'
+    },
+    dob: { date: '1982-10-09T12:10:42Z', age: 35 },
+    registered: { date: '2016-09-06T20:51:12Z', age: 2 },
+    phone: '06-1601-9518',
+    cell: '0479-884-985',
+    id: { name: 'TFN', value: '987210251' },
+    picture: {
+      large: 'https://randomuser.me/api/portraits/women/51.jpg',
+      medium: 'https://randomuser.me/api/portraits/med/women/51.jpg',
+      thumbnail: 'https://randomuser.me/api/portraits/thumb/women/51.jpg'
+    },
+    nat: 'AU'
+  }
+]
+Type "it" for more
+analytics> db.persons.find({"dob.age":{$gt:18}}).count();
+5000
+analytics> db.persons.find({"dob.age":{$lt:18}}).count();
+0
+analytics> db.persons.find().count();
+5000
+analytics> db.persons.find("dob.age":{$eq:18}).count();
+Uncaught:
+SyntaxError: Unexpected token, expected "," (1:25)
+
+> 1 | db.persons.find("dob.age":{$eq:18}).count();
+    |                          ^
+  2 |
+
+analytics> db.persons.find({"dob.age":{$eq:18}}).count();
+0
+analytics> show collections;
+friends
+persons
+analytics> db.friends.find();
+[
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424d'),
+    name: 'Max',
+    hobbies: [ 'Sports', 'Cooking' ],
+    age: 29,
+    examScores: [
+      { difficulty: 4, score: 57.9 },
+      { difficulty: 6, score: 62.1 },
+      { difficulty: 3, score: 88.5 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424e'),
+    name: 'Manu',
+    hobbies: [ 'Eating', 'Data Analytics' ],
+    age: 30,
+    examScores: [
+      { difficulty: 7, score: 52.1 },
+      { difficulty: 2, score: 74.3 },
+      { difficulty: 5, score: 53.1 }
+    ]
+  },
+  {
+    _id: ObjectId('677fd9644bfabc997d6f424f'),
+    name: 'Maria',
+    hobbies: [ 'Cooking', 'Skiing' ],
+    age: 29,
+    examScores: [
+      { difficulty: 3, score: 75.1 },
+      { difficulty: 8, score: 44.2 },
+      { difficulty: 6, score: 61.5 }
+    ]
+  }
+]
+analytics> show collections;
+friends
+persons
+analytics> db.persons.aggregate([
+... {$bucket:{
+... groupBy:"$dob.age",
+... boundaries:[0,18,30,50,80,120],
+... output:{
+... numsPersons:{$sum:1},
+... averageAge:{$avg:"$dob.age"}
+... }
+... }}])
+[
+  { _id: 18, numsPersons: 868, averageAge: 25.101382488479263 },
+  { _id: 30, numsPersons: 1828, averageAge: 39.4917943107221 },
+  { _id: 50, numsPersons: 2304, averageAge: 61.46440972222222 }
+]
+analytics> show collections;
+friends
+persons
+analytics> db.persons.find({"$dob.age":{$lt:18}});
+MongoServerError[BadValue]: unknown top level operator: $dob.age. If you have a field name that starts with a '$' symbol, consider using $getField or $setField.
+analytics> db.persons.find({"$dob.age":{$lt:18}}).count();
+MongoServerError[BadValue]: unknown top level operator: $dob.age. If you have a field name that starts with a '$' symbol, consider using $getField or $setField.
+analytics> db.persons.find({"dob.age":{$lt:18}}).count();
+0
+analytics> db.persons.find({"dob.age":{$gt:18}}).count();
+5000
+analytics> db.persons.find({"dob.age":{$lt:30}}).count();
+868
+analytics> db.persons.find({"dob.age":{$gt:30}}),.count();
+Uncaught:
+SyntaxError: Unexpected token (1:38)
+
+> 1 | db.persons.find({"dob.age":{$gt:30}}),.count();
+    |                                       ^
+  2 |
+
+analytics> db.persons.find({"dob.age":{$gt:30}}).count();
+4038
+analytics> db.persons.find({"dob.age":{$lt:50}}).count();
+2696
+analytics> 

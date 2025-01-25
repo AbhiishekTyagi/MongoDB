@@ -1,0 +1,710 @@
+Last login: Sat Dec 28 16:25:27 on ttys001
+RadhaPutraAbhishektyagi@Abhisheks-MacBook-Air ~ % pwd
+/Users/abhishektyagi_1
+RadhaPutraAbhishektyagi@Abhisheks-MacBook-Air ~ % mongosh;
+Current Mongosh Log ID:	677e0a014bfabc997d6f424a
+Connecting to:		mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.1.5
+(node:26665) [DEP0040] DeprecationWarning: The `punycode` module is deprecated. Please use a userland alternative instead.
+(Use `node --trace-deprecation ...` to show where the warning was created)
+Using MongoDB:		7.0.2
+Using Mongosh:		2.1.5
+mongosh 2.3.7 is available for download: https://www.mongodb.com/try/download/shell
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-12-12T15:24:31.128+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test> show dbs;
+Abhishek        72.00 KiB
+Bike           116.00 KiB
+Book           112.00 KiB
+Car             80.00 KiB
+CityData       112.00 KiB
+College         56.00 KiB
+ContactData      3.71 MiB
+Credit          16.00 KiB
+Flights        116.00 KiB
+School         112.00 KiB
+Store           40.00 KiB
+Support         88.00 KiB
+admin           40.00 KiB
+analytics        2.81 MiB
+blog           112.00 KiB
+bookRegistry    80.00 KiB
+boxOffice       80.00 KiB
+companyData     96.00 KiB
+config          72.00 KiB
+financialData   40.00 KiB
+hospital        40.00 KiB
+local          256.00 KiB
+moviesData     192.00 KiB
+shop            96.00 KiB
+user            72.00 KiB
+test> use analytics;
+switched to db analytics
+analytics> show collections;
+persons
+analytics> db.persons.findOne();
+{
+  _id: ObjectId('677772e0ae898e105a49fe57'),
+  gender: 'male',
+  name: { title: 'mr', first: 'victor', last: 'pedersen' },
+  location: {
+    street: '2156 stenbjergvej',
+    city: 'billum',
+    state: 'nordjylland',
+    postcode: 56649,
+    coordinates: { latitude: '-29.8113', longitude: '-31.0208' },
+    timezone: {
+      offset: '+5:30',
+      description: 'Bombay, Calcutta, Madras, New Delhi'
+    }
+  },
+  email: 'victor.pedersen@example.com',
+  login: {
+    uuid: 'fbb3c298-2cea-4415-84d1-74233525c325',
+    username: 'smallbutterfly536',
+    password: 'down',
+    salt: 'iW5QrgwW',
+    md5: '3cc8b8a4d69321a408cd46174e163594',
+    sha1: '681c0353b34fae08422686eea190e1c09472fc1f',
+    sha256: 'eb5251e929c56dfd19fc597123ed6ec2d0130a2c3c1bf8fc9c2ff8f29830a3b7'
+  },
+  dob: { date: '1959-02-19T23:56:23Z', age: 59 },
+  registered: { date: '2004-07-07T22:37:39Z', age: 14 },
+  phone: '23138213',
+  cell: '30393606',
+  id: { name: 'CPR', value: '506102-2208' },
+  picture: {
+    large: 'https://randomuser.me/api/portraits/men/23.jpg',
+    medium: 'https://randomuser.me/api/portraits/med/men/23.jpg',
+    thumbnail: 'https://randomuser.me/api/portraits/thumb/men/23.jpg'
+  },
+  nat: 'DK'
+}
+analytics> show databases;
+Abhishek        72.00 KiB
+Bike           116.00 KiB
+Book           112.00 KiB
+Car             80.00 KiB
+CityData       112.00 KiB
+College         56.00 KiB
+ContactData      3.71 MiB
+Credit          16.00 KiB
+Flights        116.00 KiB
+School         112.00 KiB
+Store           40.00 KiB
+Support         88.00 KiB
+admin           40.00 KiB
+analytics        2.81 MiB
+blog           112.00 KiB
+bookRegistry    80.00 KiB
+boxOffice       80.00 KiB
+companyData     96.00 KiB
+config          60.00 KiB
+financialData   40.00 KiB
+hospital        40.00 KiB
+local          256.00 KiB
+moviesData     192.00 KiB
+shop            96.00 KiB
+user            72.00 KiB
+analytics> show collections;
+persons
+analytics> db.persons.findOne()
+{
+  _id: ObjectId('677772e0ae898e105a49fe57'),
+  gender: 'male',
+  name: { title: 'mr', first: 'victor', last: 'pedersen' },
+  location: {
+    street: '2156 stenbjergvej',
+    city: 'billum',
+    state: 'nordjylland',
+    postcode: 56649,
+    coordinates: { latitude: '-29.8113', longitude: '-31.0208' },
+    timezone: {
+      offset: '+5:30',
+      description: 'Bombay, Calcutta, Madras, New Delhi'
+    }
+  },
+  email: 'victor.pedersen@example.com',
+  login: {
+    uuid: 'fbb3c298-2cea-4415-84d1-74233525c325',
+    username: 'smallbutterfly536',
+    password: 'down',
+    salt: 'iW5QrgwW',
+    md5: '3cc8b8a4d69321a408cd46174e163594',
+    sha1: '681c0353b34fae08422686eea190e1c09472fc1f',
+    sha256: 'eb5251e929c56dfd19fc597123ed6ec2d0130a2c3c1bf8fc9c2ff8f29830a3b7'
+  },
+  dob: { date: '1959-02-19T23:56:23Z', age: 59 },
+  registered: { date: '2004-07-07T22:37:39Z', age: 14 },
+  phone: '23138213',
+  cell: '30393606',
+  id: { name: 'CPR', value: '506102-2208' },
+  picture: {
+    large: 'https://randomuser.me/api/portraits/men/23.jpg',
+    medium: 'https://randomuser.me/api/portraits/med/men/23.jpg',
+    thumbnail: 'https://randomuser.me/api/portraits/thumb/men/23.jpg'
+  },
+  nat: 'DK'
+}
+analytics> show databases;
+Abhishek        72.00 KiB
+Bike           116.00 KiB
+Book           112.00 KiB
+Car             80.00 KiB
+CityData       112.00 KiB
+College         56.00 KiB
+ContactData      3.71 MiB
+Credit          16.00 KiB
+Flights        116.00 KiB
+School         112.00 KiB
+Store           40.00 KiB
+Support         88.00 KiB
+admin           40.00 KiB
+analytics        2.81 MiB
+blog           112.00 KiB
+bookRegistry    80.00 KiB
+boxOffice       80.00 KiB
+companyData     96.00 KiB
+config          60.00 KiB
+financialData   40.00 KiB
+hospital        40.00 KiB
+local          256.00 KiB
+moviesData     192.00 KiB
+shop            96.00 KiB
+user            72.00 KiB
+analytics> show collections;
+persons
+analytics> show collections;
+persons
+analytics> db.persons.findOne()
+{
+  _id: ObjectId('677772e0ae898e105a49fe57'),
+  gender: 'male',
+  name: { title: 'mr', first: 'victor', last: 'pedersen' },
+  location: {
+    street: '2156 stenbjergvej',
+    city: 'billum',
+    state: 'nordjylland',
+    postcode: 56649,
+    coordinates: { latitude: '-29.8113', longitude: '-31.0208' },
+    timezone: {
+      offset: '+5:30',
+      description: 'Bombay, Calcutta, Madras, New Delhi'
+    }
+  },
+  email: 'victor.pedersen@example.com',
+  login: {
+    uuid: 'fbb3c298-2cea-4415-84d1-74233525c325',
+    username: 'smallbutterfly536',
+    password: 'down',
+    salt: 'iW5QrgwW',
+    md5: '3cc8b8a4d69321a408cd46174e163594',
+    sha1: '681c0353b34fae08422686eea190e1c09472fc1f',
+    sha256: 'eb5251e929c56dfd19fc597123ed6ec2d0130a2c3c1bf8fc9c2ff8f29830a3b7'
+  },
+  dob: { date: '1959-02-19T23:56:23Z', age: 59 },
+  registered: { date: '2004-07-07T22:37:39Z', age: 14 },
+  phone: '23138213',
+  cell: '30393606',
+  id: { name: 'CPR', value: '506102-2208' },
+  picture: {
+    large: 'https://randomuser.me/api/portraits/men/23.jpg',
+    medium: 'https://randomuser.me/api/portraits/med/men/23.jpg',
+    thumbnail: 'https://randomuser.me/api/portraits/thumb/men/23.jpg'
+  },
+  nat: 'DK'
+}
+analytics> db.persons.aggregate([
+... { $project:
+...  {
+...   _id:1,
+...   email:1,
+...   name:1,
+...   gender:1,
+...   birthdate:{$toDate:"$dob.date"},
+...   age:"$dob.age",
+...   location:
+...   {
+...   	type:"Point",
+...   	coordinates:[
+...   		{$convert:{input:'$location.coordinates.longitude',to:"double",onError:0.0,onNull:0.0}},
+...   		{$convert:{input:'$location.coordinates.latitude',to:"double",onError:0.0,onNull:0.0}}]
+...   }
+...   }},
+... {$project: {gender: 1,location: 1,email:1,birthdate:1,age:1, 
+... 
+...  fullname: {$concat: [
+... 
+...  {$toUpper:{$substrCP:["$name.first",0,1]}},
+... 
+... {$substrCP:['$name.first',1,{$subtract:[{$strLenCP:'$name.first'},1]}]}," ",
+... 
+... {$toUpper:{$substrCP:["$name.last",0,1]}},
+... 
+... {$substrCP:['$name.last',1,{$subtract:[{$strLenCP:'$name.last'},1]}]}]}}},
+... 
+... {$group:{_id:{birthYear:{$isoWeekYear:"$dob.date"},numPersons:{$sum:1}}},
+... {$sort:{numPersons:1}}
+Uncaught:
+SyntaxError: Unexpected token (31:0)
+
+  29 |
+  30 | {$group:{_id:{birthYear:{$isoWeekYear:"$dob.date"},numPersons:{$sum:1}}},
+> 31 | {$sort:{numPersons:1}}
+     | ^
+  32 |
+
+analytics> db.persons.aggregate([
+... { $project:
+...  {
+...   _id:1,
+...   email:1,
+...   name:1,
+...   gender:1,
+...   birthdate:{$toDate:"$dob.date"},
+...   age:"$dob.age",
+...   location:
+...   {
+...   	type:"Point",
+...   	coordinates:[
+...   		{$convert:{input:'$location.coordinates.longitude',to:"double",onError:0.0,onNull:0.0}},
+...   		{$convert:{input:'$location.coordinates.latitude',to:"double",onError:0.0,onNull:0.0}}]
+...   }
+...   }},
+... {$project: {gender: 1,location: 1,email:1,birthdate:1,age:1, 
+... 
+...  fullname: {$concat: [
+... 
+...  {$toUpper:{$substrCP:["$name.first",0,1]}},
+... 
+... {$substrCP:['$name.first',1,{$subtract:[{$strLenCP:'$name.first'},1]}]}," ",
+... 
+... {$toUpper:{$substrCP:["$name.last",0,1]}},
+... 
+... {$substrCP:['$name.last',1,{$subtract:[{$strLenCP:'$name.last'},1]}]}]}}},
+... 
+... {$group:{_id:{birthYear:{$isoWeekYear:"$dob.date"},numPersons:{$sum:1}}}},
+... {$sort:{numPersons:1}}
+... ])
+[ { _id: { birthYear: null, numPersons: 1 } } ]
+analytics> db.persons.aggregate([
+... { $project:
+...  {
+...   _id:1,
+...   email:1,
+...   name:1,
+...   gender:1,
+...   birthdate:{$toDate:"$dob.date"},
+...   age:"$dob.age",
+...   location:
+...   {
+...   	type:"Point",
+...   	coordinates:[
+...   		{$convert:{input:'$location.coordinates.longitude',to:"double",onError:0.0,onNull:0.0}},
+...   		{$convert:{input:'$location.coordinates.latitude',to:"double",onError:0.0,onNull:0.0}}]
+...   }
+...   }},
+... {$project: {gender: 1,location: 1,email:1,birthdate:1,age:1, 
+... 
+...  fullname: {$concat: [
+... 
+...  {$toUpper:{$substrCP:["$name.first",0,1]}},
+... 
+... {$substrCP:['$name.first',1,{$subtract:[{$strLenCP:'$name.first'},1]}]}," ",
+... 
+... {$toUpper:{$substrCP:["$name.last",0,1]}},
+... 
+... {$substrCP:['$name.last',1,{$subtract:[{$strLenCP:'$name.last'},1]}]}]}}},
+... 
+... {$group:{_id:{birthYear:{$isoWeekYear:{$convert:{input:"$dob.date",to:"date",onNull:0.0,onError:0.0}}},numPersons:{$sum:1}}}},
+... {$sort:{numPersons:1}}
+... ])
+MongoServerError[Location16006]: PlanExecutor error during aggregation :: caused by :: can't convert from BSON type int to Date
+analytics> db.persons.aggregate([
+... { $project:
+...  {
+...   _id:1,
+...   email:1,
+...   name:1,
+...   gender:1,
+...   birthdate:{$toDate:"$dob.date"},
+...   age:"$dob.age",
+...   location:
+...   {
+...   	type:"Point",
+...   	coordinates:[
+...   		{$convert:{input:'$location.coordinates.longitude',to:"double",onError:0.0,onNull:0.0}},
+...   		{$convert:{input:'$location.coordinates.latitude',to:"double",onError:0.0,onNull:0.0}}]
+...   }
+...   }},
+... {$project: {gender: 1,location: 1,email:1,birthdate:1,age:1, 
+... 
+...  fullname: {$concat: [
+... 
+...  {$toUpper:{$substrCP:["$name.first",0,1]}},
+... 
+... {$substrCP:['$name.first',1,{$subtract:[{$strLenCP:'$name.first'},1]}]}," ",
+... 
+... {$toUpper:{$substrCP:["$name.last",0,1]}},
+... 
+... {$substrCP:['$name.last',1,{$subtract:[{$strLenCP:'$name.last'},1]}]}]}}},
+... 
+... {$group:{_id:{birthYear:{$isoWeekYear:{$convert:{input:"$dob.date",to:"date",onNull:0.0,onError:0.0}}},numPersons:{$sum:1}}}},
+... {$sort:{numPersons:1}}
+... ])
+MongoServerError[Location16006]: PlanExecutor error during aggregation :: caused by :: can't convert from BSON type int to Date
+analytics> db.persons.aggregate([
+... { $project:
+...  {
+...   _id:1,
+...   email:1,
+...   name:1,
+...   gender:1,
+...   birthdate:{$toDate:"$dob.date"},
+...   age:"$dob.age",
+...   location:
+...   {
+...   	type:"Point",
+...   	coordinates:[
+...   		{$convert:{input:'$location.coordinates.longitude',to:"double",onError:0.0,onNull:0.0}},
+...   		{$convert:{input:'$location.coordinates.latitude',to:"double",onError:0.0,onNull:0.0}}]
+...   }
+...   }},
+... {$project: {gender: 1,location: 1,email:1,birthdate:1,age:1, 
+... 
+...  fullname: {$concat: [
+... 
+...  {$toUpper:{$substrCP:["$name.first",0,1]}},
+... 
+... {$substrCP:['$name.first',1,{$subtract:[{$strLenCP:'$name.first'},1]}]}," ",
+... 
+... {$toUpper:{$substrCP:["$name.last",0,1]}},
+... 
+... {$substrCP:['$name.last',1,{$subtract:[{$strLenCP:'$name.last'},1]}]}]}}},
+... 
+... {$group:{_id:{birthYear:{$isoWeekYear:"birthdate"},numPersons:{$sum:1}}}},
+... {$sort:{numPersons:1}}
+... ])
+MongoServerError[Location16006]: Failed to optimize pipeline :: caused by :: can't convert from BSON type string to Date
+analytics> db.persons.aggregate([
+... { $project:
+...  {
+...   _id:1,
+...   email:1,
+...   name:1,
+...   gender:1,
+...   birthdate:{$toDate:"$dob.date"},
+...   age:"$dob.age",
+...   location:
+...   {
+...   	type:"Point",
+...   	coordinates:[
+...   		{$convert:{input:'$location.coordinates.longitude',to:"double",onError:0.0,onNull:0.0}},
+...   		{$convert:{input:'$location.coordinates.latitude',to:"double",onError:0.0,onNull:0.0}}]
+...   }
+...   }},
+... {$project: {gender: 1,location: 1,email:1,birthdate:1,age:1, 
+... 
+...  fullname: {$concat: [
+... 
+...  {$toUpper:{$substrCP:["$name.first",0,1]}},
+... 
+... {$substrCP:['$name.first',1,{$subtract:[{$strLenCP:'$name.first'},1]}]}," ",
+... 
+... {$toUpper:{$substrCP:["$name.last",0,1]}},
+... 
+... {$substrCP:['$name.last',1,{$subtract:[{$strLenCP:'$name.last'},1]}]}]}}},
+... 
+... {$group:{_id:{birthYear:{$isoWeekYear:"birthdate"}},numPersons:{$sum:1}}},
+... {$sort:{numPersons:1}}
+... ])
+MongoServerError[Location16006]: Failed to optimize pipeline :: caused by :: can't convert from BSON type string to Date
+analytics> db.persons.aggregate([
+... { $project:
+...  {
+...   _id:1,
+...   email:1,
+...   name:1,
+...   gender:1,
+...   birthdate:{$toDate:"$dob.date"},
+...   age:"$dob.age",
+...   location:
+...   {
+...   	type:"Point",
+...   	coordinates:[
+...   		{$convert:{input:'$location.coordinates.longitude',to:"double",onError:0.0,onNull:0.0}},
+...   		{$convert:{input:'$location.coordinates.latitude',to:"double",onError:0.0,onNull:0.0}}]
+...   }}},
+... {$project: {gender: 1,location: 1,email:1,birthdate:1,age:1, 
+... 
+...  fullname: {$concat: [
+... 
+...  {$toUpper:{$substrCP:["$name.first",0,1]}},
+... 
+... {$substrCP:['$name.first',1,{$subtract:[{$strLenCP:'$name.first'},1]}]}," ",
+... 
+... {$toUpper:{$substrCP:["$name.last",0,1]}},
+... 
+... {$substrCP:['$name.last',1,{$subtract:[{$strLenCP:'$name.last'},1]}]}]}}},
+... 
+... {$group:{_id:{birthYear:{$isoWeekYear:"birthdate"}},numPersons:{$sum:1}}},
+... 
+... {$sort:{numPersons:1}}])
+MongoServerError[Location16006]: Failed to optimize pipeline :: caused by :: can't convert from BSON type string to Date
+analytics> db.persons.aggregate([ { $project: { _id: 1, email: 1, name: 1, gender: 1, birthdate: { $toDate: "$dob.date" }, age: "$dob.age", location: { type: "Point", coordinates: [ { $convert: { input: '$location.coordinates.longitude', to: "double", onError: 0.0, onNull: 0.0 } }, { $convert: { input: '$location.coordinates.latitude', to: "double", onError: 0.0, onNull: 0.0 } }] } } }, { $project: { gender: 1, location: 1, email: 1, birthdate: 1, age: 1, fullname: { $concat: [ { $toUpper: { $substrCP: ["$name.first", 0, 1] } }, { $substrCP: ['$name.first', 1, { $subtract: [{ $strLenCP: '$name.first' }, 1] }] }, " ", { $toUpper: { $substrCP: ["$name.last", 0, 1] } }, { $substrCP: ['$name.last', 1, { $subtract: [{ $strLenCP: '$name.last' }, 1] }] }] } } }, { $group: { _id: { birthYear: { $isoWeekYear: "birthdate" } }, numPersons: { $sum: 1 } } }, { $sort: { numPersons: 1 } }])
+analytics> db.persons.aggregate([
+... { $project:
+...  {
+...   _id:1,
+...   email:1,
+...   name:1,
+...   gender:1,
+...   birthdate:{$toDate:"$dob.date"},
+...   age:"$dob.age",
+...   location:
+...   {
+...   	type:"Point",
+...   	coordinates:[
+...   		{$convert:{input:'$location.coordinates.longitude',to:"double",onError:0.0,onNull:0.0}},
+...   		{$convert:{input:'$location.coordinates.latitude',to:"double",onError:0.0,onNull:0.0}}]
+...   }}},
+... {$project: {gender: 1,location: 1,email:1,birthdate:1,age:1, 
+... 
+...  fullname: {$concat: [
+... 
+...  {$toUpper:{$substrCP:["$name.first",0,1]}},
+... 
+... {$substrCP:['$name.first',1,{$subtract:[{$strLenCP:'$name.first'},1]}]}," ",
+... 
+... {$toUpper:{$substrCP:["$name.last",0,1]}},
+... 
+... {$substrCP:['$name.last',1,{$subtract:[{$strLenCP:'$name.last'},1]}]}]}}},
+... 
+... {$group:{_id:{birthYear:{$isoWeekYear:"$birthdate"}},numPersons:{$sum:1}}},
+... 
+... {$sort:{numPersons:1}}])
+[
+  { _id: { birthYear: Long('1944') }, numPersons: 27 },
+  { _id: { birthYear: Long('1997') }, numPersons: 52 },
+  { _id: { birthYear: Long('1969') }, numPersons: 78 },
+  { _id: { birthYear: Long('1951') }, numPersons: 79 },
+  { _id: { birthYear: Long('1985') }, numPersons: 79 },
+  { _id: { birthYear: Long('1972') }, numPersons: 80 },
+  { _id: { birthYear: Long('1957') }, numPersons: 82 },
+  { _id: { birthYear: Long('1979') }, numPersons: 84 },
+  { _id: { birthYear: Long('1978') }, numPersons: 85 },
+  { _id: { birthYear: Long('1952') }, numPersons: 85 },
+  { _id: { birthYear: Long('1977') }, numPersons: 86 },
+  { _id: { birthYear: Long('1996') }, numPersons: 86 },
+  { _id: { birthYear: Long('1980') }, numPersons: 86 },
+  { _id: { birthYear: Long('1956') }, numPersons: 87 },
+  { _id: { birthYear: Long('1964') }, numPersons: 87 },
+  { _id: { birthYear: Long('1971') }, numPersons: 88 },
+  { _id: { birthYear: Long('1988') }, numPersons: 89 },
+  { _id: { birthYear: Long('1962') }, numPersons: 90 },
+  { _id: { birthYear: Long('1949') }, numPersons: 91 },
+  { _id: { birthYear: Long('1987') }, numPersons: 92 }
+]
+Type "it" for more
+analytics> db.persons.aggregate([ { $project: { _id: 1, email: 1, name: 1, gender: 1, birthdate: { $toDate: "$dob.date" }, age: "$dob.age", location: { type: "Point", coordinates: [ { $convert: { input: '$location.coordinates.longitude', to: "double", onError: 0.0, onNull: 0.0 } }, { $convert: { input: '$location.coordinates.latitude', to: "double", onError: 0.0, onNull: 0.0 } }] } } }, { $project: { gender: 1, location: 1, email: 1, birthdate: 1, age: 1, fullname: { $concat: [ { $toUpper: { $substrCP: ["$name.first", 0, 1] } }, { $substrCP: ['$name.first', 1, { $subtract: [{ $strLenCP: '$name.first' }, 1] }] }, " ", { $toUpper: { $substrCP: ["$name.last", 0, 1] } }, { $substrCP: ['$name.last', 1, { $subtract: [{ $strLenCP: '$name.last' }, 1] }] }] } } }, { $group: { _id: { birthYear: { $isoWeekYear: "$birthdate" } }, numPersons: { $sum: 1 } } }, { $sort: { numPersons: -1 } }])
+[
+  { _id: { birthYear: Long('1955') }, numPersons: 113 },
+  { _id: { birthYear: Long('1961') }, numPersons: 111 },
+  { _id: { birthYear: Long('1960') }, numPersons: 110 },
+  { _id: { birthYear: Long('1993') }, numPersons: 110 },
+  { _id: { birthYear: Long('1975') }, numPersons: 107 },
+  { _id: { birthYear: Long('1945') }, numPersons: 106 },
+  { _id: { birthYear: Long('1976') }, numPersons: 105 },
+  { _id: { birthYear: Long('1967') }, numPersons: 104 },
+  { _id: { birthYear: Long('1990') }, numPersons: 103 },
+  { _id: { birthYear: Long('1981') }, numPersons: 102 },
+  { _id: { birthYear: Long('1994') }, numPersons: 102 },
+  { _id: { birthYear: Long('1995') }, numPersons: 101 },
+  { _id: { birthYear: Long('1958') }, numPersons: 101 },
+  { _id: { birthYear: Long('1946') }, numPersons: 100 },
+  { _id: { birthYear: Long('1948') }, numPersons: 100 },
+  { _id: { birthYear: Long('1983') }, numPersons: 99 },
+  { _id: { birthYear: Long('1950') }, numPersons: 99 },
+  { _id: { birthYear: Long('1970') }, numPersons: 99 },
+  { _id: { birthYear: Long('1963') }, numPersons: 98 },
+  { _id: { birthYear: Long('1965') }, numPersons: 98 }
+]
+Type "it" for more
+analytics> db.persons.aggregate([
+... { $project:
+...  {
+...   _id:1,
+...   email:1,
+...   name:1,
+...   gender:1,
+...   birthdate:"$dob.date",
+...   age:"$dob.age",
+...   location:
+...   {
+...   	type:"Point",
+...   	coordinates:[
+...   		{$convert:{input:'$location.coordinates.longitude',to:"double",onError:0.0,onNull:0.0}},
+...   		{$convert:{input:'$location.coordinates.latitude',to:"double",onError:0.0,onNull:0.0}}]
+...   }}},
+... {$project: {gender: 1,location: 1,email:1,birthdate:1,age:1, 
+... 
+...  fullname: {$concat: [
+... 
+...  {$toUpper:{$substrCP:["$name.first",0,1]}},
+... 
+... {$substrCP:['$name.first',1,{$subtract:[{$strLenCP:'$name.first'},1]}]}," ",
+... 
+... {$toUpper:{$substrCP:["$name.last",0,1]}},
+... 
+... {$substrCP:['$name.last',1,{$subtract:[{$strLenCP:'$name.last'},1]}]}]}}},
+... 
+... {$group:{_id:{birthYear:{$isoWeekYear:"$birthdate"}},numPersons:{$sum:1}}},
+... 
+... {$sort:{numPersons:1}}])
+MongoServerError[Location16006]: PlanExecutor error during aggregation :: caused by :: can't convert from BSON type string to Date
+analytics> db.persons.aggregate([
+... { $project:
+...  {
+...   _id:1,
+...   email:1,
+...   name:1,
+...   gender:1,
+...   birthdate:"$dob.date",
+...   age:"$dob.age",
+...   location:
+...   {
+...   	type:"Point",
+...   	coordinates:[
+...   		{$convert:{input:'$location.coordinates.longitude',to:"double",onError:0.0,onNull:0.0}},
+...   		{$convert:{input:'$location.coordinates.latitude',to:"double",onError:0.0,onNull:0.0}}]
+...   }}},
+... {$project: {gender: 1,location: 1,email:1,birthdate:1,age:1, 
+... 
+...  fullname: {$concat: [
+... 
+...  {$toUpper:{$substrCP:["$name.first",0,1]}},
+... 
+... {$substrCP:['$name.first',1,{$subtract:[{$strLenCP:'$name.first'},1]}]}," ",
+... 
+... {$toUpper:{$substrCP:["$name.last",0,1]}},
+... 
+... {$substrCP:['$name.last',1,{$subtract:[{$strLenCP:'$name.last'},1]}]}]}}},
+... 
+... {$group:{_id:{birthYear:{$isoWeekYear:{$convert:{input:"$birthdate",to:"date",onNull:0.0,onError:0.0}}}},numPersons:{$sum:1}}},
+... 
+... {$sort:{numPersons:1}}])
+[
+  { _id: { birthYear: Long('1944') }, numPersons: 27 },
+  { _id: { birthYear: Long('1997') }, numPersons: 52 },
+  { _id: { birthYear: Long('1969') }, numPersons: 78 },
+  { _id: { birthYear: Long('1951') }, numPersons: 79 },
+  { _id: { birthYear: Long('1985') }, numPersons: 79 },
+  { _id: { birthYear: Long('1972') }, numPersons: 80 },
+  { _id: { birthYear: Long('1957') }, numPersons: 82 },
+  { _id: { birthYear: Long('1979') }, numPersons: 84 },
+  { _id: { birthYear: Long('1952') }, numPersons: 85 },
+  { _id: { birthYear: Long('1978') }, numPersons: 85 },
+  { _id: { birthYear: Long('1980') }, numPersons: 86 },
+  { _id: { birthYear: Long('1977') }, numPersons: 86 },
+  { _id: { birthYear: Long('1996') }, numPersons: 86 },
+  { _id: { birthYear: Long('1956') }, numPersons: 87 },
+  { _id: { birthYear: Long('1964') }, numPersons: 87 },
+  { _id: { birthYear: Long('1971') }, numPersons: 88 },
+  { _id: { birthYear: Long('1988') }, numPersons: 89 },
+  { _id: { birthYear: Long('1962') }, numPersons: 90 },
+  { _id: { birthYear: Long('1949') }, numPersons: 91 },
+  { _id: { birthYear: Long('1966') }, numPersons: 92 }
+]
+Type "it" for more
+analytics> db.persons.aggregate([
+... { $project:
+...  {
+...   _id:1,
+...   email:1,
+...   name:1,
+...   gender:1,
+...   birthdate:"$dob.date",
+...   age:"$dob.age",
+...   location:
+...   {
+...   	type:"Point",
+...   	coordinates:[
+...   		{$convert:{input:'$location.coordinates.longitude',to:"double",onError:0.0,onNull:0.0}},
+...   		{$convert:{input:'$location.coordinates.latitude',to:"double",onError:0.0,onNull:0.0}}]
+...   }}},
+... {$project: {gender: 1,location: 1,email:1,birthdate:1,age:1, 
+... 
+...  fullname: {$concat: [
+... 
+...  {$toUpper:{$substrCP:["$name.first",0,1]}},
+... 
+... {$substrCP:['$name.first',1,{$subtract:[{$strLenCP:'$name.first'},1]}]}," ",
+... 
+... {$toUpper:{$substrCP:["$name.last",0,1]}},
+... 
+... {$substrCP:['$name.last',1,{$subtract:[{$strLenCP:'$name.last'},1]}]}]}}},
+... 
+... {$group:{_id:{birthYear:{$isoWeekYear:{$todate:"$birthdate"}}},numPersons:{$sum:1}}},
+... 
+... {$sort:{numPersons:1}}])
+MongoServerError[InvalidPipelineOperator]: Unrecognized expression '$todate'
+analytics> db.persons.aggregate([
+... { $project:
+...  {
+...   _id:1,
+...   email:1,
+...   name:1,
+...   gender:1,
+...   birthdate:"$dob.date",
+...   age:"$dob.age",
+...   location:
+...   {
+...   	type:"Point",
+...   	coordinates:[
+...   		{$convert:{input:'$location.coordinates.longitude',to:"double",onError:0.0,onNull:0.0}},
+...   		{$convert:{input:'$location.coordinates.latitude',to:"double",onError:0.0,onNull:0.0}}]
+...   }}},
+... {$project: {gender: 1,location: 1,email:1,birthdate:1,age:1, 
+... 
+...  fullname: {$concat: [
+... 
+...  {$toUpper:{$substrCP:["$name.first",0,1]}},
+... 
+... {$substrCP:['$name.first',1,{$subtract:[{$strLenCP:'$name.first'},1]}]}," ",
+... 
+... {$toUpper:{$substrCP:["$name.last",0,1]}},
+... 
+... {$substrCP:['$name.last',1,{$subtract:[{$strLenCP:'$name.last'},1]}]}]}}},
+... 
+... {$group:{_id:{birthYear:{$isoWeekYear:{$toDate:"$birthdate"}}},numPersons:{$sum:1}}},
+... 
+... {$sort:{numPersons:1}}])
+[
+  { _id: { birthYear: Long('1944') }, numPersons: 27 },
+  { _id: { birthYear: Long('1997') }, numPersons: 52 },
+  { _id: { birthYear: Long('1969') }, numPersons: 78 },
+  { _id: { birthYear: Long('1985') }, numPersons: 79 },
+  { _id: { birthYear: Long('1951') }, numPersons: 79 },
+  { _id: { birthYear: Long('1972') }, numPersons: 80 },
+  { _id: { birthYear: Long('1957') }, numPersons: 82 },
+  { _id: { birthYear: Long('1979') }, numPersons: 84 },
+  { _id: { birthYear: Long('1952') }, numPersons: 85 },
+  { _id: { birthYear: Long('1978') }, numPersons: 85 },
+  { _id: { birthYear: Long('1977') }, numPersons: 86 },
+  { _id: { birthYear: Long('1980') }, numPersons: 86 },
+  { _id: { birthYear: Long('1996') }, numPersons: 86 },
+  { _id: { birthYear: Long('1956') }, numPersons: 87 },
+  { _id: { birthYear: Long('1964') }, numPersons: 87 },
+  { _id: { birthYear: Long('1971') }, numPersons: 88 },
+  { _id: { birthYear: Long('1988') }, numPersons: 89 },
+  { _id: { birthYear: Long('1962') }, numPersons: 90 },
+  { _id: { birthYear: Long('1949') }, numPersons: 91 },
+  { _id: { birthYear: Long('1966') }, numPersons: 92 }
+]
+Type "it" for more
+analytics> 
